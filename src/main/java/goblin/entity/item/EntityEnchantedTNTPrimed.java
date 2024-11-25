@@ -3,11 +3,9 @@ package goblin.entity.item;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
-import net.minecraft.world.*;
-import net.minecraft.util.*;
-import net.minecraft.nbt.*;
+import net.minecraft.world.World;
 
 public class EntityEnchantedTNTPrimed extends EntityTNTPrimed implements IEntityAdditionalSpawnData{
 	

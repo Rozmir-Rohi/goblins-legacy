@@ -1,15 +1,17 @@
 package goblin.block;
 
-import net.minecraft.util.*;
-import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import goblin.tileEntity.TileEntityGoblinDrum;
-import net.minecraft.block.material.*;
-import net.minecraft.client.renderer.texture.*;
-import net.minecraft.world.*;
-import net.minecraft.block.*;
-import net.minecraft.init.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.tileentity.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class BlockGoblinDrum extends BlockContainer {
 	@SideOnly(Side.CLIENT)

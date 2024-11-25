@@ -1,13 +1,13 @@
 
 package goblin.tileEntity;
 
-import net.minecraft.tileentity.*;
-import net.minecraft.world.*;
 import goblin.Goblins;
 import goblin.block.MobSpawnerGoblinLogic;
-import net.minecraft.nbt.*;
-import net.minecraft.network.*;
-import net.minecraft.network.play.server.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityMobGRSpawner extends TileEntity {
 	private MobSpawnerGoblinLogic field_145882_a;

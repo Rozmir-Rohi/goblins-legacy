@@ -1,11 +1,11 @@
 
 package goblin.tileEntity;
 
-import net.minecraft.tileentity.*;
-import net.minecraft.nbt.*;
-import net.minecraft.world.*;
-import net.minecraft.init.*;
-import net.minecraft.block.material.*;
+import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class TileEntityGoblinDrum extends TileEntity {
 	public byte note;

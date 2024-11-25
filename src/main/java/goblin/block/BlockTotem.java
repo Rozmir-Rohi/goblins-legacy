@@ -1,12 +1,13 @@
 
 package goblin.block;
 
-import net.minecraft.block.*;
-import net.minecraft.util.*;
-import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import goblin.Goblins;
-import net.minecraft.block.material.*;
-import net.minecraft.client.renderer.texture.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 
 public class BlockTotem extends Block {
 	@SideOnly(Side.CLIENT)

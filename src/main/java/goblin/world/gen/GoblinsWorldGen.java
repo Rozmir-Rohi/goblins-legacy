@@ -1,20 +1,21 @@
 
 package goblin.world.gen;
 
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.util.*;
-import net.minecraft.world.*;
-import java.util.*;
+import java.util.Random;
 
 import goblin.Goblins;
 import goblin.entity.EntityDirewolf;
-import net.minecraft.block.*;
-import net.minecraft.tileentity.*;
-import net.minecraftforge.common.*;
-import net.minecraft.inventory.*;
-import net.minecraft.entity.*;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.common.ChestGenHooks;
 
 public class GoblinsWorldGen extends WorldGenerator {
 	public static WeightedRandomChestContent[] goblinStandardChest;

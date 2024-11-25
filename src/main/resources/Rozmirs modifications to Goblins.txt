@@ -71,5 +71,9 @@ Renamed various textures to adjust to changes in the registration code.
 
 Totem blocks now share one class for registration for simplicity.
 
+Readded shuriken crafting recipe.
+
+Fixed minor errors in achievements page.
+
 
 

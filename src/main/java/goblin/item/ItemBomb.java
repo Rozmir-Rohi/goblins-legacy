@@ -1,13 +1,12 @@
 
 package goblin.item;
 
-import net.minecraft.item.*;
-import net.minecraft.world.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.entity.*;
-import goblin.Goblins;
 import goblin.entity.projectile.EntityBomb;
-import net.minecraft.client.renderer.texture.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ItemBomb extends GoblinsItem {
 	public ItemBomb(String stringName)

@@ -1,13 +1,13 @@
 
 package goblin.item;
 
-import goblin.Goblins;
 import goblin.entity.projectile.EntityShuriken;
-import net.minecraft.client.renderer.texture.*;
-import net.minecraft.item.*;
-import net.minecraft.world.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.entity.*;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ItemShuriken extends GoblinsItem {
 	public int timer;

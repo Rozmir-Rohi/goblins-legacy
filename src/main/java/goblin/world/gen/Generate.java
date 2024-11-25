@@ -1,12 +1,12 @@
 
 package goblin.world.gen;
 
-import cpw.mods.fml.common.*;
-import goblin.Goblins;
+import java.util.Random;
 
-import java.util.*;
-import net.minecraft.world.*;
-import net.minecraft.world.chunk.*;
+import cpw.mods.fml.common.IWorldGenerator;
+import goblin.Goblins;
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
 
 public class Generate implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)

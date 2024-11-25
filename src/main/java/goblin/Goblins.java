@@ -438,6 +438,9 @@ public class Goblins {
 
 		GameRegistry.addRecipe(new ItemStack(bomb, 2), new Object[]
 		{ "#", "Y", "#", '#', Blocks.stone, 'Y', Items.gunpowder });
+		
+		GameRegistry.addRecipe(new ItemStack(shuriken, 1), new Object[]
+		{ "##", "##", '#', Blocks.cobblestone});
 
 		GameRegistry.addShapelessRecipe(new ItemStack(staffTeleport, 1), new Object[]
 		{ staffArcane, crystalG });

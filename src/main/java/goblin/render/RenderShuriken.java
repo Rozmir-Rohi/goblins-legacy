@@ -1,13 +1,14 @@
 
 package goblin.render;
 
-import net.minecraft.client.renderer.entity.*;
-import net.minecraft.entity.*;
-import org.lwjgl.opengl.*;
+import org.lwjgl.opengl.GL11;
 
 import goblin.entity.projectile.EntityShuriken;
-import net.minecraft.client.renderer.*;
-import net.minecraft.util.*;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderShuriken extends Render {
 	public static ResourceLocation texture;

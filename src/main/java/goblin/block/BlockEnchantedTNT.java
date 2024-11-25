@@ -1,19 +1,15 @@
 
 package goblin.block;
 
-import net.minecraft.block.*;
-import net.minecraft.util.*;
-import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import goblin.entity.item.EntityEnchantedTNTPrimed;
-import net.minecraft.block.material.*;
-import net.minecraft.client.renderer.texture.*;
-import java.util.*;
-import net.minecraft.world.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.init.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.item.EntityTNTPrimed;
-import net.minecraft.entity.projectile.*;
+import net.minecraft.block.BlockTNT;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.World;
 
 public class BlockEnchantedTNT extends BlockTNT {
 	@SideOnly(Side.CLIENT)

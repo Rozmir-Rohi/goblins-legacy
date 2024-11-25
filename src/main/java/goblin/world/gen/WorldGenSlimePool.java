@@ -1,12 +1,12 @@
 
 package goblin.world.gen;
 
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.*;
-import java.util.*;
+import java.util.Random;
 
 import goblin.Goblins;
-import net.minecraft.init.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenSlimePool extends WorldGenerator {
 	public boolean generate(World world, Random random, int xCoord, int yCoord, int zCoord)

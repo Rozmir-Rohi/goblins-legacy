@@ -1,9 +1,11 @@
 
 package goblin.model;
 
-import net.minecraft.client.model.*;
-import net.minecraft.entity.*;
-import net.minecraft.util.*;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 
 public class ModelGoblin extends ModelBiped {
 	public ModelRenderer bipedHead;

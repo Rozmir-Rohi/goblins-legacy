@@ -6,7 +6,6 @@ import org.lwjgl.opengl.GL11;
 import goblin.entity.IGoblinEntityTextureBase;
 import goblin.model.ModelGoblin;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;

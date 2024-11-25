@@ -1,13 +1,14 @@
 
 package goblin.world.gen;
 
-import net.minecraft.world.*;
-import java.util.*;
+import java.util.Random;
 
 import goblin.Goblins;
-import net.minecraft.block.*;
-import net.minecraft.item.*;
-import net.minecraft.init.*;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class WorldGenHuts extends GoblinsWorldGen {
 	int houseLoc1;

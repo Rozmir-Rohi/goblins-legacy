@@ -1,22 +1,33 @@
 
 package goblin.entity.projectile;
 
-import net.minecraft.entity.*;
-import cpw.mods.fml.relauncher.*;
+import java.util.List;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import goblin.Goblins;
 import goblin.entity.IGoblinEntityTextureBase;
 import goblin.world.GoblinsExplosion;
-import net.minecraft.world.*;
-import net.minecraft.block.*;
-import net.minecraft.enchantment.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.network.play.server.*;
-import net.minecraft.network.*;
-import net.minecraft.util.*;
-import java.util.*;
-import net.minecraft.nbt.*;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.block.Block;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S2BPacketChangeGameState;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 public class EntityBomb extends Entity implements IProjectile, IGoblinEntityTextureBase {
 	private int xTile;

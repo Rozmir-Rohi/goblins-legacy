@@ -1,18 +1,21 @@
 
 package goblin.render;
 
-import net.minecraft.client.renderer.entity.*;
-import net.minecraft.util.*;
-import net.minecraft.client.model.*;
-import net.minecraft.entity.*;
-import org.lwjgl.opengl.*;
+import org.lwjgl.opengl.GL11;
 
 import goblin.entity.EntityGoblinBomber;
 import goblin.model.ModelGoblinBomber;
-import net.minecraft.block.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.block.Block;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderGoblinBomber extends RenderLiving {
 	private static ResourceLocation texture;

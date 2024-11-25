@@ -1,11 +1,12 @@
 
 package goblin.world.gen;
 
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.*;
-import java.util.*;
-import net.minecraft.init.*;
-import net.minecraft.block.*;
+import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenGFlower extends WorldGenerator {
 	private int plantBlockId;

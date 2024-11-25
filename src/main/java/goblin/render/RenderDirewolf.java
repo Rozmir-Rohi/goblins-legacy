@@ -1,11 +1,11 @@
 
 package goblin.render;
 
-import net.minecraft.client.renderer.entity.*;
-import net.minecraft.util.*;
 import goblin.entity.EntityDirewolf;
-import net.minecraft.client.model.*;
-import net.minecraft.entity.*;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderDirewolf extends RenderLiving {
 	private static ResourceLocation texture;

@@ -1,17 +1,25 @@
 
 package goblin.entity.projectile;
 
-import net.minecraft.entity.player.*;
-import net.minecraft.init.*;
-import net.minecraft.world.*;
-import net.minecraft.entity.effect.*;
-import net.minecraft.entity.*;
-import net.minecraft.block.*;
-import net.minecraft.util.*;
-import java.util.*;
+import java.util.List;
 
 import goblin.entity.IGoblinEntityTextureBase;
-import net.minecraft.nbt.*;
+import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 public class EntityLightball extends Entity implements IGoblinEntityTextureBase {
 	private int xTile;

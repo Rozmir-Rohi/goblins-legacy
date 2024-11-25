@@ -1,20 +1,22 @@
 
 package goblin.world.gen;
 
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.*;
-import java.util.*;
+import java.util.Random;
 
 import goblin.Goblins;
 import goblin.entity.EntityGoblin;
 import goblin.entity.EntityGoblinBomber;
 import goblin.entity.EntityGoblinRanger;
 import goblin.entity.EntityGoblinSoldier;
-import net.minecraft.block.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.entity.*;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenFireplace extends WorldGenerator {
 	int houseLoc1;

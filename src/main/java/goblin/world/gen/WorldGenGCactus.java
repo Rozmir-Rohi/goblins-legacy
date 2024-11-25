@@ -1,10 +1,11 @@
 
 package goblin.world.gen;
 
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.*;
-import java.util.*;
-import net.minecraft.init.*;
+import java.util.Random;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenGCactus extends WorldGenerator {
 	public boolean generate(World world, Random random, int xCoord, int yCoord, int zCoord)

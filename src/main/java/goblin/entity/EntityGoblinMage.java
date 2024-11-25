@@ -1,20 +1,28 @@
 
 package goblin.entity;
 
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.boss.*;
-import net.minecraft.world.*;
 import goblin.Goblins;
 import goblin.achievements.GoblinsAchievements;
 import goblin.entity.projectile.EntityGArcaneball;
 import goblin.world.gen.WorldGenSlimePool;
-import net.minecraft.entity.*;
-import net.minecraft.util.*;
-import net.minecraft.nbt.*;
-import net.minecraft.init.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.boss.IBossDisplayData;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.EnumDifficulty;
+import net.minecraft.world.World;
 
 public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayData {
 	double moveSpeed;

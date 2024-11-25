@@ -2,8 +2,6 @@ package goblin.achievements;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import goblin.Goblins;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.AchievementPage;
@@ -108,8 +106,8 @@ public class GoblinsAchievements {
 		
 		goblin_flesh = new Achievement("achievement.goblin_flesh", "goblin_flesh", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE, Goblins.goblinFlesh, (Achievement)null).initIndependentStat().registerStat();
 		
-		bomb = new Achievement("achievement.bomb", "bomb", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - 8, Goblins.bomb, (Achievement)null).initIndependentStat().registerStat();
-		shuriken = new Achievement("achievement.shuriken", "shuriken", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 8, Goblins.shuriken, (Achievement)null).initIndependentStat().registerStat();
+		bomb = new Achievement("achievement.bomb", "bomb", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - 7, Goblins.bomb, (Achievement)null).initIndependentStat().registerStat();
+		shuriken = new Achievement("achievement.shuriken", "shuriken", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 7, Goblins.shuriken, (Achievement)null).initIndependentStat().registerStat();
 		
 		kill_goblin_lord = new Achievement("achievement.kill_goblin_lord", "kill_goblin_lord", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin_lord, (Achievement)null).initIndependentStat().registerStat();
 		kill_goblin_shaman = new Achievement("achievement.kill_goblin_shaman", "kill_goblin_shaman", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin_shaman, (Achievement)null).initIndependentStat().registerStat();

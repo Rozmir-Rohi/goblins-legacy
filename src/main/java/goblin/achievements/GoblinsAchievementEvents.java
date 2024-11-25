@@ -19,6 +19,8 @@ public class GoblinsAchievementEvents {
 		if (event.pickedUp.getEntityItem().getItem().equals(Item.getItemFromBlock(Goblins.totemY))) {event.player.addStat(GoblinsAchievements.yellow_totem, 1);}
 		
 		if (event.pickedUp.getEntityItem().getItem().equals(Goblins.goblinFlesh)) {event.player.addStat(GoblinsAchievements.goblin_flesh, 1);}
+		
+		if (event.pickedUp.getEntityItem().getItem().equals(Goblins.swordKatana)) {event.player.addStat(GoblinsAchievements.katana, 1);}
 	}
 	
 	@SubscribeEvent
@@ -55,5 +57,7 @@ public class GoblinsAchievementEvents {
 
 
 		if (event.crafting.getItem().equals(Goblins.bomb)) {event.player.addStat(GoblinsAchievements.bomb, 1);}
+		
+		if (event.crafting.getItem().equals(Goblins.shuriken)) {event.player.addStat(GoblinsAchievements.shuriken, 1);}
 	}
 }

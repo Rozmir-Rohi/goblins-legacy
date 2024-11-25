@@ -1,9 +1,9 @@
 
 package goblin.item;
 
-import net.minecraft.item.*;
 import goblin.Goblins;
-import net.minecraft.client.renderer.texture.*;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
 
 public class GoblinsItem extends Item {
 	public GoblinsItem(String stringName)

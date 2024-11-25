@@ -1,14 +1,20 @@
 
 package goblin.entity.projectile;
 
-import net.minecraft.entity.*;
-import net.minecraft.world.*;
-import net.minecraft.block.*;
-import java.util.*;
+import java.util.List;
 
 import goblin.entity.IGoblinEntityTextureBase;
-import net.minecraft.util.*;
-import net.minecraft.nbt.*;
+import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
 
 public class EntityGArcaneball extends Entity implements IGoblinEntityTextureBase {
 	public EntityLiving shootingEntity;

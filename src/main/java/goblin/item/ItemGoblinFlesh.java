@@ -1,10 +1,11 @@
 
 package goblin.item;
 
-import net.minecraft.item.*;
-import net.minecraft.world.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.client.renderer.texture.*;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ItemGoblinFlesh extends Item {
 	private int healAmount;

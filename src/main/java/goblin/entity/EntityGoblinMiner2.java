@@ -1,15 +1,14 @@
 
 package goblin.entity;
 
-import net.minecraft.entity.monster.*;
-import net.minecraft.item.*;
-import java.util.*;
-
-import net.minecraft.world.*;
-import net.minecraft.entity.*;
-import net.minecraft.nbt.*;
-import net.minecraft.init.*;
-import net.minecraft.util.*;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 public class EntityGoblinMiner2 extends EntityMob implements IGoblinEntityTextureBase {
 	private static ItemStack defaultHeldItem;

@@ -1,17 +1,19 @@
 
 package goblin.render;
 
-import net.minecraft.client.renderer.entity.*;
-import net.minecraft.util.*;
-import net.minecraft.client.model.*;
-import org.lwjgl.opengl.*;
+import org.lwjgl.opengl.GL11;
 
 import goblin.entity.EntityGoblinMage;
 import goblin.model.ModelGoblinMage;
-import net.minecraft.entity.*;
-import net.minecraftforge.client.*;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 public class RenderGoblinMage extends RenderLiving {
 	private static ResourceLocation texture;

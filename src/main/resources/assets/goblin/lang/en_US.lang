@@ -130,8 +130,8 @@ achievement.teleportation_staff.desc=Craft a Teleportation Staff by combining an
 
 
 
-achievement.yellow_totem=Sky Totem
-achievement.yellow_totem.desc=Obtain a Sky Totem. Totems can be found in Goblin Villages which are often located in Swamps and Plains.
+achievement.lightning_totem=Sky Totem
+achievement.lightning_totem.desc=Obtain a Sky Totem. Totems can be found in Goblin Villages which are often located in Swamps and Plains.
 
 achievement.lightning_powder=Lightning Powder
 achievement.lightning_powder.desc=Craft Lightning Powder using a Sky Totem in a Crafting Table.
@@ -139,6 +139,9 @@ achievement.lightning_powder.desc=Craft Lightning Powder using a Sky Totem in a 
 achievement.lightning_orb=Lightning Orb
 achievement.lightning_orb.desc=Craft a Lightning Orb using Lightning Powder in a Crafting Table. When thrown, this orb strikes enemies with lightning.
 achievement.lightning_crystal.desc=Craft a Lightning Crystal using Lightining Powder in a Crafting Table.
+
+achievement.lightning_crystal=Lightning Crystal
+achievement.lightning_crystal.desc=Craft an Lightning Crystal using Lightning Powder in a Crafting Table.
 
 achievement.lightning_staff=Lightning Staff
 achievement.lightning_staff.desc=Craft a Lightning Staff using Lightning Crystals in a Crafting Table. This staff allows you to shoot orbs of light, which creates lighning if it hits a block. It has a medium cooldown and 15 uses.

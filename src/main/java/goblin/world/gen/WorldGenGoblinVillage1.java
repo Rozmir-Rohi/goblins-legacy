@@ -1,17 +1,18 @@
 
 package goblin.world.gen;
 
-import java.util.*;
+import java.util.Random;
 
 import goblin.Goblins;
 import goblin.entity.EntityGoblinLord;
 import goblin.entity.EntityGoblinMage;
 import goblin.entity.EntityGoblinRangerGuard;
-import net.minecraft.init.*;
-import net.minecraft.block.*;
-import net.minecraft.entity.*;
-import net.minecraft.world.*;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 
 public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 	int houseLoc1;
