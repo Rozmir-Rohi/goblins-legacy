@@ -1,4 +1,5 @@
 # Goblins Legacy
+Port of the Goblins! mod for 1.7.10 with a few improvements.
 
 <details>
 <summary><h2>Credits:</h2></summary>
