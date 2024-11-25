@@ -18,7 +18,7 @@ public class ItemStaffNature extends GoblinsItem {
 	{
 		super(stringName);
 		maxStackSize = 1;
-		setMaxDamage(30);
+		setMaxDamage(50);
 	}
 	
 	@SideOnly(Side.CLIENT)
