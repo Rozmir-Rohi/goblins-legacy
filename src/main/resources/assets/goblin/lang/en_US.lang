@@ -1,0 +1,173 @@
+itemGroup.GoblinsTab=Goblins
+
+tile.MobGSpawner.name=Goblin Spawner
+tile.MobGRSpawner.name=Goblin Rider Spawner
+tile.MobGMSpawner.name=Goblin Miner Spawner
+tile.VillageSpawn.name=Goblin Village Spawner (Right-Click)
+tile.ETNT.name=Enchanted TNT
+tile.MTNT.name=Overcharged TNT
+tile.totemR.name=Rage Totem
+tile.totemB.name=Magic Totem
+tile.totemG.name=Earth Totem
+tile.totemY.name=Sky Totem
+tile.gobDrum.name=Goblin Drum
+tile.goo.name=Goo
+
+
+item.shuriken.name=Shuriken
+item.swordKatana.name=Katana
+item.swordFire.name=Flame Blade
+item.goblinFlesh.name=Goblin Flesh
+item.bomb.name=Bomb
+item.staffBlue.name=Arcane Staff
+item.staffNature.name=Scepter of Life
+item.orbB.name=Force Orb
+item.orbG.name=Nature Orb
+item.orbR.name=Explosive Orb
+item.orbY.name=Lightning Orb
+item.crystalB.name=Arcane Crystal
+item.crystalR.name=Fiery Crystal
+item.crystalG.name=Nature Crystal
+item.crystalY.name=Lightning Crystal
+item.powderR.name=Explosive Powder
+item.powderB.name=Arcane Powder
+item.powderY.name=Lightning Powder
+item.powderG.name=Nature Powder
+item.staffTeleport.name=Teleportation Staff
+item.staffLightning.name=Lightning Staff
+
+
+entity.goblin.Direwolf.name=Direwolf
+entity.goblin.Goblin.name=Goblin
+entity.goblin.GoblinBomber.name=Goblin Arsonist
+entity.goblin.GoblinLord.name=Goblin Lord
+entity.goblin.GoblinMage.name=Goblin Shaman
+entity.goblin.GoblinMiner.name= Goblin Miner
+entity.goblin.GoblinMiner2.name=Goblin Miner
+entity.goblin.GoblinNinja.name=Goblin Ninja
+entity.goblin.GoblinRanger.name=Goblin Ranger
+entity.goblin.GoblinRangerGuard.name=Goblin Ranger Guard
+entity.goblin.GoblinRider.name=Goblin Rider
+entity.goblin.GoblinSoldier.name=Goblin Soldier
+
+entity.goblin.orbB.name=Force Orb
+entity.goblin.orbG.name=Nature Orb
+entity.goblin.orbR.name=Explosive Orb
+entity.goblin.orbY.name=Lightning Orb
+entity.goblin.Arcaneball.name=Arcane Bolt
+entity.goblin.GArcaneball.name=Arcane Bolt
+entity.goblin.Lightningball.name=Lightning Bolt
+entity.goblin.Shuriken.name=Shuriken
+entity.goblin.ETNTPrimed.name=Enchanted TNT
+entity.goblin.MTNTPrimed.name=Overcharged TNT
+
+
+
+
+achievements.GoblinsTab=Goblins
+
+
+
+achievement.red_totem=Rage Totem
+achievement.red_totem.desc=Obtain a Rage Totem. Totems can be found in Goblin Villages which are often located in Swamps and Plains.
+
+achievement.explosive_powder=Explosive Powder
+achievement.explosive_powder.desc=Craft Explosive Powder using a Rage Totem in a Crafting Table.
+
+achievement.explosive_orb=Explosive Orb
+achievement.explosive_orb.desc=Craft an Explosive Orb using Explosive Powder in a Crafting Table. When thrown, this orb explodes on contact with ground or an enemy.
+
+achievement.enchanted_tnt=Enchanted TNT
+achievement.enchanted_tnt.desc=Craft Enchanted TNT using Explosive Powder and TNT. This is a more powerful version of TNT.
+
+achievement.overcharged_tnt=Overcharged TNT
+achievement.overcharged_tnt.desc=Craft Overcharged TNT using Arcane Powder and Enchanted TNT in a Crafting Table. This is an even more powerful version of TNT.
+
+achievement.fiery_crystal=Fiery Crystal
+achievement.fiery_crystal.desc=Craft an Fiery Crystal using Explosive Powder in a Crafting Table.
+
+achievement.flame_blade=Flame Blade
+achievement.flame_blade.desc=Craft a Flame Blade using Fiery Crystals in a Crafting Table. This sword sets enemies on fire.
+
+
+
+achievement.green_totem=Earth Totem
+achievement.green_totem.desc=Obtain an Earth Totem. Totems can be found in Goblin Villages which are often located in Swamps and Plains.
+
+achievement.nature_powder=Nature Powder
+achievement.nature_powder.desc=Craft Nature Powder using a Earth Totem in a Crafting Table.
+
+achievement.nature_orb=Nature Orb
+achievement.nature_orb.desc=Craft a Nature Orb using Nature Powder in a Crafting Table. When thrown, this orb grows trees on grass blocks and cacti on sand.
+
+achievement.nature_crystal=Nature Crystal
+achievement.nature_crystal.desc=Craft a Nature Crystal using Nature Powder in a Crafting Table.
+
+achievement.scepter_of_life=Scepter of Life
+achievement.scepter_of_life.desc=Craft a Scepter of Life using Nature Crystals in a Crafting Table. This staff acts like bonemeal and has 30 uses.
+
+
+
+achievement.blue_totem=Magic Totem
+achievement.blue_totem.desc=Obtain a Magic Totem. Totems can be found in Goblin Villages which are often located in Swamps and Plains.
+
+achievement.arcane_powder=Arcane Powder
+achievement.arcane_powder.desc=Craft Arcane Powder using a Magic Totem in a Crafting Table.
+
+achievement.force_orb=Force Orb
+achievement.force_orb.desc=Craft a Force Orb using Arcane Powder in a Crafting Table. When thrown, this orb launches enemies a long distance.
+
+achievement.arcane_crystal=Arcane Crystal
+achievement.arcane_crystal.desc=Craft an Arcane Crystal using Arcane Powder in a Crafting Table.
+
+achievement.arcane_staff=Arcane Staff
+achievement.arcane_staff.desc=Craft an Arcane Staff using Arcane Crystals in a Crafting Table. This staff allows you to shoot an Arcane Bolt. It has a small cooldown and 30 uses.
+
+
+
+achievement.teleportation_staff=Teleportation Staff
+achievement.teleportation_staff.desc=Craft a Teleportation Staff by combining an Arcane Staff and a Nature Staff in a Crafting Table. This staff allows you to teleport to the area you face in a short range. If used by the player when they are stuck inside blocks, this staff has a chance of teleporting them to a safe place at the cost of using up all it's durability. It has a tiny cooldown and 40 uses.
+
+
+
+achievement.yellow_totem=Sky Totem
+achievement.yellow_totem.desc=Obtain a Sky Totem. Totems can be found in Goblin Villages which are often located in Swamps and Plains.
+
+achievement.lightning_powder=Lightning Powder
+achievement.lightning_powder.desc=Craft Lightning Powder using a Sky Totem in a Crafting Table.
+
+achievement.lightning_orb=Lightning Orb
+achievement.lightning_orb.desc=Craft a Lightning Orb using Lightning Powder in a Crafting Table. When thrown, this orb strikes enemies with lightning.
+achievement.lightning_crystal.desc=Craft a Lightning Crystal using Lightining Powder in a Crafting Table.
+
+achievement.lightning_staff=Lightning Staff
+achievement.lightning_staff.desc=Craft a Lightning Staff using Lightning Crystals in a Crafting Table. This staff allows you to shoot orbs of light, which creates lighning if it hits a block. It has a medium cooldown and 15 uses.
+
+
+
+achievement.bomb=Bomb
+achievement.bomb.desc=Craft a Bomb using Gunpowder and Stone in a Crafting Table. These are throwable explosives that won't break blocks. Careful though, they explode after a few seconds after being thrown.
+
+achievement.shuriken=Shuriken
+achievement.shuriken.desc=Craft a Shuriekn using Cobblestone in a Crafting Table.
+
+
+achievement.goblin_flesh=Goblin Flesh
+achievement.goblin_flesh.desc=Obtain Goblin Flesh from Goblins. Are you brave enough to eat this?
+
+
+
+achievement.kill_goblin_lord=Goblin Lord
+achievement.kill_goblin_lord.desc=Kill a Goblin Lord. This guy eats obsidian for breakfast, lunch and supper. He's tough, agile and strong. He is also the leader in the Goblins tribe. He can sometimes be found in large Goblin Villages.
+
+
+achievement.kill_goblin_shaman=Goblin Shaman
+achievement.kill_goblin_shaman.desc=Kill a Goblin Shaman. Though he might not be as tough as the Goblin Lord, he harnesses the power of magic to crush his enemies. So I guess it evens out? He can sometimes be found in large Goblin Villages.
+
+
+
+achievement.goblin_ninja_attack=Ambush
+achievement.goblin_ninja_attack.desc=Let your gaurd down while sleeping in a Bed with Goblin Totems in your inventory.
+
+achievement.katana=Katana
+achievement.katana.desc=Obtain a Katana from a Goblin Ninja.

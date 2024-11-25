@@ -1,0 +1,75 @@
+Ported the original mod from 1.7.2 to 1.7.10.
+
+Reorganised file structure of code classes.
+
+Renamed various identifiers to improve their meaningfulness.
+
+Fixed format of sounds.json.
+
+Added Thaumcraft aspects to all content.
+
+All orb-like projectile entities now use the same render class to improve efficiency.
+
+All goblin entities that use the standard goblin model now use the same render class to improve efficiency.
+
+Added Goblins achievements page.
+
+Renamed mod, changed mcmod.info, and added credits accordingly.
+
+Fixed format of code for configuration generation.
+
+Fixed format of proxy registration.
+
+Enchanted TNT and Overcharged TNT now reuse code from vanilla TNT to improve efficiency.
+
+Fixed texture bug of primed enchanted TNT and primed overcharged TNT.
+
+Readded Goblin Ninja, Shuriken, and Katana.
+
+All goblins now swing their arm like players in melee attacks.
+
+Goblin Ninjas now attack with either Shuriken or Katana depending on their distance to the player/enemy.
+
+Increased attack damage of Flame Blade to 6.
+
+Goblin Shaman now hold the Arcane Staff and Teleportation Staff for their attacks/abilities.
+
+Fixed display of all staves.
+
+Teleportation Staff now makes the normal teleportation sound.
+
+Goblin Ninja no longer try to fight other Goblin Ninja's if hit by their shuriken.
+
+Goblin Shaman now has a chance to drop a few totem powders on death.
+
+Fixed format of drop items code for all entities.
+
+Players now swing their arm when using staves.
+
+Fixed durability of the Scepter of Life.
+
+Renamed totems to their original intended names.
+
+Changed the name of the yellow totem, from "Holy Totem" to "Sky Totem".
+
+Changed the name of the green totem, from "Nature Totem" to "Earth Totem".
+
+Renamed village spawner to Goblin Village Spawner.
+
+Readjusted texture of Katana so that the blade is on the correct side.
+
+Fixed staves being stackable.
+
+Teleportation staff now teleports the player to the block they look at in a small range. If used while the player is inside a block, this staff can now also has a chance of teleporting
+the player to a safe location nearby.
+
+Added spawn eggs to Goblins creative tab.
+
+Simplified some of the code for item, block, and entity registration.
+
+Renamed various textures to adjust to changes in the registration code.
+
+Totem blocks now share one class for registration for simplicity.
+
+
+

@@ -1,0 +1,43 @@
+
+Jan Orlowski (Sartharis) - Creator of the Goblins! mod. This project is a modified version of the Goblins! mod and is licensed under the "MIT" license as instructed from the written permission from the original creator. Proof of permission can be found inside the assets folder of the mod jar archive as an image file.
+
+Azanor - Thaumcraft 4.2.2 API was used as a library under the MIT License to add Thaumcraft aspects to the mod content.
+
+user17512883 - Their forum post helped me fix the primed TNT render bug (https://stackoverflow.com/questions/70119718/minecraft-forge-1-7-10-custom-entity-not-spawning-on-the-client).
+
+New Teleportation Staff Mechanism:
+	coolAlias - Their answer in Minecraft Forums helped me to work out the base code for the new mechanism
+	(https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/modification-development/2132650-solved-1-7-2-forge-block-player-is-looking-at).
+
+	AlchemyMouse - Their answer in StackOverflow me helped resolve vectors needed for the new mechanism
+	(https://gamedev.stackexchange.com/questions/59858/how-to-find-the-entity-im-looking-at).
+
+
+
+
+
+
+===============================================
+    ORIGINAL GOBLINS! CONTRIBUTER CREDITS
+-----------------------------------------------
+
+Hengabone - Made the goblin village templates and awesome Beta-Tester Posted Image.
+
+Garrura and Srymon - For being great friends of Sartharis and giving ideas!
+
+mister_person - For giving Sartharis the materials to craft the nature arrow!
+
+cowmonkey (AKA Madgoblin) - For showing Sartharis the bomb blueprints.
+
+Geethebluesky - For solving the configuration file mystery.
+
+Cowguy666 - For making the drum texture. 
+
+===============================================
+
+
+
+
+
+Special Thanks:
+	nanaqui and sunconure11 - For suggesting me to take on this project. This project wouldn't have existed if it wasn't for their request.

@@ -1,0 +1,58 @@
+{
+  "goblin.idle": {
+    "category": "hostile",
+    "sounds": [
+      	"goblin1",
+      	"goblin2",
+      	"goblin3"
+    ]
+  },
+  "goblin.dead": {
+    "category": "hostile",
+    "sounds": [
+	"goblindead1",
+      	"goblindead2"
+    ]
+  },
+  "goblin.fear": {
+    "category": "hostile",
+    "sounds": [
+     	"goblinfear1",
+     	"goblinfear2"
+    ]
+  },
+  "goblin.hurt": {
+    "category": "hostile",
+    "sounds": [
+     	"goblinhurt1",
+       	"goblinhurt2",
+      	"goblinhurt2"
+    ]
+  },
+  "goblinlord.idle": {
+    "category": "hostile",
+    "sounds": [
+      	"goblinlord1",
+      	"goblinlord2"
+    ]
+  },
+  "goblinlord.dead": {
+    "category": "hostile",
+    "sounds": [
+      	"goblinlorddead"
+    ]
+  },
+  "goblinlord.charge": {
+    "category": "hostile",
+    "sounds": [
+      	"goblinlordcharge"
+    ]
+  },
+  "goblinlord.hurt": {
+    "category": "hostile",
+    "sounds": [
+     	"goblinlordhurt1",
+       	"goblinlordhurt2"
+    ]
+  }
+}
