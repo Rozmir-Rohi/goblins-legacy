@@ -3,7 +3,6 @@ package goblin.entity;
 
 import goblin.Goblins;
 import goblin.entity.projectile.EntityBomb;
-import goblin.world.GoblinsExplosion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
@@ -147,26 +146,6 @@ public class EntityGoblinBomber extends EntityMob implements IRangedAttackMob {
 	public ItemStack getHeldItem()
 	{
 		return EntityGoblinBomber.defaultHeldItem;
-	}
-
-	public void explode()
-	{
-		createExplosionG(null, posX, posY, posZ, 2.2f);
-		setDead();
-	}
-
-	public GoblinsExplosion createExplosionG(Entity entity, double xCoord, double yCoord, double zCoord, float f)
-	{
-		return newExplosionG(entity, xCoord, yCoord, zCoord, f, false);
-	}
-
-	public GoblinsExplosion newExplosionG(Entity entity, double xCoord, double yCoord, double zCoord, float f, boolean flag)
-	{
-		GoblinsExplosion explosion = new GoblinsExplosion(worldObj, entity, xCoord, yCoord, zCoord, f);
-		explosion.isFlaming = flag;
-		explosion.doExplosionA();
-		explosion.doExplosionB(true);
-		return explosion;
 	}
 
 	public void attackEntityWithRangedAttack(EntityLivingBase entityLivingBase, float f)

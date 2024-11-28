@@ -64,14 +64,14 @@ public class EntityShuriken extends EntityArrow implements IProjectile {
 		}
 		setSize(0.5f, 0.5f);
 		setLocationAndAngles(entityLivingBaseThrower.posX, entityLivingBaseThrower.posY + entityLivingBaseThrower.getEyeHeight(), entityLivingBaseThrower.posZ, entityLivingBaseThrower.rotationYaw, entityLivingBaseThrower.rotationPitch);
-		posX -= MathHelper.cos(rotationYaw / 180.0f * 3.1415927f) * 0.16f;
+		posX -= MathHelper.cos(rotationYaw / 180.0f * (float) Math.PI) * 0.16f;
 		posY -= 0.10000000149011612;
-		posZ -= MathHelper.sin(rotationYaw / 180.0f * 3.1415927f) * 0.16f;
+		posZ -= MathHelper.sin(rotationYaw / 180.0f * (float) Math.PI) * 0.16f;
 		setPosition(posX, posY, posZ);
 		yOffset = 0.0f;
-		motionX = -MathHelper.sin(rotationYaw / 180.0f * 3.1415927f) * MathHelper.cos(rotationPitch / 180.0f * 3.1415927f);
-		motionZ = MathHelper.cos(rotationYaw / 180.0f * 3.1415927f) * MathHelper.cos(rotationPitch / 180.0f * 3.1415927f);
-		motionY = -MathHelper.sin(rotationPitch / 180.0f * 3.1415927f);
+		motionX = -MathHelper.sin(rotationYaw / 180.0f * (float) Math.PI) * MathHelper.cos(rotationPitch / 180.0f * (float) Math.PI);
+		motionZ = MathHelper.cos(rotationYaw / 180.0f * (float) Math.PI) * MathHelper.cos(rotationPitch / 180.0f * (float) Math.PI);
+		motionY = -MathHelper.sin(rotationPitch / 180.0f * (float) Math.PI);
 		setThrowableHeading(motionX, motionY, motionZ, par3 * 1.5f, 1.0f);
 	}
 

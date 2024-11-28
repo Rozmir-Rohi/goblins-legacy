@@ -75,5 +75,5 @@ Readded shuriken crafting recipe.
 
 Fixed minor errors in achievements page.
 
-
+Fixed Bomb Entity explosion render bug. Also rebalanced size and damage of bomb explosion.
 

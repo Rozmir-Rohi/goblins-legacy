@@ -5,9 +5,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import goblin.Goblins;
 import goblin.entity.IGoblinEntityTextureBase;
-import goblin.world.GoblinsExplosion;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -16,7 +14,6 @@ import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
@@ -37,9 +34,7 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 	private int inData;
 	private boolean inGround;
 	private boolean exploded;
-	public int fuse;
-	public int canBePickedUp;
-	public int arrowShake;
+	public int fuse = 20;
 	public Entity shootingEntity;
 	private int ticksInGround;
 	private int ticksInAir;
@@ -53,7 +48,6 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 		yTile = -1;
 		zTile = -1;
 		exploded = false;
-		fuse = 20;
 		damage = 1.0;
 		renderDistanceWeight = 10.0;
 		setSize(0.5f, 0.5f);
@@ -66,7 +60,6 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 		yTile = -1;
 		zTile = -1;
 		exploded = false;
-		fuse = 20;
 		damage = 1.0;
 		renderDistanceWeight = 10.0;
 		setSize(0.5f, 0.5f);
@@ -81,14 +74,10 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 		yTile = -1;
 		zTile = -1;
 		exploded = false;
-		fuse = 20;
 		damage = 1.0;
 		renderDistanceWeight = 10.0;
 		shootingEntity = (Entity) entityLivingBase;
-		if (entityLivingBase instanceof EntityPlayer)
-		{
-			canBePickedUp = 1;
-		}
+
 		posY = entityLivingBase.posY + entityLivingBase.getEyeHeight() - 0.10000000149011612;
 		double d0 = entityLivingBase2.posX - entityLivingBase.posX;
 		double d2 = entityLivingBase2.boundingBox.minY + entityLivingBase2.height / 3.0f - posY;
@@ -114,14 +103,10 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 		yTile = -1;
 		zTile = -1;
 		exploded = false;
-		fuse = 20;
 		damage = 1.0;
 		renderDistanceWeight = 10.0;
 		shootingEntity = (Entity) entityLivingBase;
-		if (entityLivingBase instanceof EntityPlayer)
-		{
-			canBePickedUp = 1;
-		}
+		
 		setSize(0.5f, 0.5f);
 		setLocationAndAngles(entityLivingBase.posX, entityLivingBase.posY + entityLivingBase.getEyeHeight(), entityLivingBase.posZ, entityLivingBase.rotationYaw, entityLivingBase.rotationPitch);
 		posX -= MathHelper.cos(rotationYaw / 180.0f * 3.1415927f) * 0.16f;
@@ -217,10 +202,6 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 				inGround = true;
 			}
 		}
-		if (arrowShake > 0)
-		{
-			--arrowShake;
-		}
 		if (inGround)
 		{
 			Block j = worldObj.getBlock(xTile, yTile, zTile);
@@ -256,23 +237,23 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 				vec4 = Vec3.createVectorHelper(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
 			}
 			Entity entity = null;
-			List list = worldObj.getEntitiesWithinAABBExcludingEntity((Entity) this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0, 1.0, 1.0));
-			double d0 = 0.0;
-			for (int l = 0; l < list.size(); ++l)
+			List listOfNearbyEntities = worldObj.getEntitiesWithinAABBExcludingEntity((Entity) this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0, 1.0, 1.0));
+			double impactDidtance = 0.0;
+			for (int index = 0; index < listOfNearbyEntities.size(); ++index)
 			{
-				Entity entity2 = (Entity) list.get(l);
-				if (entity2.canBeCollidedWith() && (entity2 != shootingEntity || ticksInAir >= 5))
+				Entity closestEntity = (Entity) listOfNearbyEntities.get(index);
+				if (closestEntity.canBeCollidedWith() && (closestEntity != shootingEntity || ticksInAir >= 5))
 				{
-					float f2 = 0.3f;
-					AxisAlignedBB axisalignedbb2 = entity2.boundingBox.expand((double) f2, (double) f2, (double) f2);
+					float boundingBoxExpansionAmount = 0.3f;
+					AxisAlignedBB axisalignedbb2 = closestEntity.boundingBox.expand((double) boundingBoxExpansionAmount, (double) boundingBoxExpansionAmount, (double) boundingBoxExpansionAmount);
 					MovingObjectPosition movingObjectPosition2 = axisalignedbb2.calculateIntercept(vec3, vec4);
 					if (movingObjectPosition2 != null)
 					{
-						double d2 = vec3.distanceTo(movingObjectPosition2.hitVec);
-						if (d2 < d0 || d0 == 0.0)
+						double distanceToClosestEntity = vec3.distanceTo(movingObjectPosition2.hitVec);
+						if (distanceToClosestEntity < impactDidtance || impactDidtance == 0.0)
 						{
-							entity = entity2;
-							d0 = d2;
+							entity = closestEntity;
+							impactDidtance = distanceToClosestEntity;
 						}
 					}
 				}
@@ -291,101 +272,7 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 			}
 			if (movingObjectPosition != null)
 			{
-				if (movingObjectPosition.entityHit != null)
-				{
-					float f3 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-					int i2 = MathHelper.ceiling_double_int(f3 * damage);
-					if (getIsCritical())
-					{
-						i2 += rand.nextInt(i2 / 2 + 2);
-					}
-					DamageSource damageSource = null;
-					if (shootingEntity == null)
-					{
-						damageSource = DamageSource.causeThrownDamage((Entity) this, (Entity) this);
-					}
-					else
-					{
-						damageSource = DamageSource.causeThrownDamage((Entity) this, shootingEntity);
-					}
-					if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, (float) i2))
-					{
-						if (movingObjectPosition.entityHit instanceof EntityLivingBase)
-						{
-							EntityLivingBase entityLivingBase = (EntityLivingBase) movingObjectPosition.entityHit;
-							if (knockbackStrength > 0)
-							{
-								float f4 = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
-								if (f4 > 0.0f)
-								{
-									movingObjectPosition.entityHit.addVelocity(motionX * knockbackStrength * 0.6000000238418579 / f4, 0.1, motionZ * knockbackStrength * 0.6000000238418579 / f4);
-								}
-							}
-							if (shootingEntity != null && shootingEntity instanceof EntityLivingBase)
-							{
-								EnchantmentHelper.func_151384_a(entityLivingBase, shootingEntity);
-								EnchantmentHelper.func_151385_b((EntityLivingBase) shootingEntity, (Entity) entityLivingBase);
-							}
-							if (shootingEntity != null && movingObjectPosition.entityHit != shootingEntity && movingObjectPosition.entityHit instanceof EntityPlayer && shootingEntity instanceof EntityPlayerMP)
-							{
-								((EntityPlayerMP) shootingEntity).playerNetServerHandler.sendPacket((Packet) new S2BPacketChangeGameState(6, 0.0f));
-							}
-						}
-						
-					}
-					else
-					{
-						motionX *= -0.10000000149011612;
-						motionY *= -0.10000000149011612;
-						motionZ *= -0.10000000149011612;
-						rotationYaw += 180.0f;
-						prevRotationYaw += 180.0f;
-						ticksInAir = 0;
-					}
-				}
-				else
-				{
-					xTile = movingObjectPosition.blockX;
-					yTile = movingObjectPosition.blockY;
-					zTile = movingObjectPosition.blockZ;
-					Block block = worldObj.getBlock(xTile, yTile + 1, zTile);
-					if (movingObjectPosition.sideHit == 1 && (worldObj.getBlock(xTile, yTile + 1, zTile) == Blocks.air || block.isReplaceable((IBlockAccess) worldObj, xTile, yTile + 1, zTile)))
-					{
-						inTile = Block.getIdFromBlock(worldObj.getBlock(xTile, yTile, zTile));
-						inData = worldObj.getBlockMetadata(xTile, yTile, zTile);
-						motionX = (float) (movingObjectPosition.hitVec.xCoord - posX);
-						motionY = (float) (movingObjectPosition.hitVec.yCoord - posY);
-						motionZ = (float) (movingObjectPosition.hitVec.zCoord - posZ);
-						float f3 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-						posX -= motionX / f3 * 0.05000000074505806;
-						posY -= motionY / f3 * 0.05000000074505806;
-						posZ -= motionZ / f3 * 0.05000000074505806;
-						
-						inGround = true;
-						arrowShake = 7;
-						setIsCritical(false);
-						if (inTile != 0)
-						{
-							Block.getBlockById(inTile).onEntityCollidedWithBlock(worldObj, xTile, yTile, zTile, (Entity) this);
-						}
-					}
-					else
-					{
-						motionX *= -0.10000000149011612;
-						motionY *= -0.10000000149011612;
-						motionZ *= -0.10000000149011612;
-						rotationYaw += 180.0f;
-						prevRotationYaw += 180.0f;
-						ticksInAir = 0;
-					}
-				}
-			}
-			if (getIsCritical())
-			{
-				for (int l = 0; l < 4; ++l)
-				{
-					worldObj.spawnParticle("crit", posX + motionX * l / 4.0, posY + motionY * l / 4.0, posZ + motionZ * l / 4.0, -motionX, -motionY + 0.2, -motionZ);
-				}
+				onImpact(movingObjectPosition);
 			}
 			posX += motionX;
 			posY += motionY;
@@ -411,8 +298,8 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 			}
 			rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2f;
 			rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2f;
-			float f5 = 0.79f;
-			float f2 = 0.15f;
+			float horizontalDeceleration = 0.79f;
+			float verticalDeceleration = 0.15f;
 			if (isInWater())
 			{
 				for (int j2 = 0; j2 < 4; ++j2)
@@ -420,12 +307,12 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 					float f4 = 0.25f;
 					worldObj.spawnParticle("bubble", posX - motionX * f4, posY - motionY * f4, posZ - motionZ * f4, motionX, motionY, motionZ);
 				}
-				f5 = 0.4f;
+				horizontalDeceleration = 0.4f;
 			}
-			motionX *= f5;
-			motionY *= f5;
-			motionZ *= f5;
-			motionY -= f2;
+			motionX *= horizontalDeceleration;
+			motionY *= horizontalDeceleration;
+			motionZ *= horizontalDeceleration;
+			motionY -= verticalDeceleration;
 			setPosition(posX, posY, posZ);
 			func_145775_I();
 		}
@@ -439,57 +326,124 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 		}
 	}
 
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+	private void onImpact(MovingObjectPosition movingObjectPosition)
 	{
-		par1NBTTagCompound.setShort("xTile", (short) xTile);
-		par1NBTTagCompound.setShort("yTile", (short) yTile);
-		par1NBTTagCompound.setShort("zTile", (short) zTile);
-		par1NBTTagCompound.setByte("inTile", (byte) inTile);
-		par1NBTTagCompound.setByte("inData", (byte) inData);
-		par1NBTTagCompound.setByte("shake", (byte) arrowShake);
-		par1NBTTagCompound.setByte("inGround", (byte) (byte) (inGround ? 1 : 0));
-		par1NBTTagCompound.setByte("pickup", (byte) canBePickedUp);
-		par1NBTTagCompound.setDouble("damage", damage);
+		if (movingObjectPosition.entityHit != null) //hit an entity
+		{
+			float motionSquared = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
+			int motionTimesDamage = MathHelper.ceiling_double_int(motionSquared * damage);
+			DamageSource damageSource = null;
+			if (shootingEntity == null)
+			{
+				damageSource = DamageSource.causeThrownDamage((Entity) this, (Entity) this);
+			}
+			else
+			{
+				damageSource = DamageSource.causeThrownDamage((Entity) this, shootingEntity);
+			}
+			if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, (float) motionTimesDamage))
+			{
+				if (movingObjectPosition.entityHit instanceof EntityLivingBase)
+				{
+					EntityLivingBase entityLivingBase = (EntityLivingBase) movingObjectPosition.entityHit;
+					if (knockbackStrength > 0)
+					{
+						float horizontalMotion = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
+						if (horizontalMotion > 0.0f)
+						{
+							movingObjectPosition.entityHit.addVelocity(motionX * knockbackStrength * 0.6000000238418579 / horizontalMotion, 0.1, motionZ * knockbackStrength * 0.6000000238418579 / horizontalMotion);
+						}
+					}
+					if (shootingEntity != null && shootingEntity instanceof EntityLivingBase)
+					{
+						EnchantmentHelper.func_151384_a(entityLivingBase, shootingEntity);
+						EnchantmentHelper.func_151385_b((EntityLivingBase) shootingEntity, (Entity) entityLivingBase);
+					}
+					if (shootingEntity != null && movingObjectPosition.entityHit != shootingEntity && movingObjectPosition.entityHit instanceof EntityPlayer && shootingEntity instanceof EntityPlayerMP)
+					{
+						((EntityPlayerMP) shootingEntity).playerNetServerHandler.sendPacket((Packet) new S2BPacketChangeGameState(6, 0.0f));
+					}
+				}
+				
+			}
+			else
+			{
+				ricochet();
+			}
+		}
+		else //hit a block
+		{
+			xTile = movingObjectPosition.blockX;
+			yTile = movingObjectPosition.blockY;
+			zTile = movingObjectPosition.blockZ;
+			Block block = worldObj.getBlock(xTile, yTile + 1, zTile);
+			if (
+					movingObjectPosition.sideHit == 1
+					&& (
+							worldObj.getBlock(xTile, yTile + 1, zTile) == Blocks.air //block above is air
+							|| block.isReplaceable((IBlockAccess) worldObj, xTile, yTile + 1, zTile)
+						)
+				)
+			{
+				inTile = Block.getIdFromBlock(worldObj.getBlock(xTile, yTile, zTile));
+				inData = worldObj.getBlockMetadata(xTile, yTile, zTile);
+				
+				motionX = (float) (movingObjectPosition.hitVec.xCoord - posX);
+				motionY = (float) (movingObjectPosition.hitVec.yCoord - posY);
+				motionZ = (float) (movingObjectPosition.hitVec.zCoord - posZ);
+				
+				float motionSquared = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
+				
+				posX -= motionX / motionSquared * 0.05000000074505806;
+				posY -= motionY / motionSquared * 0.05000000074505806;
+				posZ -= motionZ / motionSquared * 0.05000000074505806;
+				
+				inGround = true;
+				if (inTile != 0)
+				{
+					Block.getBlockById(inTile).onEntityCollidedWithBlock(worldObj, xTile, yTile, zTile, (Entity) this);
+				}
+			}
+			else
+			{
+				ricochet();
+			}
+		}
 	}
 
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+	private void ricochet()
 	{
-		xTile = par1NBTTagCompound.getShort("xTile");
-		yTile = par1NBTTagCompound.getShort("yTile");
-		zTile = par1NBTTagCompound.getShort("zTile");
-		inTile = (par1NBTTagCompound.getByte("inTile") & 0xFF);
-		inData = (par1NBTTagCompound.getByte("inData") & 0xFF);
-		arrowShake = (par1NBTTagCompound.getByte("shake") & 0xFF);
-		inGround = (par1NBTTagCompound.getByte("inGround") == 1);
-		if (par1NBTTagCompound.hasKey("damage"))
-		{
-			damage = par1NBTTagCompound.getDouble("damage");
-		}
-		if (par1NBTTagCompound.hasKey("pickup"))
-		{
-			canBePickedUp = par1NBTTagCompound.getByte("pickup");
-		}
-		else if (par1NBTTagCompound.hasKey("player"))
-		{
-			canBePickedUp = (par1NBTTagCompound.getBoolean("player") ? 1 : 0);
-		}
+		motionX *= -0.10000000149011612;
+		motionY *= -0.10000000149011612;
+		motionZ *= -0.10000000149011612;
+		rotationYaw += 180.0f;
+		prevRotationYaw += 180.0f;
+		ticksInAir = 0;
 	}
 
-	public void onCollideWithPlayer(EntityPlayer entityPlayer)
+	public void writeEntityToNBT(NBTTagCompound nbtTagCompound)
 	{
-		if (!worldObj.isRemote && inGround && arrowShake <= 0)
+		nbtTagCompound.setShort("xTile", (short) xTile);
+		nbtTagCompound.setShort("yTile", (short) yTile);
+		nbtTagCompound.setShort("zTile", (short) zTile);
+		nbtTagCompound.setByte("inTile", (byte) inTile);
+		nbtTagCompound.setByte("inData", (byte) inData);
+		nbtTagCompound.setByte("inGround", (byte) (byte) (inGround ? 1 : 0));
+		
+		nbtTagCompound.setDouble("damage", damage);
+	}
+
+	public void readEntityFromNBT(NBTTagCompound nbtTagCompound)
+	{
+		xTile = nbtTagCompound.getShort("xTile");
+		yTile = nbtTagCompound.getShort("yTile");
+		zTile = nbtTagCompound.getShort("zTile");
+		inTile = (nbtTagCompound.getByte("inTile") & 0xFF);
+		inData = (nbtTagCompound.getByte("inData") & 0xFF);
+		inGround = (nbtTagCompound.getByte("inGround") == 1);
+		if (nbtTagCompound.hasKey("damage"))
 		{
-			boolean flag = canBePickedUp == 1 || (canBePickedUp == 2 && entityPlayer.capabilities.isCreativeMode);
-			if (canBePickedUp == 1 && !entityPlayer.inventory.addItemStackToInventory(new ItemStack(Goblins.bomb, 1)))
-			{
-				flag = false;
-			}
-			if (flag)
-			{
-				playSound("random.pop", 0.2f, ((rand.nextFloat() - rand.nextFloat()) * 0.7f + 1.0f) * 2.0f);
-				entityPlayer.onItemPickup((Entity) this, 1);
-				setDead();
-			}
+			damage = nbtTagCompound.getDouble("damage");
 		}
 	}
 
@@ -504,67 +458,23 @@ public class EntityBomb extends Entity implements IProjectile, IGoblinEntityText
 		return 0.0f;
 	}
 
-	public void setDamage(double par1)
-	{
-		damage = par1;
-	}
-
-	public double getDamage()
-	{
-		return damage;
-	}
-
-	public void setKnockbackStrength(int par1)
-	{
-		knockbackStrength = par1;
-	}
-
 	public boolean canAttackWithItem()
 	{
 		return false;
 	}
-
-	public void setIsCritical(boolean par1)
-	{
-		byte b0 = dataWatcher.getWatchableObjectByte(16);
-		if (par1)
-		{
-			dataWatcher.updateObject(16, Byte.valueOf((byte) (b0 | 1)));
-		}
-		else
-		{
-			dataWatcher.updateObject(16, Byte.valueOf((byte) (b0 & -2)));
-		}
-	}
-
-	public boolean getIsCritical()
-	{
-		byte b0 = dataWatcher.getWatchableObjectByte(16);
-		return (b0 & 1) != 0;
-	}
-
 	public void explode()
 	{
 		if (!exploded)
 		{
 			exploded = true;
-			createExplosionG(null, posX, posY, posZ, 4.2f);
+			createExplosionG(null, posX, posY, posZ, 1.2f);
 			setDead();
 		}
 	}
 
-	public GoblinsExplosion createExplosionG(Entity entity, double d, double d1, double d2, float f)
+	public void createExplosionG(Entity entity, double x, double y, double z, float size)
 	{
-		return newExplosionG(entity, d, d1, d2, f, false);
-	}
-
-	public GoblinsExplosion newExplosionG(Entity entity, double d, double d1, double d2, float f, boolean flag)
-	{
-		GoblinsExplosion explosion = new GoblinsExplosion(worldObj, entity, d, d1, d2, f);
-		explosion.isFlaming = flag;
-		explosion.doExplosionA();
-		explosion.doExplosionB(true);
-		return explosion;
+		worldObj.createExplosion(entity, x, y, z, size, false);
 	}
 
 	@Override

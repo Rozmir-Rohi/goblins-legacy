@@ -80,8 +80,8 @@ public class ModelDirewolf extends ModelBase {
 		wolfLeg3.setRotationPoint(-2.5f, 16.0f, -4.0f);
 		wolfLeg4.setRotationPoint(0.5f, 16.0f, -4.0f);
 		wolfLeg1.rotateAngleX = MathHelper.cos(par2 * 0.6662f) * 1.4f * par3;
-		wolfLeg2.rotateAngleX = MathHelper.cos(par2 * 0.6662f + 3.1415927f) * 1.4f * par3;
-		wolfLeg3.rotateAngleX = MathHelper.cos(par2 * 0.6662f + 3.1415927f) * 1.4f * par3;
+		wolfLeg2.rotateAngleX = MathHelper.cos(par2 * 0.6662f + (float) Math.PI) * 1.4f * par3;
+		wolfLeg3.rotateAngleX = MathHelper.cos(par2 * 0.6662f + (float) Math.PI) * 1.4f * par3;
 		wolfLeg4.rotateAngleX = MathHelper.cos(par2 * 0.6662f) * 1.4f * par3;
 	}
 
