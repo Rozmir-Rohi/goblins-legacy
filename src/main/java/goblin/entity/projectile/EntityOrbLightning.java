@@ -30,6 +30,11 @@ public class EntityOrbLightning extends EntityThrowableOrb implements IGoblinEnt
 		super(world, entityLivingBase, speedMultiplier);
 	}
 	
+	public EntityOrbLightning(World world, double x, double y, double z)
+	{
+		super(world, x, y, z);
+	}
+
 	@Override
 	protected void onImpact(MovingObjectPosition movingObjectPosition)
 	{

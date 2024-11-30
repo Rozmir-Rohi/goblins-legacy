@@ -66,16 +66,22 @@ import goblin.tileEntity.TileEntityMobGRSpawner;
 import goblin.tileEntity.TileEntityMobGSpawner;
 import goblin.world.gen.Generate;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.dispenser.BehaviorProjectileDispense;
+import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -201,7 +207,7 @@ public class Goblins {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		/**
-		 * Config
+		 * Register Config
 		 */
 		
 		configFile = new Configuration(event.getSuggestedConfigurationFile());
@@ -209,7 +215,7 @@ public class Goblins {
 		
 		
 		/**
-		 * Items
+		 * Register Items
 		 */
 		
 		swordKatana =  new GoblinsItemSword("swordKatana", Item.ToolMaterial.IRON);
@@ -268,7 +274,77 @@ public class Goblins {
 		
 		
 		/**
-		 * Blocks
+		 * Register Disposable Items
+		 */
+		BlockDispenser.dispenseBehaviorRegistry.putObject(orbExplosive, new BehaviorProjectileDispense()
+        {
+            /**
+             * Return the projectile entity spawned by this dispense behavior.
+             */
+            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            {
+                return new EntityOrbExplosive(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
+            }
+        });
+		
+		BlockDispenser.dispenseBehaviorRegistry.putObject(orbNature, new BehaviorProjectileDispense()
+        {
+            /**
+             * Return the projectile entity spawned by this dispense behavior.
+             */
+            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            {
+                return new EntityOrbNature(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
+            }
+        });
+		
+		BlockDispenser.dispenseBehaviorRegistry.putObject(orbForce, new BehaviorProjectileDispense()
+        {
+            /**
+             * Return the projectile entity spawned by this dispense behavior.
+             */
+            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            {
+                return new EntityOrbForce(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
+            }
+        });
+		
+		BlockDispenser.dispenseBehaviorRegistry.putObject(orbLightning, new BehaviorProjectileDispense()
+        {
+            /**
+             * Return the projectile entity spawned by this dispense behavior.
+             */
+            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            {
+                return new EntityOrbLightning(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
+            }
+        });
+		
+		BlockDispenser.dispenseBehaviorRegistry.putObject(bomb, new BehaviorProjectileDispense()
+        {
+            /**
+             * Return the projectile entity spawned by this dispense behavior.
+             */
+            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            {
+                return new EntityBomb(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
+            }
+        });
+		
+		BlockDispenser.dispenseBehaviorRegistry.putObject(shuriken, new BehaviorProjectileDispense()
+        {
+            /**
+             * Return the projectile entity spawned by this dispense behavior.
+             */
+            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            {
+                return new EntityShuriken(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
+            }
+        });
+		
+		
+		/**
+		 * Register Blocks
 		 */
 		
 		MobGSpawner = new BlockMobGSpawner(spawnerDelay1).setHardness(4.0f).setResistance(1.0f).setCreativeTab(GOBLINS_CREATIVE_TAB).setBlockName("MobGSpawner");

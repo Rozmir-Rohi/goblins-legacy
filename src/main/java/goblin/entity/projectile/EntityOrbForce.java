@@ -29,6 +29,11 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 		super(world, entityLivingBase, speedMultiplier);
 	}
 	
+	public EntityOrbForce(World world, double x, double y, double z)
+	{
+		super(world, x, y, z);
+	}
+
 	@Override
 	protected void onImpact(MovingObjectPosition movingObjectPosition)
 	{

@@ -30,6 +30,11 @@ public class EntityOrbExplosive extends EntityThrowableOrb implements IProjectil
 		super(world, entityLivingBase, speedMultiplier);
 	}
 
+	public EntityOrbExplosive(World world, double x, double y, double z)
+	{
+		super(world, x, y, z);
+	}
+
 	@Override
 	protected void onImpact(MovingObjectPosition movingObjectPosition)
 	{

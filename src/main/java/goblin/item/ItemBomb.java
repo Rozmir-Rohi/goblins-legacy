@@ -18,7 +18,7 @@ public class ItemBomb extends GoblinsItem {
 	{
 		if (!world.isRemote)
 		{
-			world.spawnEntityInWorld((Entity) new EntityBomb(world, (EntityLivingBase) entityPlayer, 2.0f));
+			world.spawnEntityInWorld(new EntityBomb(world, entityPlayer));
 		}
 		--itemStack.stackSize;
 		return itemStack;

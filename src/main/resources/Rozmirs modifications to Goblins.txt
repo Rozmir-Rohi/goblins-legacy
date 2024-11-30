@@ -77,3 +77,7 @@ Fixed minor errors in achievements page.
 
 Fixed Bomb Entity explosion render bug. Also rebalanced size and damage of bomb explosion.
 
+Orb items are now usable through a dispenser.
+
+Fixed Bomb Entity render bug.
+
