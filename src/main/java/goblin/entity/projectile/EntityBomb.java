@@ -1,30 +1,17 @@
 
 package goblin.entity.projectile;
 
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import goblin.entity.IGoblinEntityTextureBase;
-import net.minecraft.block.Block;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S2BPacketChangeGameState;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureBase {
@@ -56,13 +43,11 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
     {
 		 super(world, entityLivingBaseShooter);
     }
-
 	
-	//fix this constructer
-	public EntityBomb(World world, EntityLivingBase entityLivingBase, EntityLivingBase entityLivingBase2, float par4, float par5)
-	{
-		super(world);
-	}
+	protected float getGravityVelocity()
+    {
+        return 0.15F;
+    }
 	
 	@Override
 	public boolean canBeCollidedWith()
@@ -85,7 +70,7 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
 	@Override
 	public void onUpdate()
 	{
-		if (richocettCount < 2) //freezes the projectile on the surface after it has ricocheted the max amount
+		if (richocettCount < 2 && !isDead) //freezes the projectile on the surface after it has ricocheted the max amount
 		{
 			super.onUpdate();
 		}
@@ -115,23 +100,23 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
 	            movingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), motionTimesDamage);
 	        }
 			
-			ricochet();
+			ricochet(0F);
 		}
 		else //hit a block
 		{
 			if (richocettCount < 2)
 			{
-				ricochet();
+				ricochet(1.0F);
 				inGround = true;
 			}
 		}
 	}
 
-	private void ricochet()
+	private void ricochet(float factor)
 	{
-		motionX *= -0.10000000149011612;
-		motionY *= -0.10000000149011612;
-		motionZ *= -0.10000000149011612;
+		motionX *= -0.10000000149011612 * factor;
+		motionY *= -0.10000000149011612 * factor;
+		motionZ *= -0.10000000149011612 * factor;
 		rotationYaw += 180.0f;
 		prevRotationYaw += 180.0f;
 		ticksInAir = 0;
@@ -174,12 +159,12 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
 		if (!hasExploded)
 		{
 			hasExploded = true;
-			createExplosionG(null, posX, posY, posZ, 1.2f);
+			createExplosion(null, posX, posY, posZ, 2.1f);
 			setDead();
 		}
 	}
 
-	public void createExplosionG(Entity entity, double x, double y, double z, float size)
+	public void createExplosion(Entity entity, double x, double y, double z, float size)
 	{
 		worldObj.createExplosion(entity, x, y, z, size, false);
 	}

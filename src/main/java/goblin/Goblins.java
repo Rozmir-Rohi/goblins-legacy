@@ -74,7 +74,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -200,6 +199,7 @@ public class Goblins {
 	public static Configuration configFile;
 	
 	private static boolean isThaumcraftLoaded;
+	public static boolean isWitcheryLoaded;
 	
 	public static final CreativeTabs GOBLINS_CREATIVE_TAB = new GoblinsCreativeTab(CreativeTabs.creativeTabArray.length, "GoblinsTab");
 
@@ -563,13 +563,13 @@ public class Goblins {
 	@EventHandler
     public void init(FMLInitializationEvent event)
 	{
-		
-	
 		proxy.registerEntityRenderers(); // register Renderers
 		
 		GoblinsAchievements.initilization();
 		
 		isThaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
+		
+		isWitcheryLoaded = Loader.isModLoaded("witchery");
 		
 		if (isThaumcraftLoaded) {GoblinsThaumcraftAspects.addThaumcraftAspects();};
 	}

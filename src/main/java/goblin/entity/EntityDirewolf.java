@@ -150,6 +150,6 @@ public class EntityDirewolf extends EntityMob {
 
 	static
 	{
-		attackEntitySelector = (IEntitySelector) new EntityGoblinAttackFilter();
+		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinsAttackFilter();
 	}
 }

@@ -8,7 +8,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 
 public class GoblinsEntityTools
-{
+{	
 	public static boolean goblinsCustomAttackEntityAsMob(EntityLivingBase attacker, Entity entityToAttack)
     {
         float f = (float)attacker.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();

@@ -163,7 +163,7 @@ public class EntityGoblinRanger extends EntityMob implements IRangedAttackMob, I
 
 	static
 	{
-		attackEntitySelector = (IEntitySelector) new EntityGoblinAttackFilter();
+		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinsAttackFilter();
 		defaultHeldItem = new ItemStack((Item) Items.bow, 1);
 	}
 

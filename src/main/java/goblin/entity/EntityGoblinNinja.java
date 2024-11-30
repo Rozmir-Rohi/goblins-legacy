@@ -6,8 +6,6 @@ import goblin.entity.projectile.EntityShuriken;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -15,7 +13,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinNinja extends EntityMob implements IGoblinEntityTextureBase {
+public class EntityGoblinNinja extends EntityGoblinsOldAiBase implements IGoblinEntityTextureBase {
 	int hide;
 	boolean hidden;
 	
@@ -89,32 +87,24 @@ public class EntityGoblinNinja extends EntityMob implements IGoblinEntityTexture
 			}
 		}
 	}
-
-	private void moveTowardEntity(Entity entityToAttack, boolean shouldCharge)
-	{
-		double xDistance = entityToAttack.posX - posX;
-		double zDistance = entityToAttack.posZ - posZ;
-		float xzSquareRootDistance = MathHelper.sqrt_double(xDistance * xDistance + zDistance * zDistance);
-		motionX = xDistance / xzSquareRootDistance * 0.4 * 1.000000011920929 + motionX * 0.20000000298023224;
-		motionZ = zDistance / xzSquareRootDistance * 0.4 * 1.000000011920929 + motionZ * 0.20000000298023224;
-		
-		if (shouldCharge)
-		{
-			motionY = 0.4000000241984645;
-		}
-	}
-	
 	
 	public void onUpdate()
-	{
-	    EntityPlayer closestEntityPlayer = this.worldObj.getClosestVulnerablePlayerToEntity((Entity)this, 16.0D);
+	{	
+		Entity entityTarget = worldObj.getClosestVulnerablePlayerToEntity((Entity)this, 16.0D);
+	    if (
+	    		entityTarget == null
+	    		&& rand.nextInt(25) == 0 //give a slight delay here because the findPlayerToAttack() function is exhaustive
+	    	)
+	    {
+	    	entityTarget = findPlayerToAttack(); //look for non-player entites nearby as target
+	    }
 	    
-	    if (closestEntityPlayer != null)
+	    if (entityTarget != null)
 	    {
 	    
-		    float distanceToEntityPlayer = getDistanceToEntity((Entity) closestEntityPlayer);
+		    float distanceToEntityTarget = getDistanceToEntity((Entity) entityTarget);
 		    
-		    if (distanceToEntityPlayer < DISTANCE_THAT_IS_CONSIDERED_AS_CLOSE)
+		    if (distanceToEntityTarget < DISTANCE_THAT_IS_CONSIDERED_AS_CLOSE)
 			{
 				isCloseToEnemy = true;
 			}

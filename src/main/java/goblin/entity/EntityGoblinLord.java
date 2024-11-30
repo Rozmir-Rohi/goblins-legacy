@@ -5,7 +5,6 @@ import goblin.Goblins;
 import goblin.achievements.GoblinsAchievements;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -16,7 +15,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinLord extends EntityMob implements IGoblinEntityTextureBase {
+public class EntityGoblinLord  extends EntityGoblinsOldAiBase implements IGoblinEntityTextureBase {
 	double moveSpeed;
 	private static ItemStack defaultHeldItem;
 	public float armAngle;

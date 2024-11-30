@@ -75,9 +75,15 @@ Readded shuriken crafting recipe.
 
 Fixed minor errors in achievements page.
 
-Fixed Bomb Entity explosion render bug. Also rebalanced size and damage of bomb explosion.
+Fixed Bomb Entity explosion render bug.
 
 Orb items are now usable through a dispenser.
 
-Fixed Bomb Entity render bug.
+Fixed Bomb Entity projectile render bug.
+
+Returned Bomb Entity explosion size and damage to original values.
+
+Goblins now attack Villager Guards from Witchery.
+
+Goblins Soldiers, Goblin Ninja, and Goblin Lords now attack also Villagers, and Witchery Villager Guards
 

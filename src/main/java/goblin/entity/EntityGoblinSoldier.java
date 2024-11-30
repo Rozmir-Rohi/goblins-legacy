@@ -4,7 +4,6 @@ package goblin.entity;
 import goblin.Goblins;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -13,7 +12,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinSoldier extends EntityMob implements IGoblinEntityTextureBase {
+public class EntityGoblinSoldier extends EntityGoblinsOldAiBase implements IGoblinEntityTextureBase {
 	private static ItemStack defaultHeldItem;
 
 	public EntityGoblinSoldier(World world)
@@ -80,12 +79,7 @@ public class EntityGoblinSoldier extends EntityMob implements IGoblinEntityTextu
 	{
 		if (onGround && distanceToEntityToAttack >= 2.0 && distanceToEntityToAttack < 3.0 && rand.nextInt(3) == 0)
 		{
-			double xDistance = entityToAttack.posX - posX;
-			double zDistance = entityToAttack.posZ - posZ;
-			float xzSquareRootDistance = MathHelper.sqrt_double(xDistance * xDistance + zDistance * zDistance);
-			motionX = xDistance / xzSquareRootDistance * 0.4 * 1.000000011920929 + motionX * 0.20000000298023224;
-			motionZ = zDistance / xzSquareRootDistance * 0.4 * 1.000000011920929 + motionZ * 0.20000000298023224;
-			motionY = 0.4000000241984645;
+			moveTowardEntity(entityToAttack, true);
 		}
 		else if (attackTime <= 0 && distanceToEntityToAttack < 2.0f && entityToAttack.boundingBox.maxY > boundingBox.minY && entityToAttack.boundingBox.minY < boundingBox.maxY)
 		{

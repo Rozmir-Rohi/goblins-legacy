@@ -148,9 +148,17 @@ public class EntityGoblinBomber extends EntityMob implements IRangedAttackMob {
 		return EntityGoblinBomber.defaultHeldItem;
 	}
 
-	public void attackEntityWithRangedAttack(EntityLivingBase entityLivingBase, float f)
+	public void attackEntityWithRangedAttack(EntityLivingBase entityLivingBaseTarget, float f)
 	{
-		EntityBomb entityBomb = new EntityBomb(worldObj, (EntityLivingBase) this, entityLivingBase, 1.6f, 12.0f);
+		EntityBomb entityBomb = new EntityBomb(worldObj, (EntityLivingBase) this);
+		
+		double x = entityLivingBaseTarget.posX - this.posX;
+        double y = entityLivingBaseTarget.posY + (double)entityLivingBaseTarget.getEyeHeight() - 1.100000023841858D - entityBomb.posY;
+        double z = entityLivingBaseTarget.posZ - this.posZ;
+        float yOffset = MathHelper.sqrt_double(x * x + z * z) * 0.2F;
+        
+        entityBomb.setThrowableHeading(x, y + (double)yOffset, z, 1.6F, 12.0F);
+	
 		entityBomb.setPosition(posX, posY + 0.75, posZ);
 		playSound("random.bow", 1.0f, 1.0f / (getRNG().nextFloat() * 0.4f + 0.8f));
 		if (!worldObj.isRemote)

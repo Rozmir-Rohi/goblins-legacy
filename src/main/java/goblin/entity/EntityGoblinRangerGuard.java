@@ -170,7 +170,7 @@ public class EntityGoblinRangerGuard extends EntityMob implements IRangedAttackM
 
 	static
 	{
-		attackEntitySelector = (IEntitySelector) new EntityGoblinAttackFilter();
+		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinsAttackFilter();
 		defaultHeldItem = new ItemStack((Item) Items.bow, 1);
 	}
 
