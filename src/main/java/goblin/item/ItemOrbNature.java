@@ -18,7 +18,7 @@ public class ItemOrbNature extends GoblinsItem {
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
 	{
 		world.playSoundAtEntity((Entity) entityPlayer, "random.bow", 0.5f, 0.4f / (ItemOrbNature.itemRand.nextFloat() * 0.4f + 0.8f));
-		EntityOrbNature orb = new EntityOrbNature(world, (EntityLivingBase) entityPlayer, 2.0f);
+		EntityOrbNature orb = new EntityOrbNature(world, (EntityLivingBase) entityPlayer);
 		if (!world.isRemote)
 		{
 			world.spawnEntityInWorld((Entity) orb);

@@ -33,7 +33,7 @@ public class ItemStaffLightning extends GoblinsItem {
 		{
 			entityPlayer.swingItem();
 			
-			EntityLightball entityarrow = new EntityLightball(world, (EntityLivingBase) entityPlayer, 2.0f);
+			EntityLightball entityarrow = new EntityLightball(world, (EntityLivingBase) entityPlayer);
 			world.playSoundAtEntity((Entity) entityPlayer, "mob.ghast.fireball", 0.5f, 1.0f / (ItemStaffLightning.itemRand.nextFloat() * 0.4f + 0.8f));
 			if (!world.isRemote)
 			{

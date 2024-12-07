@@ -13,9 +13,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityGoblinsOldAiBase extends EntityMob {
+public class EntityGreaterGoblinOldAiBase extends EntityMob {
 
-	public EntityGoblinsOldAiBase(World world)
+	public EntityGreaterGoblinOldAiBase(World world)
 	{
 		super(world);
 	}
@@ -97,13 +97,11 @@ public class EntityGoblinsOldAiBase extends EntityMob {
 	{
 		return
 			(	//attack the entities below
-				entity instanceof EntityLiving
-				&& (
-						(
-								Goblins.isWitcheryLoaded
-								&& EntityList.getEntityString(entity).equals("witchery.villageguard")
-						)
-						|| entity instanceof EntityVillager
+				entity instanceof EntityVillager
+				|| (
+						Goblins.isWitcheryLoaded
+						&& entity instanceof EntityLiving
+						&& EntityList.getEntityString(entity).equals("witchery.villageguard")
 					)
 			);
 	}

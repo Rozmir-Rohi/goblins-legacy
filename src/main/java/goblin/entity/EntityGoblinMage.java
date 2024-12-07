@@ -3,7 +3,7 @@ package goblin.entity;
 
 import goblin.Goblins;
 import goblin.achievements.GoblinsAchievements;
-import goblin.entity.projectile.EntityGArcaneball;
+import goblin.entity.projectile.EntityArcaneball;
 import goblin.world.gen.WorldGenSlimePool;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -153,10 +153,10 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 			targetedEntity = (EntityLivingBase) worldObj.getClosestVulnerablePlayerToEntity((Entity) this, 100.0);
 			if (targetedEntity != null && targetedEntity.getDistanceSqToEntity((Entity) this) < d4 * d4)
 			{
-				double d5 = targetedEntity.posX - posX;
-				double d6 = targetedEntity.boundingBox.minY + targetedEntity.height / 2.0f - (posY + height / 2.0f);
-				double d7 = targetedEntity.posZ - posZ;
-				float n = -(float) Math.atan2(d5, d7) * 180.0f / 3.141593f;
+				double xDistance = targetedEntity.posX - posX;
+				double yDistance = targetedEntity.boundingBox.minY + targetedEntity.height / 2.0f - (posY + height / 2.0f);
+				double zDistance = targetedEntity.posZ - posZ;
+				float n = -(float) Math.atan2(xDistance, zDistance) * 180.0f / 3.141593f;
 				rotationYaw = n;
 				renderYawOffset = n;
 				if (canEntityBeSeen((Entity) targetedEntity))
@@ -177,7 +177,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 							double d11 = rand.nextGaussian() * 0.01;
 							worldObj.spawnParticle(s, posX + rand.nextFloat() * width * 2.0f - width, posY + 0.5 + rand.nextFloat() * height, posZ + rand.nextFloat() * width * 2.0f - width, d9, d10, d11);
 						}
-						teleport((Entity) targetedEntity);
+						teleportToRandomAreaNearby((Entity) targetedEntity);
 						teleportCounter = 0;
 					}
 					++teleportCounter;
@@ -199,12 +199,12 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 						{
 							swingItem(); //swing arm
 							worldObj.playSoundAtEntity((Entity) this, "mob.ghast.fireball", getSoundVolume(), (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
-							EntityGArcaneball entityArcaneball = new EntityGArcaneball(worldObj, (EntityLiving) this, d5, d6, d7);
-							double d12 = 1.0;
+							EntityArcaneball entityArcaneball = new EntityArcaneball(worldObj, (EntityLiving) this);
+							double horizontalMultiplier = 1.0;
 							Vec3 vec3d = getLook(1.0f);
-							entityArcaneball.posX = posX + vec3d.xCoord * d12;
+							entityArcaneball.posX = posX + vec3d.xCoord * horizontalMultiplier;
 							entityArcaneball.posY = posY + height / 2.0f + 0.4;
-							entityArcaneball.posZ = posZ + vec3d.zCoord * d12;
+							entityArcaneball.posZ = posZ + vec3d.zCoord * horizontalMultiplier;
 							worldObj.spawnEntityInWorld((Entity) entityArcaneball);
 							attackCounter = 0;
 							spellChooser = false;
@@ -234,10 +234,10 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 						{
 							if (!worldObj.isRemote)
 							{
-								WorldGenSlimePool gen = new WorldGenSlimePool();
-								gen.generate(worldObj, rand, (int) posX, (int) posY, (int) posZ);
+								WorldGenSlimePool worldGenSlimePool = new WorldGenSlimePool();
+								worldGenSlimePool.generate(worldObj, rand, (int) posX, (int) posY, (int) posZ);
 							}
-							teleport((Entity) targetedEntity);
+							teleportToRandomAreaNearby((Entity) targetedEntity);
 							spellChooser = false;
 							attackCounter = 0;
 						}
@@ -271,7 +271,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		super.updateEntityActionState();
 	}
 
-	public void teleport(Entity entity)
+	public void teleportToRandomAreaNearby(Entity entity)
 	{
 		int i1;
 		int j1;

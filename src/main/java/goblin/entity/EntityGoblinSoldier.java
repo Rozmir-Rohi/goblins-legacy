@@ -12,7 +12,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinSoldier extends EntityGoblinsOldAiBase implements IGoblinEntityTextureBase {
+public class EntityGoblinSoldier extends EntityGreaterGoblinOldAiBase implements IGoblinEntityTextureBase {
 	private static ItemStack defaultHeldItem;
 
 	public EntityGoblinSoldier(World world)

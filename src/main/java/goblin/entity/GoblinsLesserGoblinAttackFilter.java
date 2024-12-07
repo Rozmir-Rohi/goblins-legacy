@@ -10,7 +10,7 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 
-public class GoblinsLesserGoblinsAttackFilter implements IEntitySelector {
+public class GoblinsLesserGoblinAttackFilter implements IEntitySelector {
 	public boolean isEntityApplicable(Entity entity)
 	{
 		return

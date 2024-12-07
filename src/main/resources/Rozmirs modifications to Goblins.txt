@@ -85,5 +85,11 @@ Returned Bomb Entity explosion size and damage to original values.
 
 Goblins now attack Villager Guards from Witchery.
 
-Goblins Soldiers, Goblin Ninja, and Goblin Lords now attack also Villagers, and Witchery Villager Guards
+Goblins Soldiers, Goblin Ninja, and Goblin Lords now attack also Villagers, and Witchery Villager Guards.
+
+All projectile entities now extend EntityThrowable to reduce repeating code.
+
+Removed GArcaneBall entity and merged it's uses to Arcaneball entity
+
+The Goblin Ninja ambush event now also takes the player's armour in to consideration when deciding the amount to Goblin Ninjas to spawn
 

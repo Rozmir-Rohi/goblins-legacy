@@ -44,6 +44,7 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
 		 super(world, entityLivingBaseShooter);
     }
 	
+	@Override
 	protected float getGravityVelocity()
     {
         return 0.15F;

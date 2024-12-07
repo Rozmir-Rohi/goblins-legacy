@@ -40,7 +40,7 @@ public class ItemStaffArcane extends GoblinsItem {
 			world.playSoundAtEntity((Entity) entityPlayer, "mob.ghast.fireball", 0.5f, 0.4f / (ItemStaffArcane.itemRand.nextFloat() * 0.4f + 0.8f));
 			if (!world.isRemote)
 			{
-				world.spawnEntityInWorld((Entity) new EntityArcaneball(world, (EntityLivingBase) entityPlayer, 2.0f));
+				world.spawnEntityInWorld((Entity) new EntityArcaneball(world, (EntityLivingBase) entityPlayer));
 				timer = 30;
 			}
 		}

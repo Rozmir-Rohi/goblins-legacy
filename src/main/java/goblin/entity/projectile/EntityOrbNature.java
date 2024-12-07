@@ -27,9 +27,9 @@ public class EntityOrbNature extends EntityThrowableOrb implements IGoblinEntity
 	}
 	
 	
-	public EntityOrbNature(World world, EntityLivingBase entityLivingBase, float speedMultiplier)
+	public EntityOrbNature(World world, EntityLivingBase entityLivingBase)
 	{
-		super(world, entityLivingBase, speedMultiplier);
+		super(world, entityLivingBase);
 	}
 	
 	public EntityOrbNature(World world, double x, double y, double z)
@@ -45,18 +45,15 @@ public class EntityOrbNature extends EntityThrowableOrb implements IGoblinEntity
 		{
 			float motion = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
 			int motionTimesDamage = MathHelper.ceiling_double_int(motion * getDamage());
-			if (getIsCritical())
-			{
-				motionTimesDamage += rand.nextInt(motionTimesDamage / 2 + 2);
-			}
+
 			DamageSource damageSource = null;
-			if (shootingEntity == null)
+			if (getThrower() == null)
 			{
 				damageSource = DamageSource.causeThrownDamage((Entity) this, (Entity) this);
 			}
 			else
 			{
-				damageSource = DamageSource.causeThrownDamage((Entity) this, shootingEntity);
+				damageSource = DamageSource.causeThrownDamage((Entity) this, getThrower());
 			}
 			if (isBurning() && !(movingObjectPosition.entityHit instanceof EntityEnderman))
 			{
@@ -71,14 +68,14 @@ public class EntityOrbNature extends EntityThrowableOrb implements IGoblinEntity
 					{
 						worldObj.spawnParticle("slime", posX, posY, posZ, 0.0, 0.0, 0.0);
 					}
-					if (shootingEntity != null && shootingEntity instanceof EntityLivingBase)
+					if (getThrower() != null && getThrower() instanceof EntityLivingBase)
 					{
-						EnchantmentHelper.func_151384_a(entityLivingBase, shootingEntity);
-						EnchantmentHelper.func_151385_b((EntityLivingBase) shootingEntity, (Entity) entityLivingBase);
+						EnchantmentHelper.func_151384_a(entityLivingBase, getThrower());
+						EnchantmentHelper.func_151385_b((EntityLivingBase) getThrower(), (Entity) entityLivingBase);
 					}
-					if (shootingEntity != null && movingObjectPosition.entityHit != shootingEntity && movingObjectPosition.entityHit instanceof EntityPlayer && shootingEntity instanceof EntityPlayerMP)
+					if (getThrower() != null && movingObjectPosition.entityHit != getThrower() && movingObjectPosition.entityHit instanceof EntityPlayer && getThrower() instanceof EntityPlayerMP)
 					{
-						((EntityPlayerMP) shootingEntity).playerNetServerHandler.sendPacket((Packet) new S2BPacketChangeGameState(6, 0.0f));
+						((EntityPlayerMP) getThrower()).playerNetServerHandler.sendPacket((Packet) new S2BPacketChangeGameState(6, 0.0f));
 					}
 				}
 				if (!(movingObjectPosition.entityHit instanceof EntityEnderman))
@@ -93,16 +90,15 @@ public class EntityOrbNature extends EntityThrowableOrb implements IGoblinEntity
 				motionZ *= -0.10000000149011612;
 				rotationYaw += 180.0f;
 				prevRotationYaw += 180.0f;
-				ticksInAir = 0;
 			}
 		}
 		else
 		{
-			xTile = movingObjectPosition.blockX;
-			yTile = movingObjectPosition.blockY;
-			zTile = movingObjectPosition.blockZ;
-			inTile = Block.getIdFromBlock(worldObj.getBlock(xTile, yTile, zTile));
-			inData = worldObj.getBlockMetadata(xTile, yTile, zTile);
+			int xTile = movingObjectPosition.blockX;
+			int yTile = movingObjectPosition.blockY;
+			int zTile = movingObjectPosition.blockZ;
+			int inTile = Block.getIdFromBlock(worldObj.getBlock(xTile, yTile, zTile));
+			int inData = worldObj.getBlockMetadata(xTile, yTile, zTile);
 			motionX = (float) (movingObjectPosition.hitVec.xCoord - posX);
 			motionY = (float) (movingObjectPosition.hitVec.yCoord - posY);
 			motionZ = (float) (movingObjectPosition.hitVec.zCoord - posZ);
@@ -115,7 +111,6 @@ public class EntityOrbNature extends EntityThrowableOrb implements IGoblinEntity
 				worldObj.spawnParticle("slime", posX, posY, posZ, 0.0, 0.0, 0.0);
 			}
 			inGround = true;
-			setIsCritical(false);
 			if (inTile != 0)
 			{
 				Block.getBlockById(inTile).onEntityCollidedWithBlock(worldObj, xTile, yTile, zTile, (Entity) this);

@@ -55,7 +55,15 @@ public class GoblinsEventHooks {
 	            
 	            if (amountOfGoblinsToSpawn < 1) {amountOfGoblinsToSpawn = 1;} //min 1 goblin
 	            
-	            if (amountOfGoblinsToSpawn > 6) {amountOfGoblinsToSpawn = 8;} //max 8 goblins
+	            if (amountOfGoblinsToSpawn > 8) {amountOfGoblinsToSpawn = 8;} //max 8 goblins
+	            
+	            if(
+	            		entityPlayer.getTotalArmorValue() >= 10
+	            		&& amountOfGoblinsToSpawn < 4
+	            	)
+	            {
+	            	amountOfGoblinsToSpawn += rand.nextInt(4);
+	            }
 	            
 	            for (int index = 0; index < amountOfGoblinsToSpawn; index++)
 	            {

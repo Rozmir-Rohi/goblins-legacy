@@ -146,7 +146,7 @@ public class EntityGoblinMiner extends EntityMob implements IGoblinEntityTexture
 
 	static
 	{
-		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinsAttackFilter();
+		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinAttackFilter();
 		defaultHeldItem = new ItemStack(Items.stone_pickaxe, 1);
 	}
 

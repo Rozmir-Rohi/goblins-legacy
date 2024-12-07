@@ -24,9 +24,9 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 		super(world);
 	}
 	
-	public EntityOrbForce(World world, EntityLivingBase entityLivingBase, float speedMultiplier)
+	public EntityOrbForce(World world, EntityLivingBase entityLivingBase)
 	{
-		super(world, entityLivingBase, speedMultiplier);
+		super(world, entityLivingBase);
 	}
 	
 	public EntityOrbForce(World world, double x, double y, double z)
@@ -41,18 +41,15 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 		{
 			float motion = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
 			int motionTimesDamage = MathHelper.ceiling_double_int(motion * getDamage());
-			if (getIsCritical())
-			{
-				motionTimesDamage += rand.nextInt(motionTimesDamage / 2 + 2);
-			}
+			
 			DamageSource damageSource = null;
-			if (shootingEntity == null)
+			if (getThrower() == null)
 			{
 				damageSource = DamageSource.causeThrownDamage((Entity) this, (Entity) this);
 			}
 			else
 			{
-				damageSource = DamageSource.causeThrownDamage((Entity) this, shootingEntity);
+				damageSource = DamageSource.causeThrownDamage((Entity) this, getThrower());
 			}
 			if (isBurning() && !(movingObjectPosition.entityHit instanceof EntityEnderman))
 			{
@@ -89,22 +86,15 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 					{
 						entityLivingBase.motionY = 1.0000000059604646;
 					}
-					if (getKnockbackStrength() > 0)
+
+					if (getThrower() != null && getThrower() instanceof EntityLivingBase)
 					{
-						float f6 = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
-						if (f6 > 0.0f)
-						{
-							movingObjectPosition.entityHit.addVelocity(motionX * getKnockbackStrength() * 0.6000000238418579 / f6, 0.1, motionZ * getKnockbackStrength() * 0.6000000238418579 / f6);
-						}
+						EnchantmentHelper.func_151384_a(entityLivingBase, getThrower());
+						EnchantmentHelper.func_151385_b((EntityLivingBase) getThrower(), (Entity) entityLivingBase);
 					}
-					if (shootingEntity != null && shootingEntity instanceof EntityLivingBase)
+					if (getThrower() != null && movingObjectPosition.entityHit != getThrower() && movingObjectPosition.entityHit instanceof EntityPlayer && getThrower() instanceof EntityPlayerMP)
 					{
-						EnchantmentHelper.func_151384_a(entityLivingBase, shootingEntity);
-						EnchantmentHelper.func_151385_b((EntityLivingBase) shootingEntity, (Entity) entityLivingBase);
-					}
-					if (shootingEntity != null && movingObjectPosition.entityHit != shootingEntity && movingObjectPosition.entityHit instanceof EntityPlayer && shootingEntity instanceof EntityPlayerMP)
-					{
-						((EntityPlayerMP) shootingEntity).playerNetServerHandler.sendPacket((Packet) new S2BPacketChangeGameState(6, 0.0f));
+						((EntityPlayerMP) getThrower()).playerNetServerHandler.sendPacket((Packet) new S2BPacketChangeGameState(6, 0.0f));
 					}
 				}
 				if (!(movingObjectPosition.entityHit instanceof EntityEnderman))
@@ -119,16 +109,15 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 				motionZ *= -0.10000000149011612;
 				rotationYaw += 180.0f;
 				prevRotationYaw += 180.0f;
-				ticksInAir = 0;
 			}
 		}
 		else
 		{
-			xTile = movingObjectPosition.blockX;
-			yTile = movingObjectPosition.blockY;
-			zTile = movingObjectPosition.blockZ;
-			inTile = Block.getIdFromBlock(worldObj.getBlock(xTile, yTile, zTile));
-			inData = worldObj.getBlockMetadata(xTile, yTile, zTile);
+			int xTile = movingObjectPosition.blockX;
+			int yTile = movingObjectPosition.blockY;
+			int zTile = movingObjectPosition.blockZ;
+			int inTile = Block.getIdFromBlock(worldObj.getBlock(xTile, yTile, zTile));
+			int inData = worldObj.getBlockMetadata(xTile, yTile, zTile);
 			motionX = (float) (movingObjectPosition.hitVec.xCoord - posX);
 			motionY = (float) (movingObjectPosition.hitVec.yCoord - posY);
 			motionZ = (float) (movingObjectPosition.hitVec.zCoord - posZ);
@@ -142,7 +131,6 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 				worldObj.spawnParticle("splash", posX, posY, posZ, 0.0, 0.0, 0.0);
 			}
 			setDead();
-			setIsCritical(false);
 			if (inTile != 0)
 			{
 				Block.getBlockById(inTile).onEntityCollidedWithBlock(worldObj, xTile, yTile, zTile, (Entity) this);

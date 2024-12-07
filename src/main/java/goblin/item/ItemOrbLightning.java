@@ -18,7 +18,7 @@ public class ItemOrbLightning extends GoblinsItem {
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
 	{
 		world.playSoundAtEntity((Entity) entityPlayer, "random.bow", 0.5f, 0.4f / (ItemOrbLightning.itemRand.nextFloat() * 0.4f + 0.8f));
-		EntityOrbLightning orb = new EntityOrbLightning(world, (EntityLivingBase) entityPlayer, 2.0f);
+		EntityOrbLightning orb = new EntityOrbLightning(world, (EntityLivingBase) entityPlayer);
 		if (!world.isRemote)
 		{
 			world.spawnEntityInWorld((Entity) orb);

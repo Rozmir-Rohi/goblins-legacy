@@ -13,7 +13,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinNinja extends EntityGoblinsOldAiBase implements IGoblinEntityTextureBase {
+public class EntityGoblinNinja extends EntityGreaterGoblinOldAiBase implements IGoblinEntityTextureBase {
 	int hide;
 	boolean hidden;
 	

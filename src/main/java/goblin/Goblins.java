@@ -38,7 +38,6 @@ import goblin.entity.item.EntityEnchantedTNTPrimed;
 import goblin.entity.item.EntityOverchargedTNTPrimed;
 import goblin.entity.projectile.EntityArcaneball;
 import goblin.entity.projectile.EntityBomb;
-import goblin.entity.projectile.EntityGArcaneball;
 import goblin.entity.projectile.EntityLightball;
 import goblin.entity.projectile.EntityOrbExplosive;
 import goblin.entity.projectile.EntityOrbForce;
@@ -400,7 +399,6 @@ public class Goblins {
 
 		EntityRegistry.registerModEntity((Class) EntityOrbForce.class, "orbB", modEntityID++, (Object) this, 250, 1, true);
 
-		EntityRegistry.registerModEntity((Class) EntityGArcaneball.class, "GArcaneball", modEntityID++, (Object) this, 250, 1, true);
 		EntityRegistry.registerModEntity((Class) EntityArcaneball.class, "Arcaneball", modEntityID++, (Object) this, 250, 1, true);
 
 		EntityRegistry.registerModEntity((Class) EntityLightball.class, "Lightball", modEntityID++, (Object) this, 250, 1, true);

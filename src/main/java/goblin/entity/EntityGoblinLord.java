@@ -15,7 +15,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinLord  extends EntityGoblinsOldAiBase implements IGoblinEntityTextureBase {
+public class EntityGoblinLord  extends EntityGreaterGoblinOldAiBase implements IGoblinEntityTextureBase {
 	double moveSpeed;
 	private static ItemStack defaultHeldItem;
 	public float armAngle;

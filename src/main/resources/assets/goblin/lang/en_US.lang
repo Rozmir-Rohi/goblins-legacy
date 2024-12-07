@@ -55,11 +55,13 @@ entity.goblin.orbG.name=Nature Orb
 entity.goblin.orbR.name=Explosive Orb
 entity.goblin.orbY.name=Lightning Orb
 entity.goblin.Arcaneball.name=Arcane Bolt
-entity.goblin.GArcaneball.name=Arcane Bolt
 entity.goblin.Lightningball.name=Lightning Bolt
 entity.goblin.Shuriken.name=Shuriken
 entity.goblin.ETNTPrimed.name=Enchanted TNT
 entity.goblin.MTNTPrimed.name=Overcharged TNT
+
+
+
 
 
 
@@ -159,9 +161,8 @@ achievement.goblin_flesh=Goblin Flesh
 achievement.goblin_flesh.desc=Obtain Goblin Flesh from Goblins. Are you brave enough to eat this?
 
 
-
 achievement.kill_goblin_lord=Goblin Lord
-achievement.kill_goblin_lord.desc=Kill a Goblin Lord. This guy eats obsidian for breakfast, lunch and supper. He's tough, agile and strong. He is also the leader in the Goblins tribe. He can sometimes be found in large Goblin Villages.
+achievement.kill_goblin_lord.desc=Kill a Goblin Lord. This guy eats obsidian for breakfast, lunch and supper. He's tough, agile and strong. He is also the leader in Goblins tribes. He can sometimes be found in large Goblin Villages.
 
 
 achievement.kill_goblin_shaman=Goblin Shaman

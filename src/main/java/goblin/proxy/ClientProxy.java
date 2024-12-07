@@ -20,7 +20,6 @@ import goblin.entity.item.EntityEnchantedTNTPrimed;
 import goblin.entity.item.EntityOverchargedTNTPrimed;
 import goblin.entity.projectile.EntityArcaneball;
 import goblin.entity.projectile.EntityBomb;
-import goblin.entity.projectile.EntityGArcaneball;
 import goblin.entity.projectile.EntityLightball;
 import goblin.entity.projectile.EntityOrbExplosive;
 import goblin.entity.projectile.EntityOrbForce;
@@ -57,7 +56,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityOrbForce.class, new RenderOrb());
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnchantedTNTPrimed.class, new RenderEnchantedTNTPrimed());
 		RenderingRegistry.registerEntityRenderingHandler(EntityOverchargedTNTPrimed.class, new RenderOverchargedTNTPrimed());
-		RenderingRegistry.registerEntityRenderingHandler(EntityGArcaneball.class, new RenderOrb());
 		RenderingRegistry.registerEntityRenderingHandler(EntityArcaneball.class, new RenderOrb());
 		RenderingRegistry.registerEntityRenderingHandler(EntityLightball.class, new RenderOrb());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBomb.class, new RenderOrb());

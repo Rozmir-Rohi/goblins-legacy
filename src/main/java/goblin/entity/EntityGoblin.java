@@ -142,7 +142,7 @@ public class EntityGoblin extends EntityMob implements IGoblinEntityTextureBase 
 
 	static
 	{
-		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinsAttackFilter();
+		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinAttackFilter();
 		defaultHeldItem = new ItemStack(Items.wooden_axe, 1);
 	}
 
