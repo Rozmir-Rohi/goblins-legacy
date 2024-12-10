@@ -6,6 +6,7 @@ import goblin.achievements.GoblinsAchievements;
 import goblin.entity.projectile.EntityArcaneball;
 import goblin.world.gen.WorldGenSlimePool;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -117,6 +118,11 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		{
 			isTeleporting = false;
 		}
+			
+		if (isTeleporting && swingProgressInt == 1) //completed arms swing
+		{
+			generateParticles("explode");
+		}
 		
 	}
 
@@ -127,6 +133,23 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 			moveSpeed = 0.65;
 		}
 	}
+	
+	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
+    {
+		if (
+				(	
+						damageSource.isProjectile()
+						&& GoblinsEntityTools.isDamageSourceEntityFromGoblinsMod(damageSource)
+						
+				)
+				|| (damageSource.isExplosion() && damageTaken <= 50)
+			)
+		{
+			return false; //prevents infighting among Goblins
+		}
+		return super.attackEntityFrom(damageSource, damageTaken);
+    }
+	
 
 	protected void updateEntityActionState()
 	{
@@ -169,14 +192,6 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 					}
 					if (teleportCounter == 150)
 					{
-						String s = "explode";
-						for (int i = 0; i < 7; ++i)
-						{
-							double d9 = rand.nextGaussian() * 0.01;
-							double d10 = rand.nextGaussian() * 0.01;
-							double d11 = rand.nextGaussian() * 0.01;
-							worldObj.spawnParticle(s, posX + rand.nextFloat() * width * 2.0f - width, posY + 0.5 + rand.nextFloat() * height, posZ + rand.nextFloat() * width * 2.0f - width, d9, d10, d11);
-						}
 						teleportToRandomAreaNearby((Entity) targetedEntity);
 						teleportCounter = 0;
 					}
@@ -185,14 +200,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 					{
 						if (attackCounter == 20)
 						{
-							String s = "smoke";
-							for (int i = 0; i < 7; ++i)
-							{
-								double d9 = rand.nextGaussian() * 0.01;
-								double d10 = rand.nextGaussian() * 0.01;
-								double d11 = rand.nextGaussian() * 0.01;
-								worldObj.spawnParticle(s, posX + rand.nextFloat() * width * 2.0f - width, posY + 0.5 + rand.nextFloat() * height, posZ + rand.nextFloat() * width * 2.0f - width, d9, d10, d11);
-							}
+							generateParticles("smoke");
 						}
 						++attackCounter;
 						if (attackCounter == 30)
@@ -220,14 +228,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 						}
 						if (attackCounter == 20)
 						{
-							String particleName = "smoke";
-							for (int i = 0; i < 7; ++i)
-							{
-								double d9 = rand.nextGaussian() * 0.01;
-								double d10 = rand.nextGaussian() * 0.01;
-								double d11 = rand.nextGaussian() * 0.01;
-								worldObj.spawnParticle(particleName, posX + rand.nextFloat() * width * 2.0f - width, posY + 0.5 + rand.nextFloat() * height, posZ + rand.nextFloat() * width * 2.0f - width, d9, d10, d11);
-							}
+							generateParticles("smoke");
 						}
 						++attackCounter;
 						if (attackCounter == 30)
@@ -271,20 +272,31 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		super.updateEntityActionState();
 	}
 
+	private void generateParticles(String  particleName)
+	{
+		for (int i = 0; i < 7; ++i)
+		{
+			double xOffset = rand.nextGaussian() * 0.01;
+			double yOffset = rand.nextGaussian() * 0.01;
+			double zOffset = rand.nextGaussian() * 0.01;
+			worldObj.spawnParticle(particleName, posX + rand.nextFloat() * width * 2.0f - width, posY + 0.5 + rand.nextFloat() * height, posZ + rand.nextFloat() * width * 2.0f - width, xOffset, yOffset, zOffset);
+		}
+	}
+
 	public void teleportToRandomAreaNearby(Entity entity)
 	{
-		int i1;
-		int j1;
+		int xOffset;
+		int zOffset;
 		int k1;
-		int l;
-		int m;
-		int k2;
-		for (i1 = rand.nextInt(16) - 8, j1 = rand.nextInt(16) - 8, k1 = rand.nextInt(4), l = MathHelper.floor_double(entity.posX), m = MathHelper.floor_double(entity.posZ), k2 = MathHelper.floor_double(entity.boundingBox.minY); worldObj.getBlock(l + i1, k2 + k1, m + j1) != Blocks.air || worldObj.getBlock(l + i1, k2 + k1 + 1, m + j1) != Blocks.air; i1 = rand.nextInt(16) - 8, j1 = rand.nextInt(16) - 8, k1 = rand.nextInt(4))
+		int x;
+		int z;
+		int y;
+		for (xOffset = rand.nextInt(16) - 8, zOffset = rand.nextInt(16) - 8, k1 = rand.nextInt(4), x = MathHelper.floor_double(entity.posX), z = MathHelper.floor_double(entity.posZ), y = MathHelper.floor_double(entity.boundingBox.minY); worldObj.getBlock(x + xOffset, y + k1, z + zOffset) != Blocks.air || worldObj.getBlock(x + xOffset, y + k1 + 1, z + zOffset) != Blocks.air; xOffset = rand.nextInt(16) - 8, zOffset = rand.nextInt(16) - 8, k1 = rand.nextInt(4))
 		{
 		}
 		swingItem(); //swing arm
-		worldObj.playSoundAtEntity((Entity) this, "mob.endermen.portal", 1f, 1f);
-		setLocationAndAngles((double) (l + i1), (double) k2, (double) (m + j1), rotationYaw, rotationPitch);
+		worldObj.playSoundAtEntity((Entity) this, "mob.endermen.portal", 1.0f, 1.0f);
+		setLocationAndAngles((double) (x + xOffset), (double) y, (double) (z + zOffset), rotationYaw, rotationPitch);
 	}
 
 	public void writeEntityToNBT(NBTTagCompound nbtTagCompound)

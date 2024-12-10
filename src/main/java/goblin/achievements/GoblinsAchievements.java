@@ -54,9 +54,18 @@ public class GoblinsAchievements {
 	
 	public static Achievement goblin_flesh;
 	
+	public static Achievement kill_goblin;
+	public static Achievement kill_dire_wolf;
+	public static Achievement kill_goblin_ranger;
+	public static Achievement kill_goblin_bomber;
+	public static Achievement kill_goblin_soldier;
+	public static Achievement kill_goblin_rider;
+	public static Achievement kill_goblin_miner;
 	public static Achievement kill_goblin_lord;
 	public static Achievement kill_goblin_shaman;
-	public static Achievement goblin_ninja_attack;
+	
+	public static Achievement kill_goblin_ninja;
+	
 	public static Achievement katana;
 	
 	
@@ -104,15 +113,30 @@ public class GoblinsAchievements {
 		lightning_staff = new Achievement("achievement.lightning_staff", "lightning_staff", TOTEM_ACHIEVEMENTS_X_BASE + 6, TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * -1), Goblins.staffLightning, lightning_crystal).registerStat();
 		
 		
-		goblin_flesh = new Achievement("achievement.goblin_flesh", "goblin_flesh", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE, Goblins.goblinFlesh, (Achievement)null).initIndependentStat().registerStat();
+		goblin_flesh = new Achievement("achievement.goblin_flesh", "goblin_flesh", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * -1), Goblins.goblinFlesh, (Achievement)null).initIndependentStat().registerStat();
+		bomb = new Achievement("achievement.bomb", "bomb", -TOTEM_ACHIEVEMENTS_X_BASE,  TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * -1), Goblins.bomb, (Achievement)null).initIndependentStat().registerStat();
+		shuriken = new Achievement("achievement.shuriken", "shuriken", -TOTEM_ACHIEVEMENTS_X_BASE - 2,  TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * -1), Goblins.shuriken, (Achievement)null).initIndependentStat().registerStat();
+		katana = new Achievement("achievement.katana", "katana", -TOTEM_ACHIEVEMENTS_X_BASE - 4,  TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * -1), Goblins.swordKatana, kill_goblin_ninja).registerStat();
 		
-		bomb = new Achievement("achievement.bomb", "bomb", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - 7, Goblins.bomb, (Achievement)null).initIndependentStat().registerStat();
-		shuriken = new Achievement("achievement.shuriken", "shuriken", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 7, Goblins.shuriken, (Achievement)null).initIndependentStat().registerStat();
 		
-		kill_goblin_lord = new Achievement("achievement.kill_goblin_lord", "kill_goblin_lord", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin_lord, (Achievement)null).initIndependentStat().registerStat();
-		kill_goblin_shaman = new Achievement("achievement.kill_goblin_shaman", "kill_goblin_shaman", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin_shaman, (Achievement)null).initIndependentStat().registerStat();
-		goblin_ninja_attack = new Achievement("achievement.goblin_ninja_attack", "goblin_ninja_attack", -TOTEM_ACHIEVEMENTS_X_BASE - 4, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_goblin_ninja_attack, (Achievement)null).initIndependentStat().registerStat();
-		katana = new Achievement("achievement.katana", "katana", -TOTEM_ACHIEVEMENTS_X_BASE - 4, TOTEM_ACHIEVEMENTS_Y_BASE - 7, Goblins.swordKatana, goblin_ninja_attack).registerStat();
+		kill_goblin = new Achievement("achievement.kill_goblin", "kill_goblin", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin, (Achievement)null).initIndependentStat().registerStat();
+		
+		kill_dire_wolf = new Achievement("achievement.kill_dire_wolf", "kill_dire_wolf", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 1, Goblins.achievement_icon_kill_dire_wolf, (Achievement)null).initIndependentStat().registerStat();
+		kill_goblin_rider  = new Achievement("achievement.kill_goblin_rider", "kill_goblin_rider", -TOTEM_ACHIEVEMENTS_X_BASE - 4, TOTEM_ACHIEVEMENTS_Y_BASE - 1, Goblins.achievement_icon_kill_goblin_rider, (Achievement)null).initIndependentStat().registerStat();
+		
+		kill_goblin_ranger = new Achievement("achievement.kill_goblin_ranger", "kill_goblin_ranger", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 7, Goblins.achievement_icon_kill_goblin_ranger, (Achievement)null).initIndependentStat().registerStat();
+		kill_goblin_ninja = new Achievement("achievement.kill_goblin_ninja", "kill_goblin_ninja", -TOTEM_ACHIEVEMENTS_X_BASE - 4, TOTEM_ACHIEVEMENTS_Y_BASE - 7, Goblins.achievement_icon_kill_goblin_ninja, (Achievement)null).initIndependentStat().registerStat();
+		
+		kill_goblin_soldier = new Achievement("achievement.kill_goblin_soldier", "kill_goblin_soldier", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin_soldier, (Achievement)null).initIndependentStat().registerStat();
+		
+		kill_goblin_miner = new Achievement("achievement.kill_goblin_miner", "kill_goblin_miner", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 3, Goblins.achievement_icon_kill_goblin_miner, (Achievement)null).initIndependentStat().registerStat();
+		kill_goblin_bomber = new Achievement("achievement.kill_goblin_bomber", "kill_goblin_bomber", -TOTEM_ACHIEVEMENTS_X_BASE - 4, TOTEM_ACHIEVEMENTS_Y_BASE - 3, Goblins.achievement_icon_kill_goblin_bomber, (Achievement)null).initIndependentStat().registerStat();
+		
+		kill_goblin_lord = new Achievement("achievement.kill_goblin_lord", "kill_goblin_lord", -TOTEM_ACHIEVEMENTS_X_BASE - 6, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin_lord, (Achievement)null).initIndependentStat().registerStat();
+		kill_goblin_shaman = new Achievement("achievement.kill_goblin_shaman", "kill_goblin_shaman", -TOTEM_ACHIEVEMENTS_X_BASE - 6, TOTEM_ACHIEVEMENTS_Y_BASE - 2, Goblins.achievement_icon_kill_goblin_shaman, (Achievement)null).initIndependentStat().registerStat();
+		
+		
+		
 		
 		
 		AchievementPage.registerAchievementPage(new AchievementPage(StatCollector.translateToLocal("achievements.GoblinsTab"), new Achievement[]{
@@ -149,9 +173,18 @@ public class GoblinsAchievements {
 				
 				goblin_flesh,
 				
+				
+				kill_goblin,
+				kill_dire_wolf,
+				kill_goblin_ranger,
+				kill_goblin_bomber,
+				kill_goblin_soldier,
+				kill_goblin_rider,
+				kill_goblin_miner,
 				kill_goblin_lord,
 				kill_goblin_shaman,
-				goblin_ninja_attack,
+				kill_goblin_ninja,
+				
 				katana
 		}));
 	}

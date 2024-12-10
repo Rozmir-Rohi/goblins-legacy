@@ -1,9 +1,11 @@
 
 package goblin.entity;
 
+import goblin.achievements.GoblinsAchievements;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -26,6 +28,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -78,6 +81,23 @@ public class EntityGoblinMiner extends EntityMob implements IGoblinEntityTexture
 		}
 		super.updateAITasks();
 	}
+	
+	protected boolean isAIEnabled()
+	{
+		return true;
+	}
+	
+	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
+    {
+		if (
+				damageSource.isProjectile()
+				&& GoblinsEntityTools.isDamageSourceEntityFromGoblinsMod(damageSource)
+			)
+		{
+			return false; //prevents infighting among Goblins
+		}
+		return super.attackEntityFrom(damageSource, damageTaken);
+    }
 
 	protected boolean canDespawn()
 	{
@@ -131,13 +151,24 @@ public class EntityGoblinMiner extends EntityMob implements IGoblinEntityTexture
 		return 20;
 	}
 
+	
 	public boolean getCanSpawnHere()
 	{
 		int xCoord = MathHelper.floor_double(posX);
 		int yCoord = MathHelper.floor_double(boundingBox.minY);
 		int zCoord = MathHelper.floor_double(posZ);
-		return worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.stone && getBlockPathWeight(xCoord, yCoord, zCoord) >= 0.0f;
-	}
+		
+	    return (
+	    			worldObj.checkNoEntityCollision(boundingBox)
+	    			&& worldObj.getCollidingBoundingBoxes((Entity) this, boundingBox).isEmpty()
+	    			&& !worldObj.isAnyLiquid(boundingBox)
+	    			&& isValidLightLevel()
+	    			&& (
+	    					posY < 60.0D
+	    					|| !(worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord)) //underground
+	    				)
+	    		);
+	  }
 
 	public ItemStack getHeldItem()
 	{
@@ -149,6 +180,16 @@ public class EntityGoblinMiner extends EntityMob implements IGoblinEntityTexture
 		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinAttackFilter();
 		defaultHeldItem = new ItemStack(Items.stone_pickaxe, 1);
 	}
+	
+	public void onDeath(DamageSource damageSource)
+    {
+        if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
+        {
+          EntityPlayer player = (EntityPlayer)damageSource.getEntity();
+          if (player != null) {player.addStat(GoblinsAchievements.kill_goblin_miner, 1);} 
+        } 
+        super.onDeath(damageSource);
+    }
 
 	@Override
 	public ResourceLocation getEntityTexture()

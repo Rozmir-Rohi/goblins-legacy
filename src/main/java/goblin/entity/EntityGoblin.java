@@ -2,9 +2,11 @@
 package goblin.entity;
 
 import goblin.Goblins;
+import goblin.achievements.GoblinsAchievements;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -26,6 +28,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -83,6 +86,19 @@ public class EntityGoblin extends EntityMob implements IGoblinEntityTextureBase 
 	{
 		return true;
 	}
+	
+	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
+    {
+		if (
+				damageSource.isProjectile()
+				&& GoblinsEntityTools.isDamageSourceEntityFromGoblinsMod(damageSource)
+
+			)
+		{
+			return false; //prevents infighting among Goblins
+		}
+		return super.attackEntityFrom(damageSource, damageTaken);
+    }
 
 	protected boolean canDespawn()
 	{
@@ -145,6 +161,16 @@ public class EntityGoblin extends EntityMob implements IGoblinEntityTextureBase 
 		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinAttackFilter();
 		defaultHeldItem = new ItemStack(Items.wooden_axe, 1);
 	}
+	
+	public void onDeath(DamageSource damageSource)
+    {
+        if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
+        {
+          EntityPlayer player = (EntityPlayer)damageSource.getEntity();
+          if (player != null) {player.addStat(GoblinsAchievements.kill_goblin, 1);} 
+        } 
+        super.onDeath(damageSource);
+    }
 
 	@Override
 	public ResourceLocation getEntityTexture()

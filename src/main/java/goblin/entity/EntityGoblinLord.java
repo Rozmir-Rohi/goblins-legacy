@@ -4,6 +4,7 @@ package goblin.entity;
 import goblin.Goblins;
 import goblin.achievements.GoblinsAchievements;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -15,7 +16,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinLord  extends EntityGreaterGoblinOldAiBase implements IGoblinEntityTextureBase {
+public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntityTextureBase {
 	double moveSpeed;
 	private static ItemStack defaultHeldItem;
 	public float armAngle;
@@ -75,6 +76,22 @@ public class EntityGoblinLord  extends EntityGreaterGoblinOldAiBase implements I
 			GoblinsEntityTools.goblinsCustomAttackEntityAsMob(this, entityToAttack);
 		}
 	}
+	
+	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
+    {
+		if (
+				(	
+						damageSource.isProjectile()
+						&& GoblinsEntityTools.isDamageSourceEntityFromGoblinsMod(damageSource)
+						
+				)
+				|| (damageSource.isExplosion() && damageTaken <= 50)
+			)
+		{
+			return false; //prevents infighting among Goblins
+		}
+		return super.attackEntityFrom(damageSource, damageTaken);
+    }
 	
 
 	protected boolean canDespawn()

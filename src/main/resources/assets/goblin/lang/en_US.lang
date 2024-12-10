@@ -76,19 +76,19 @@ achievement.red_totem.desc=Obtain a Rage Totem. Totems can be found in Goblin Vi
 achievement.explosive_powder=Explosive Powder
 achievement.explosive_powder.desc=Craft Explosive Powder using a Rage Totem in a Crafting Table.
 
-achievement.explosive_orb=Explosive Orb
+achievement.explosive_orb=Orb of Fury
 achievement.explosive_orb.desc=Craft an Explosive Orb using Explosive Powder in a Crafting Table. When thrown, this orb explodes on contact with ground or an enemy.
 
-achievement.enchanted_tnt=Enchanted TNT
+achievement.enchanted_tnt=Explosion Augmenter
 achievement.enchanted_tnt.desc=Craft Enchanted TNT using Explosive Powder and TNT. This is a more powerful version of TNT.
 
-achievement.overcharged_tnt=Overcharged TNT
+achievement.overcharged_tnt=Blast Savant
 achievement.overcharged_tnt.desc=Craft Overcharged TNT using Arcane Powder and Enchanted TNT in a Crafting Table. This is an even more powerful version of TNT.
 
-achievement.fiery_crystal=Fiery Crystal
+achievement.fiery_crystal=Fire Crystalizer
 achievement.fiery_crystal.desc=Craft an Fiery Crystal using Explosive Powder in a Crafting Table.
 
-achievement.flame_blade=Flame Blade
+achievement.flame_blade=Ember Bladesmith
 achievement.flame_blade.desc=Craft a Flame Blade using Fiery Crystals in a Crafting Table. This sword sets enemies on fire.
 
 
@@ -99,14 +99,14 @@ achievement.green_totem.desc=Obtain an Earth Totem. Totems can be found in Gobli
 achievement.nature_powder=Nature Powder
 achievement.nature_powder.desc=Craft Nature Powder using a Earth Totem in a Crafting Table.
 
-achievement.nature_orb=Nature Orb
+achievement.nature_orb=Orb of Growth
 achievement.nature_orb.desc=Craft a Nature Orb using Nature Powder in a Crafting Table. When thrown, this orb grows trees on grass blocks and cacti on sand.
 
-achievement.nature_crystal=Nature Crystal
+achievement.nature_crystal=Nature Crystalizer
 achievement.nature_crystal.desc=Craft a Nature Crystal using Nature Powder in a Crafting Table.
 
-achievement.scepter_of_life=Scepter of Life
-achievement.scepter_of_life.desc=Craft a Scepter of Life using Nature Crystals in a Crafting Table. This staff acts like bonemeal and has 50 uses.
+achievement.scepter_of_life=Gaia's Disciple
+achievement.scepter_of_life.desc=Craft a Scepter of Life using Nature Crystals in a Crafting Table. This staff heals you when used like bonemeal. It has 50 uses.
 
 
 
@@ -116,18 +116,18 @@ achievement.blue_totem.desc=Obtain a Magic Totem. Totems can be found in Goblin 
 achievement.arcane_powder=Arcane Powder
 achievement.arcane_powder.desc=Craft Arcane Powder using a Magic Totem in a Crafting Table.
 
-achievement.force_orb=Force Orb
+achievement.force_orb=Mystic Sphere
 achievement.force_orb.desc=Craft a Force Orb using Arcane Powder in a Crafting Table. When thrown, this orb launches enemies a long distance.
 
-achievement.arcane_crystal=Arcane Crystal
+achievement.arcane_crystal=Arcane Crystalizer
 achievement.arcane_crystal.desc=Craft an Arcane Crystal using Arcane Powder in a Crafting Table.
 
-achievement.arcane_staff=Arcane Staff
+achievement.arcane_staff=Psychic Annihilator
 achievement.arcane_staff.desc=Craft an Arcane Staff using Arcane Crystals in a Crafting Table. This staff allows you to shoot an Arcane Bolt. It has a small cooldown and 30 uses.
 
 
 
-achievement.teleportation_staff=Teleportation Staff
+achievement.teleportation_staff=Warp Voyager
 achievement.teleportation_staff.desc=Craft a Teleportation Staff by combining an Arcane Staff and a Nature Staff in a Crafting Table. This staff allows you to teleport to the area you face in a short range. If used by the player when they are stuck inside blocks, this staff has a chance of teleporting them to a safe place at the cost of using up all it's durability. It has a tiny cooldown and 40 uses.
 
 
@@ -138,40 +138,59 @@ achievement.lightning_totem.desc=Obtain a Sky Totem. Totems can be found in Gobl
 achievement.lightning_powder=Lightning Powder
 achievement.lightning_powder.desc=Craft Lightning Powder using a Sky Totem in a Crafting Table.
 
-achievement.lightning_orb=Lightning Orb
+achievement.lightning_orb=Storm Sphere
 achievement.lightning_orb.desc=Craft a Lightning Orb using Lightning Powder in a Crafting Table. When thrown, this orb strikes enemies with lightning.
-achievement.lightning_crystal.desc=Craft a Lightning Crystal using Lightining Powder in a Crafting Table.
 
-achievement.lightning_crystal=Lightning Crystal
+achievement.lightning_crystal=Lightning Crystalizer
 achievement.lightning_crystal.desc=Craft an Lightning Crystal using Lightning Powder in a Crafting Table.
 
-achievement.lightning_staff=Lightning Staff
+achievement.lightning_staff=Thunder Sage
 achievement.lightning_staff.desc=Craft a Lightning Staff using Lightning Crystals in a Crafting Table. This staff allows you to shoot orbs of light, which creates lighning if it hits a block. It has a medium cooldown and 15 uses.
 
 
 
-achievement.bomb=Bomb
+achievement.goblin_flesh=Goblin Flesh
+achievement.goblin_flesh.desc=Obtain Goblin Flesh from Goblins. What happens if you eat this?
+
+achievement.bomb=Bomb Maker
 achievement.bomb.desc=Craft a Bomb using Gunpowder and Stone in a Crafting Table. These are throwable explosives that won't break blocks. Careful though, they explode after a few seconds after being thrown.
 
-achievement.shuriken=Shuriken
-achievement.shuriken.desc=Craft a Shuriekn using Cobblestone in a Crafting Table.
+achievement.shuriken=Shuriken Smith
+achievement.shuriken.desc=Craft a Shuriken using Cobblestone in a Crafting Table.
+
+achievement.katana=Katana Collector
+achievement.katana.desc=Obtain a Katana from a Goblin Ninja.
 
 
-achievement.goblin_flesh=Goblin Flesh
-achievement.goblin_flesh.desc=Obtain Goblin Flesh from Goblins. Are you brave enough to eat this?
 
 
-achievement.kill_goblin_lord=Goblin Lord
+achievement.kill_goblin=Goblin Slayer
+achievement.kill_goblin.desc=Kill your first Goblin. This is a standard goblin. No real threat by himself, but terrible in large groups. Also, he is the fastest of the goblins!
+
+achievement.kill_goblin_ranger=Ranger Eliminator
+achievement.kill_goblin_ranger.desc=Kill a Goblin Ranger. This lad is made when a normal goblin gets tired of chasing animals around with sticks, so he trades them in for a bow and arrow.
+
+achievement.kill_goblin_bomber=Bomber Exterminator
+achievement.kill_goblin_bomber.desc=Kill a Goblin Bomber. No goblin knows how many bombs are in his bag (A lot). However, he won't hesitate to use them against you. His bag of of bombs makes him pretty slow though.
+
+achievement.kill_goblin_soldier=Soldier Defeater
+achievement.kill_goblin_soldier.desc=Kill a Goblin soldier. This one has armour. Not good armour, but good enough to protect them from extra blow. Slower than a normal goblin but stronger and tougher.
+
+achievement.kill_dire_wolf=Direwolf Exterminator
+achievement.kill_dire_wolf.desc=Kill a Direwolf. This is a bundle of fur and fury that can go from zero to a hundred in the blink of an eye. Goblins appreciate them for their fiery personality and keep them around as companions to aid in their mischievous schemes.
+
+achievement.kill_goblin_rider=Rider Toppler
+achievement.kill_goblin_rider.desc=Kill a Goblin Rider. A cunning goblin who has learned how to ride Direwolves in to battle.
+
+achievement.kill_goblin_miner=Miner Crusher
+achievement.kill_goblin_miner.desc=Kill a Goblin Miner. He works in the mines. Sometimes these buggers get lost in caves, so watch out!
+
+achievement.kill_goblin_lord=Lord Conquerer
 achievement.kill_goblin_lord.desc=Kill a Goblin Lord. This guy eats obsidian for breakfast, lunch and supper. He's tough, agile and strong. He is also the leader in Goblins tribes. He can sometimes be found in large Goblin Villages.
 
+achievement.kill_goblin_shaman=Shaman Vanquisher
+achievement.kill_goblin_shaman.desc=Kill a Goblin Shaman. Though he might not be as tough as the Goblin Lord, he harnesses the power of magic to obliterate his enemies. So I guess it evens out? He can sometimes be found in large Goblin Villages.
 
-achievement.kill_goblin_shaman=Goblin Shaman
-achievement.kill_goblin_shaman.desc=Kill a Goblin Shaman. Though he might not be as tough as the Goblin Lord, he harnesses the power of magic to crush his enemies. So I guess it evens out? He can sometimes be found in large Goblin Villages.
+achievement.kill_goblin_ninja=Ninja Neutralizer
+achievement.kill_goblin_ninja.desc=Kill a Goblin Ninja. These are trained assassins of Goblin tribes. They attack you when you least expect it, like while sleeping in a Bed with Goblin Totems in your inventory.
 
-
-
-achievement.goblin_ninja_attack=Ambush
-achievement.goblin_ninja_attack.desc=Let your gaurd down while sleeping in a Bed with Goblin Totems in your inventory.
-
-achievement.katana=Katana
-achievement.katana.desc=Obtain a Katana from a Goblin Ninja.

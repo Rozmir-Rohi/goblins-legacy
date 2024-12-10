@@ -2,13 +2,25 @@ package goblin.entity;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 
 public class GoblinsEntityTools
 {	
+	public static boolean isDamageSourceEntityFromGoblinsMod(DamageSource damageSource)
+	{
+		return
+			(
+					damageSource.getEntity() != null
+					&& damageSource.getEntity() instanceof EntityMob
+					&& EntityList.getEntityString(damageSource.getEntity()).contains("goblin.")
+			);
+	}
+	
 	public static boolean goblinsCustomAttackEntityAsMob(EntityLivingBase attacker, Entity entityToAttack)
     {
         float f = (float)attacker.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();

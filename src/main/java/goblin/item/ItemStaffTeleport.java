@@ -126,6 +126,8 @@ public class ItemStaffTeleport extends GoblinsItem {
 		entityPlayer.fallDistance = 0f;
 		
 		entityPlayer.setPositionAndUpdate(x, y, z);
+		
+		generateParticles(entityPlayer);
 
 		if (!world.isRemote)
 		{
@@ -140,6 +142,30 @@ public class ItemStaffTeleport extends GoblinsItem {
 			{
 				itemStack.damageItem(1, (EntityLivingBase) entityPlayer);
 			}
+		}
+	}
+	
+	private void generateParticles(EntityPlayer entityPlayer)
+	{
+		String particleName = "explode";
+		
+		Random rand = new Random();
+		
+		for (int i = 0; i < 7; ++i)
+		{
+			double xOffset = rand.nextGaussian() * 0.1;
+			double yOffset = rand.nextGaussian() * 0.1;
+			double zOffset = rand.nextGaussian() * 0.1;
+			entityPlayer.worldObj.spawnParticle
+					(
+							particleName,
+							entityPlayer.posX + rand.nextFloat() * entityPlayer.width * 2.0f - entityPlayer.width,
+							entityPlayer.posY,
+							entityPlayer.posZ + rand.nextFloat() * entityPlayer.width * 2.0f - entityPlayer.width,
+							xOffset,
+							yOffset,
+							zOffset
+					);
 		}
 	}
 

@@ -30,11 +30,11 @@ public class GoblinsEventHooks {
 	 				(
 	 						(
 	 								
-	 								!(entityPlayerMP.func_147099_x().hasAchievementUnlocked(GoblinsAchievements.goblin_ninja_attack))
+	 								!(entityPlayerMP.func_147099_x().hasAchievementUnlocked(GoblinsAchievements.kill_goblin_ninja))
 	 								&& rand.nextInt(100) < 50
 	 						)
 	 						|| (	//lower chance for Goblin Ninja attack if the player already has the achievement
-	 								entityPlayerMP.func_147099_x().hasAchievementUnlocked(GoblinsAchievements.goblin_ninja_attack)
+	 								entityPlayerMP.func_147099_x().hasAchievementUnlocked(GoblinsAchievements.kill_goblin_ninja)
 	 								&& rand.nextInt(100) < 10
 	 						)
 	 				)
@@ -72,9 +72,7 @@ public class GoblinsEventHooks {
 		            
 		            goblinNinja.setTarget(entityPlayer);
 		            
-		            entityPlayer.worldObj.spawnEntityInWorld(goblinNinja); 
-		            
-		            entityPlayer.addStat(GoblinsAchievements.goblin_ninja_attack, 1);
+		            entityPlayer.worldObj.spawnEntityInWorld(goblinNinja);
 	            }
 	 		}
 	    }

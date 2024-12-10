@@ -91,5 +91,23 @@ All projectile entities now extend EntityThrowable to reduce repeating code.
 
 Removed GArcaneBall entity and merged it's uses to Arcaneball entity
 
-The Goblin Ninja ambush event now also takes the player's armour in to consideration when deciding the amount to Goblin Ninjas to spawn
+The Goblin Ninja ambush event now also takes the player's armour in to consideration when deciding the amount to Goblin Ninjas to spawn.
+
+Added kill achievements to all remaining mobs.
+
+Added Goblin Miner spawn to underground of plains and swampland.
+
+Removed the duplicate Goblin Miner entity.
+
+Goblin Lord and Goblin Shaman now ignore attacks from other Goblins. They are now also resistant to explosions that deal up to 50 HP of damage.
+
+Reworded various achievements
+
+Changed attack damage of player created Arcane Ball to 6 (same as Goblin Shaman).
+
+The Scepter of Life now heals users when used. Also updated Thaumcraft Aspects for this item.
+
+Teleportation Staff and Goblin Shaman now make particle when they teleport.
+
+All goblin types no longer fight each other.
 

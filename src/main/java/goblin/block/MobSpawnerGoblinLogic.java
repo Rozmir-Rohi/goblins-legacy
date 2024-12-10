@@ -40,7 +40,7 @@ public abstract class MobSpawnerGoblinLogic {
 	private int spawnRange;
 	final private static String __OBFID = "CL_00000129";
 
-	public MobSpawnerGoblinLogic(char gob)
+	public MobSpawnerGoblinLogic(char goblinType)
 	{
 		spawnDelay = 20;
 		entityTypeName = "Pig";
@@ -52,7 +52,7 @@ public abstract class MobSpawnerGoblinLogic {
 		maxNearbyEntities = 6;
 		activatingRangeFromPlayer = 16;
 		spawnRange = 1;
-		goblinType = gob;
+		this.goblinType = goblinType;
 	}
 
 	public String getEntityNameToSpawn()
@@ -139,7 +139,7 @@ public abstract class MobSpawnerGoblinLogic {
 						Entity entity = EntityList.createEntityByName(getEntityNameToSpawn(), getSpawnerWorld());
 						if (entity == null)
 						{
-							System.out.println("YA");
+							// System.out.println("YA");
 							return;
 						}
 						int j = getSpawnerWorld().getEntitiesWithinAABB((Class) entity.getClass(), AxisAlignedBB.getBoundingBox((double) getSpawnerX(), (double) getSpawnerY(), (double) getSpawnerZ(), (double) (getSpawnerX() + 1), (double) (getSpawnerY() + 1), (double) (getSpawnerZ() + 1)).expand((double) (spawnRange * 2), 4.0, (double) (spawnRange * 2))).size();

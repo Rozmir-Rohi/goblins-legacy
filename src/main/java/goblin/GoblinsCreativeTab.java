@@ -18,7 +18,7 @@ public class GoblinsCreativeTab extends CreativeTabs {
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{
-		return Goblins.icon_goblin;
+		return Goblins.achievement_icon_kill_goblin;
 	}
 
 }

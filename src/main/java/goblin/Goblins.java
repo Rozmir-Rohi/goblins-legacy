@@ -28,7 +28,6 @@ import goblin.entity.EntityGoblinBomber;
 import goblin.entity.EntityGoblinLord;
 import goblin.entity.EntityGoblinMage;
 import goblin.entity.EntityGoblinMiner;
-import goblin.entity.EntityGoblinMiner2;
 import goblin.entity.EntityGoblinNinja;
 import goblin.entity.EntityGoblinRanger;
 import goblin.entity.EntityGoblinRangerGuard;
@@ -175,10 +174,16 @@ public class Goblins {
 	public static Item goblinBow;
 	
 	
-	public static Item icon_goblin;
+	public static Item achievement_icon_kill_goblin;
+	public static Item achievement_icon_kill_dire_wolf;
+	public static Item achievement_icon_kill_goblin_ranger;
+	public static Item achievement_icon_kill_goblin_bomber;
+	public static Item achievement_icon_kill_goblin_soldier;
+	public static Item achievement_icon_kill_goblin_rider;
+	public static Item achievement_icon_kill_goblin_miner;
 	public static Item achievement_icon_kill_goblin_lord;
 	public static Item achievement_icon_kill_goblin_shaman;
-	public static Item achievement_icon_goblin_ninja_attack;
+	public static Item achievement_icon_kill_goblin_ninja;
 	
 	public static Item spawnEgg;
 	
@@ -239,10 +244,16 @@ public class Goblins {
 		staffTeleport = new ItemStaffTeleport("staffTeleport");
 		staffLightning = new ItemStaffLightning("staffLightning");
 		
-		icon_goblin = new GoblinsItem("icon_goblin");
+		achievement_icon_kill_goblin = new GoblinsItem("achievement_icon_kill_goblin");
+		achievement_icon_kill_dire_wolf = new GoblinsItem("achievement_icon_kill_dire_wolf");
+		achievement_icon_kill_goblin_ranger = new GoblinsItem("achievement_icon_kill_goblin_ranger");
+		achievement_icon_kill_goblin_bomber = new GoblinsItem("achievement_icon_kill_goblin_bomber");
+		achievement_icon_kill_goblin_soldier = new GoblinsItem("achievement_icon_kill_goblin_soldier");
+		achievement_icon_kill_goblin_rider = new GoblinsItem("achievement_icon_kill_goblin_rider");
+		achievement_icon_kill_goblin_miner = new GoblinsItem("achievement_icon_kill_goblin_miner");
 		achievement_icon_kill_goblin_lord = new GoblinsItem("achievement_icon_kill_goblin_lord");
 		achievement_icon_kill_goblin_shaman = new GoblinsItem("achievement_icon_kill_goblin_shaman");
-		achievement_icon_goblin_ninja_attack = new GoblinsItem("achievement_icon_goblin_ninja_attack");
+		achievement_icon_kill_goblin_ninja = new GoblinsItem("achievement_icon_kill_goblin_ninja");
 		
 		registerItem(bomb);
 		registerItem(crystalB);
@@ -266,10 +277,16 @@ public class Goblins {
 		registerItem(swordFire);
 		registerItem(swordKatana);
 		
-		registerItem(icon_goblin);
+		registerItem(achievement_icon_kill_goblin);
+		registerItem(achievement_icon_kill_dire_wolf);
+		registerItem(achievement_icon_kill_goblin_ranger);
+		registerItem(achievement_icon_kill_goblin_bomber);
+		registerItem(achievement_icon_kill_goblin_soldier);
+		registerItem(achievement_icon_kill_goblin_rider);
+		registerItem(achievement_icon_kill_goblin_miner);
 		registerItem(achievement_icon_kill_goblin_lord);
 		registerItem(achievement_icon_kill_goblin_shaman);
-		registerItem(achievement_icon_goblin_ninja_attack);
+		registerItem(achievement_icon_kill_goblin_ninja);
 		
 		
 		/**
@@ -443,7 +460,7 @@ public class Goblins {
 		EntityRegistry.registerModEntity((Class) EntityGoblinMiner.class, "GoblinMiner", modEntityID++, (Object) this, 250, 1, false);
 		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinMiner.class, 7306346, 6710886);
 
-		EntityRegistry.registerModEntity((Class) EntityGoblinMiner2.class, "GoblinMiner2", modEntityID++, (Object) this, 250, 1, false);
+		EntityRegistry.addSpawn(EntityGoblinMiner.class, 5, 1, 1, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.swampland);
 		
 		EntityRegistry.registerModEntity((Class) EntityGoblinNinja.class, "GoblinNinja", modEntityID++, (Object) this, 250, 1, false);
 		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinNinja.class, 5856839, 6498581);
@@ -459,6 +476,8 @@ public class Goblins {
 		
 		EntityRegistry.registerModEntity((Class) EntityGoblinSoldier.class, "GoblinSoldier", modEntityID++, (Object) this, 250, 1, false);
 		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinSoldier.class, 7761199, 6498581);
+		
+		
 		
 		
 

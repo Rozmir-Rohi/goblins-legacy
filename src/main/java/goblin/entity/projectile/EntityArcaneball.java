@@ -73,13 +73,7 @@ public class EntityArcaneball extends EntityThrowableOrb implements IGoblinEntit
 		{
 			if (movingObjectPosition.entityHit != null)
 			{
-				float motionSquared = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-				int damageToDeal = (int) Math.ceil(motionSquared * 2.0);
-				
-				if (getThrower() instanceof EntityGoblinMage)
-				{
-					damageToDeal = 6;
-				}
+				int damageToDeal = 6;
 				
 				DamageSource damageSource = null;
 				if (getThrower() == null)

@@ -334,20 +334,20 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 			world.setBlock(xCoord + houseLoc1 + 5, yCoord + height3, zCoord + houseLoc2 + 3, (Block) Blocks.cauldron, 0, 2);
 			world.setBlock(xCoord + houseLoc1 + 5, yCoord + height3, zCoord + houseLoc2 + 4, Blocks.stonebrick, 3, 2);
 		}
-		int boss = rand.nextInt(2);
-		if (boss == 0)
+		int bossSelector = rand.nextInt(2);
+		if (bossSelector == 0)
 		{
-			EntityGoblinMage goblinmage = new EntityGoblinMage(world);
-			goblinmage.setLocationAndAngles((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1), world.rand.nextFloat() * 360.0f, 0.0f);
-			goblinmage.setPosition((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1));
-			world.spawnEntityInWorld((Entity) goblinmage);
+			EntityGoblinMage goblinMage = new EntityGoblinMage(world);
+			goblinMage.setLocationAndAngles((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1), world.rand.nextFloat() * 360.0f, 0.0f);
+			goblinMage.setPosition((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1));
+			world.spawnEntityInWorld((Entity) goblinMage);
 		}
 		else
 		{
-			EntityGoblinLord goblinlord = new EntityGoblinLord(world);
-			goblinlord.setLocationAndAngles((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1), world.rand.nextFloat() * 360.0f, 0.0f);
-			goblinlord.setPosition((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1));
-			world.spawnEntityInWorld((Entity) goblinlord);
+			EntityGoblinLord goblinLord = new EntityGoblinLord(world);
+			goblinLord.setLocationAndAngles((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1), world.rand.nextFloat() * 360.0f, 0.0f);
+			goblinLord.setPosition((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1));
+			world.spawnEntityInWorld((Entity) goblinLord);
 		}
 		generateTrees(world, rand, xCoord + 11, yCoord, zCoord + 16, 15 + rand.nextInt(15));
 		generatePoles(world, rand, xCoord + 11, yCoord, zCoord + 16, rand.nextInt(10));

@@ -2,10 +2,12 @@
 package goblin.entity;
 
 import goblin.Goblins;
+import goblin.achievements.GoblinsAchievements;
 import goblin.entity.projectile.EntityShuriken;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -13,7 +15,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinNinja extends EntityGreaterGoblinOldAiBase implements IGoblinEntityTextureBase {
+public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntityTextureBase {
 	int hide;
 	boolean hidden;
 	
@@ -116,18 +118,6 @@ public class EntityGoblinNinja extends EntityGreaterGoblinOldAiBase implements I
 	    super.onUpdate();
 	}
 	
-	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
-    {
-		if (
-				damageSource.isProjectile()
-				&& (damageSource.getEntity() instanceof EntityGoblinNinja)
-			)
-		{
-			return false; //prevents infighting among Goblin Ninjas
-		}
-		return super.attackEntityFrom(damageSource, damageTaken);
-    }
-	
 	
 	private void getTeleport()
 	{
@@ -202,6 +192,16 @@ public class EntityGoblinNinja extends EntityGreaterGoblinOldAiBase implements I
 			return new ItemStack(Goblins.shuriken, 1);
 		}
 	}
+	
+	public void onDeath(DamageSource damageSource)
+    {
+        if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
+        {
+          EntityPlayer player = (EntityPlayer)damageSource.getEntity();
+          if (player != null) {player.addStat(GoblinsAchievements.kill_goblin_rider, 1);} 
+        } 
+        super.onDeath(damageSource);
+    }
 	
 	@Override
 	public ResourceLocation getEntityTexture()

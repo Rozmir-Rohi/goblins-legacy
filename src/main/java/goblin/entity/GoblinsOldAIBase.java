@@ -10,12 +10,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityGreaterGoblinOldAiBase extends EntityMob {
+public class GoblinsOldAIBase extends EntityMob {
 
-	public EntityGreaterGoblinOldAiBase(World world)
+	public GoblinsOldAIBase(World world)
 	{
 		super(world);
 	}
@@ -43,6 +44,20 @@ public class EntityGreaterGoblinOldAiBase extends EntityMob {
         }
         return null;
     }
+	
+	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
+    {
+		if (
+				damageSource.isProjectile()
+				&& GoblinsEntityTools.isDamageSourceEntityFromGoblinsMod(damageSource)
+
+			)
+		{
+			return false; //prevents infighting among Goblins
+		}
+		return super.attackEntityFrom(damageSource, damageTaken);
+    }
+	
 	
 	protected EntityLivingBase getClosestEntityLiving(double distance)
     {

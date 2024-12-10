@@ -2,17 +2,20 @@
 package goblin.entity;
 
 import goblin.Goblins;
+import goblin.achievements.GoblinsAchievements;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityGoblinSoldier extends EntityGreaterGoblinOldAiBase implements IGoblinEntityTextureBase {
+public class EntityGoblinSoldier extends GoblinsOldAIBase implements IGoblinEntityTextureBase {
 	private static ItemStack defaultHeldItem;
 
 	public EntityGoblinSoldier(World world)
@@ -105,6 +108,16 @@ public class EntityGoblinSoldier extends EntityGreaterGoblinOldAiBase implements
 	{
 		defaultHeldItem = new ItemStack(Items.stone_sword, 1);
 	}
+	
+	public void onDeath(DamageSource damageSource)
+    {
+        if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
+        {
+          EntityPlayer player = (EntityPlayer)damageSource.getEntity();
+          if (player != null) {player.addStat(GoblinsAchievements.kill_goblin_soldier, 1);} 
+        } 
+        super.onDeath(damageSource);
+    }
 
 	@Override
 	public ResourceLocation getEntityTexture()

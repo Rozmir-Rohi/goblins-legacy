@@ -2,9 +2,11 @@
 package goblin.entity;
 
 import goblin.Goblins;
+import goblin.achievements.GoblinsAchievements;
 import goblin.entity.projectile.EntityBomb;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
@@ -27,6 +29,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -83,6 +86,18 @@ public class EntityGoblinBomber extends EntityMob implements IRangedAttackMob {
 	{
 		return true;
 	}
+	
+	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
+    {
+		if (
+				damageSource.isProjectile()
+				&& GoblinsEntityTools.isDamageSourceEntityFromGoblinsMod(damageSource)
+			)
+		{
+			return false; //prevents infighting among Goblins
+		}
+		return super.attackEntityFrom(damageSource, damageTaken);
+    }
 
 	public float getEyeHeight()
 	{
@@ -171,4 +186,14 @@ public class EntityGoblinBomber extends EntityMob implements IRangedAttackMob {
 	{
 		defaultHeldItem = new ItemStack(Goblins.bomb, 1);
 	}
+	
+	public void onDeath(DamageSource damageSource)
+    {
+        if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
+        {
+          EntityPlayer player = (EntityPlayer)damageSource.getEntity();
+          if (player != null) {player.addStat(GoblinsAchievements.kill_goblin_bomber, 1);} 
+        } 
+        super.onDeath(damageSource);
+    }
 }

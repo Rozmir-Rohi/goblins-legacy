@@ -9,11 +9,15 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
 public class ItemStaffNature extends GoblinsItem {
+	private final static int SECONDS_FOR_POTION_EFFECT = 12;
+	
 	public ItemStaffNature(String stringName)
 	{
 		super(stringName);
@@ -29,6 +33,7 @@ public class ItemStaffNature extends GoblinsItem {
 
 	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int xCoord, int yCoord, int zCoord, int par7, float par8, float par9, float par10)
 	{
+		
 		Block block = world.getBlock(xCoord, yCoord, zCoord);
 		BonemealEvent event = new BonemealEvent(player, world, block, xCoord, yCoord, zCoord);
 		if (MinecraftForge.EVENT_BUS.post((Event) event))
@@ -42,6 +47,7 @@ public class ItemStaffNature extends GoblinsItem {
 				itemStack.damageItem(1, (EntityLivingBase) player);
 			}
 			player.swingItem();
+			((EntityPlayer) player).addPotionEffect(new PotionEffect(Potion.regeneration.id, 20 * SECONDS_FOR_POTION_EFFECT, 1));
 			return true;
 		}
 		if (block instanceof IGrowable)
@@ -58,6 +64,7 @@ public class ItemStaffNature extends GoblinsItem {
 					itemStack.damageItem(1, (EntityLivingBase) player);
 				}
 				player.swingItem();
+				((EntityPlayer) player).addPotionEffect(new PotionEffect(Potion.regeneration.id, 20 * SECONDS_FOR_POTION_EFFECT, 1));
 				return true;
 			}
 		}

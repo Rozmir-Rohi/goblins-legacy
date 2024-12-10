@@ -2,9 +2,11 @@
 package goblin.entity;
 
 import goblin.Goblins;
+import goblin.achievements.GoblinsAchievements;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -75,6 +77,11 @@ public class EntityGoblinRider extends EntityMob implements IGoblinEntityTexture
 			isPanicked = true;
 		}
 		super.updateAITasks();
+	}
+	
+	protected boolean isAIEnabled()
+	{
+		return true;
 	}
 
 	public void onUpdate()
@@ -150,6 +157,15 @@ public class EntityGoblinRider extends EntityMob implements IGoblinEntityTexture
 		{
 			return false;
 		}
+		
+		if (
+				damageSource.isProjectile()
+				&& GoblinsEntityTools.isDamageSourceEntityFromGoblinsMod(damageSource)
+			)
+		{
+			return false; //prevents infighting among Goblins
+		}
+		
 		if (riddenByEntity == entityThatAttackedThisEntity || ridingEntity == entityThatAttackedThisEntity)
 		{
 			entityToAttack = null;
@@ -196,6 +212,16 @@ public class EntityGoblinRider extends EntityMob implements IGoblinEntityTexture
 		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinAttackFilter();
 		defaultHeldItem = new ItemStack(Items.stone_sword, 1);
 	}
+	
+	public void onDeath(DamageSource damageSource)
+    {
+        if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
+        {
+          EntityPlayer player = (EntityPlayer)damageSource.getEntity();
+          if (player != null) {player.addStat(GoblinsAchievements.kill_goblin_rider, 1);} 
+        } 
+        super.onDeath(damageSource);
+    }
 
 	@Override
 	public ResourceLocation getEntityTexture()

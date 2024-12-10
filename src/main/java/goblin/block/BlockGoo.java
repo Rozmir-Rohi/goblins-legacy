@@ -23,6 +23,7 @@ public class BlockGoo extends Block {
 		super(Material.leaves);
 		setTickRandomly(true);
 		setBlockBounds(0.0f, 0.0f, 0.0f, 1.0f, 0.125f, 1.0f);
+		setStepSound(soundTypeSnow);
 	}
 
 	public void setBlockBoundsForItemRender()

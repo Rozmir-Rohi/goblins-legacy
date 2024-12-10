@@ -29,7 +29,7 @@ public class GoblinsThaumcraftAspects {
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.powderG), new AspectList().add(Aspect.PLANT, 1));
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.orbNature), new AspectList().add(Aspect.CRYSTAL, 2).add(Aspect.PLANT, 3).add(Aspect.MAGIC, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.crystalG), new AspectList().add(Aspect.CRYSTAL, 3).add(Aspect.PLANT, 2));
-		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.staffNature), new AspectList().add(Aspect.CRYSTAL, 3).add(Aspect.PLANT, 5).add(Aspect.MAGIC, 3));
+		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.staffNature), new AspectList().add(Aspect.CRYSTAL, 3).add(Aspect.PLANT, 3).add(Aspect.HEAL, 3).add(Aspect.MAGIC, 3));
 		
 		
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.totemR), new AspectList().add(Aspect.FIRE, 4).add(Aspect.ENTROPY, 4));

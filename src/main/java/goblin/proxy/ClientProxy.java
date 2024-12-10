@@ -10,7 +10,6 @@ import goblin.entity.EntityGoblinBomber;
 import goblin.entity.EntityGoblinLord;
 import goblin.entity.EntityGoblinMage;
 import goblin.entity.EntityGoblinMiner;
-import goblin.entity.EntityGoblinMiner2;
 import goblin.entity.EntityGoblinNinja;
 import goblin.entity.EntityGoblinRanger;
 import goblin.entity.EntityGoblinRangerGuard;
@@ -69,7 +68,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityGoblinSoldier.class, new RenderGoblinBiped(new ModelGoblin(), 0.5f));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGoblinMage.class, new RenderGoblinMage(new ModelGoblinMage(), 0.5f));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGoblinNinja.class, new RenderGoblinBiped(new ModelGoblin(), 0.5f));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGoblinMiner2.class, new RenderGoblinBiped(new ModelGoblin(), 0.5f));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDirewolf.class, new RenderDirewolf(new ModelDirewolf(), 0.5f));
 	}
 }
