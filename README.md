@@ -9,6 +9,8 @@ Port of the Goblins! mod for 1.7.10 with a few improvements.
 <br><br>
 <strong>user17512883</strong> - Their forum post helped me fix the primed TNT render bug (https://stackoverflow.com/questions/70119718/minecraft-forge-1-7-10-custom-entity-not-spawning-on-the-client).
 <br><br>
+<strong>Kara (Freesound)</strong> - The sound effect for the Goblin Drum was sourced from https://pixabay.com/sound-effects/bongo3-107664/ . This was used under the Pixabay License (see "Negligable Licenses" folder inside the assets folder of the mod jar archive).
+<br><br>
 <strong>New Teleportation Staff Mechanism:</strong>
 <br><br>
 <strong>coolAlias</strong> - Their answer in Minecraft Forums helped me to work out the base code for the new mechanism</div><div>(https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/modification-development/2132650-solved-1-7-2-forge-block-player-is-looking-at).
