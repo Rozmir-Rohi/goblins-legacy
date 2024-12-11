@@ -45,6 +45,7 @@ public class GoblinsOldAIBase extends EntityMob {
         return null;
     }
 	
+	@Override
 	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
     {
 		if (

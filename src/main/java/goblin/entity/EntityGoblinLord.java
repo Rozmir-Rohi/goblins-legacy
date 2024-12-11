@@ -4,7 +4,6 @@ package goblin.entity;
 import goblin.Goblins;
 import goblin.achievements.GoblinsAchievements;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -30,6 +29,7 @@ public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntity
 		isImmuneToFire = true;
 	}
 
+	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
@@ -38,16 +38,19 @@ public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntity
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(7.0);
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.writeEntityToNBT(nbtTagCompound);
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.readEntityFromNBT(nbtTagCompound);
 	}
 
+	@Override
 	protected void attackEntity(Entity entityToAttack, float distanceToEntityToAttack)
 	{
 		if (onGround && distanceToEntityToAttack >= 5.5 && distanceToEntityToAttack < 6.5)
@@ -77,6 +80,7 @@ public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntity
 		}
 	}
 	
+	@Override
 	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
     {
 		if (
@@ -94,36 +98,43 @@ public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntity
     }
 	
 
+	@Override
 	protected boolean canDespawn()
 	{
 		return false;
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "goblin:goblinlord.idle";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "goblin:goblinlord.hurt";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "goblin:goblinlord.dead";
 	}
 
+	@Override
 	protected float getSoundVolume()
 	{
 		return 0.5f;
 	}
 
+	@Override
 	protected Item getDropItem()
 	{
 		return Items.wooden_axe;
 	}
 
+	@Override
 	protected void dropFewItems(boolean flag, int i)
 	{
 		dropItem(Goblins.goblinFlesh, rand.nextInt(2));
@@ -131,6 +142,7 @@ public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntity
 		dropItem(Items.golden_apple, 1);
 	}
 
+	@Override
 	public void knockBack(Entity entity, float par2, double par3, double par5)
 	{
 		if (rand.nextDouble() >= getEntityAttribute(SharedMonsterAttributes.knockbackResistance).getAttributeValue())
@@ -155,11 +167,13 @@ public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntity
 		}
 	}
 
+	@Override
 	public int getMaxSpawnedInChunk()
 	{
 		return 1;
 	}
 	
+	@Override
 	public void onDeath(DamageSource damageSource)
     {
         if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
@@ -170,6 +184,7 @@ public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntity
         super.onDeath(damageSource);
     }
 
+	@Override
 	public boolean getCanSpawnHere()
 	{
 		int xCoord = MathHelper.floor_double(posX);
@@ -178,6 +193,7 @@ public class EntityGoblinLord  extends GoblinsOldAIBase implements IGoblinEntity
 		return getBlockPathWeight(xCoord, yCoord, zCoord) >= 0.0f;
 	}
 
+	@Override
 	public ItemStack getHeldItem()
 	{
 		return EntityGoblinLord.defaultHeldItem;

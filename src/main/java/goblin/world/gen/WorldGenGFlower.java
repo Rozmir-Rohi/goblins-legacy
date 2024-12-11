@@ -16,6 +16,7 @@ public class WorldGenGFlower extends WorldGenerator {
 		plantBlockId = 38;
 	}
 
+	@Override
 	public boolean generate(World world, Random random, int xCoord, int yCoord, int zCoord)
 	{
 		if (world.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.grass)

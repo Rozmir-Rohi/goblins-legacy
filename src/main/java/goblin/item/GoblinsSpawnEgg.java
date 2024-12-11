@@ -116,7 +116,7 @@ public class GoblinsSpawnEgg extends ItemMonsterPlacer {
 
                     if (world.getBlock(i, j, k) instanceof BlockLiquid)
                     {
-                        Entity entity = spawnCreature(world, itemStack.getItemDamage(), (double)i, (double)j, (double)k);
+                        Entity entity = spawnCreature(world, itemStack.getItemDamage(), i, j, k);
 
                         if (entity != null)
                         {
@@ -162,7 +162,7 @@ public class GoblinsSpawnEgg extends ItemMonsterPlacer {
                 yOffset = 0.5D;
             }
 
-            Entity entity = spawnCreature(world, itemStack.getItemDamage(), (double)x + 0.5D, (double)y + yOffset, (double)z + 0.5D);
+            Entity entity = spawnCreature(world, itemStack.getItemDamage(), x + 0.5D, y + yOffset, z + 0.5D);
 
             if (entity != null)
             {

@@ -25,11 +25,13 @@ public class GoblinsItemSword extends ItemSword {
 		setCreativeTab(Goblins.GOBLINS_CREATIVE_TAB);
 	}
 
+	@Override
 	public void registerIcons(IIconRegister iconRegister)
 	{
 		itemIcon = iconRegister.registerIcon("goblin" + getUnlocalizedName().replaceFirst("item.", ":"));
 	}
 
+	@Override
 	public boolean hitEntity(ItemStack itemStack, EntityLivingBase entityLiving, EntityLivingBase entityLiving1)
 	{
 		if (repairMaterial == Goblins.EXPLOSIVE_MATERIAL) //flame blade only

@@ -24,6 +24,7 @@ public class BlockEnchantedTNT extends BlockTNT {
 		super();
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iIconRegister)
 	{
@@ -32,12 +33,14 @@ public class BlockEnchantedTNT extends BlockTNT {
 		bottom= iIconRegister.registerIcon("goblin:ETNTBot");
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
     public IIcon getIcon(int p_149691_1_, int p_149691_2_)
     {
         return p_149691_1_ == 0 ? bottom : (p_149691_1_ == 1 ? top : side);
     }
 
+	@Override
 	public void onBlockDestroyedByExplosion(World world, int xCoord, int yCoord, int zCoord, Explosion explosion)
     {
         if (!world.isRemote)
@@ -48,6 +51,7 @@ public class BlockEnchantedTNT extends BlockTNT {
         }
     }
 	
+	@Override
 	public void func_150114_a(World world, int xCoord, int yCoord, int zCoord, int par5, EntityLivingBase entityLivingBase)
     {
         if (!world.isRemote)

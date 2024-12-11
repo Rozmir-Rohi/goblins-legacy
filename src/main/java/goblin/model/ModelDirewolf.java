@@ -25,30 +25,31 @@ public class ModelDirewolf extends ModelBase {
 	{
 		float f = 0.0f;
 		float f2 = 13.5f;
-		(wolfHeadMain = new ModelRenderer((ModelBase) this, 0, 0)).addBox(-3.0f, -3.0f, -2.0f, 6, 6, 4, f);
+		(wolfHeadMain = new ModelRenderer(this, 0, 0)).addBox(-3.0f, -3.0f, -2.0f, 6, 6, 4, f);
 		wolfHeadMain.setRotationPoint(-1.0f, f2, -7.0f);
-		(wolfBody = new ModelRenderer((ModelBase) this, 18, 14)).addBox(-4.0f, -2.0f, -3.0f, 6, 9, 6, f);
+		(wolfBody = new ModelRenderer(this, 18, 14)).addBox(-4.0f, -2.0f, -3.0f, 6, 9, 6, f);
 		wolfBody.setRotationPoint(0.0f, 14.0f, 2.0f);
-		(wolfMane = new ModelRenderer((ModelBase) this, 21, 0)).addBox(-4.0f, -3.0f, -3.0f, 8, 6, 7, f);
+		(wolfMane = new ModelRenderer(this, 21, 0)).addBox(-4.0f, -3.0f, -3.0f, 8, 6, 7, f);
 		wolfMane.setRotationPoint(-1.0f, 14.0f, 2.0f);
-		(wolfLeg1 = new ModelRenderer((ModelBase) this, 0, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
+		(wolfLeg1 = new ModelRenderer(this, 0, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
 		wolfLeg1.setRotationPoint(-2.5f, 16.0f, 7.0f);
-		(wolfLeg2 = new ModelRenderer((ModelBase) this, 0, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
+		(wolfLeg2 = new ModelRenderer(this, 0, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
 		wolfLeg2.setRotationPoint(0.5f, 16.0f, 7.0f);
-		(wolfLeg3 = new ModelRenderer((ModelBase) this, 0, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
+		(wolfLeg3 = new ModelRenderer(this, 0, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
 		wolfLeg3.setRotationPoint(-2.5f, 16.0f, -4.0f);
-		(wolfLeg4 = new ModelRenderer((ModelBase) this, 0, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
+		(wolfLeg4 = new ModelRenderer(this, 0, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
 		wolfLeg4.setRotationPoint(0.5f, 16.0f, -4.0f);
-		(wolfTail = new ModelRenderer((ModelBase) this, 9, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
+		(wolfTail = new ModelRenderer(this, 9, 18)).addBox(-1.0f, 0.0f, -1.0f, 2, 8, 2, f);
 		wolfTail.setRotationPoint(-1.0f, 12.0f, 8.0f);
-		(wolfRightEar = new ModelRenderer((ModelBase) this, 16, 14)).addBox(-3.0f, -5.0f, 0.0f, 2, 2, 1, f);
+		(wolfRightEar = new ModelRenderer(this, 16, 14)).addBox(-3.0f, -5.0f, 0.0f, 2, 2, 1, f);
 		wolfRightEar.setRotationPoint(-1.0f, f2, -7.0f);
-		(wolfLeftEar = new ModelRenderer((ModelBase) this, 16, 14)).addBox(1.0f, -5.0f, 0.0f, 2, 2, 1, f);
+		(wolfLeftEar = new ModelRenderer(this, 16, 14)).addBox(1.0f, -5.0f, 0.0f, 2, 2, 1, f);
 		wolfLeftEar.setRotationPoint(-1.0f, f2, -7.0f);
-		(wolfSnout = new ModelRenderer((ModelBase) this, 0, 10)).addBox(-2.0f, 0.0f, -5.0f, 3, 3, 4, f);
+		(wolfSnout = new ModelRenderer(this, 0, 10)).addBox(-2.0f, 0.0f, -5.0f, 3, 3, 4, f);
 		wolfSnout.setRotationPoint(-0.5f, f2, -7.0f);
 	}
 
+	@Override
 	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
 	{
 		super.render(entity, par2, par3, par4, par5, par6, par7);
@@ -66,6 +67,7 @@ public class ModelDirewolf extends ModelBase {
 		wolfMane.render(par7);
 	}
 
+	@Override
 	public void setLivingAnimations(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4)
 	{
 		EntityDirewolf entitywolf = (EntityDirewolf) par1EntityLivingBase;
@@ -85,6 +87,7 @@ public class ModelDirewolf extends ModelBase {
 		wolfLeg4.rotateAngleX = MathHelper.cos(par2 * 0.6662f) * 1.4f * par3;
 	}
 
+	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
 	{
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);

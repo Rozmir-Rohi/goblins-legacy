@@ -4,12 +4,10 @@ package goblin.entity.projectile;
 import goblin.entity.IGoblinEntityTextureBase;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -45,17 +43,17 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 			DamageSource damageSource = null;
 			if (getThrower() == null)
 			{
-				damageSource = DamageSource.causeThrownDamage((Entity) this, (Entity) this);
+				damageSource = DamageSource.causeThrownDamage(this, this);
 			}
 			else
 			{
-				damageSource = DamageSource.causeThrownDamage((Entity) this, getThrower());
+				damageSource = DamageSource.causeThrownDamage(this, getThrower());
 			}
 			if (isBurning() && !(movingObjectPosition.entityHit instanceof EntityEnderman))
 			{
 				movingObjectPosition.entityHit.setFire(5);
 			}
-			if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, (float) motionTimesDamage))
+			if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, motionTimesDamage))
 			{
 				if (movingObjectPosition.entityHit instanceof EntityLivingBase)
 				{
@@ -90,11 +88,11 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 					if (getThrower() != null && getThrower() instanceof EntityLivingBase)
 					{
 						EnchantmentHelper.func_151384_a(entityLivingBase, getThrower());
-						EnchantmentHelper.func_151385_b((EntityLivingBase) getThrower(), (Entity) entityLivingBase);
+						EnchantmentHelper.func_151385_b(getThrower(), entityLivingBase);
 					}
 					if (getThrower() != null && movingObjectPosition.entityHit != getThrower() && movingObjectPosition.entityHit instanceof EntityPlayer && getThrower() instanceof EntityPlayerMP)
 					{
-						((EntityPlayerMP) getThrower()).playerNetServerHandler.sendPacket((Packet) new S2BPacketChangeGameState(6, 0.0f));
+						((EntityPlayerMP) getThrower()).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0f));
 					}
 				}
 				if (!(movingObjectPosition.entityHit instanceof EntityEnderman))
@@ -133,7 +131,7 @@ public class EntityOrbForce extends EntityThrowableOrb implements IGoblinEntityT
 			setDead();
 			if (inTile != 0)
 			{
-				Block.getBlockById(inTile).onEntityCollidedWithBlock(worldObj, xTile, yTile, zTile, (Entity) this);
+				Block.getBlockById(inTile).onEntityCollidedWithBlock(worldObj, xTile, yTile, zTile, this);
 			}
 		}
 	}

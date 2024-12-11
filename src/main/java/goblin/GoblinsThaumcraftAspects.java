@@ -36,7 +36,7 @@ public class GoblinsThaumcraftAspects {
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.powderR), new AspectList().add(Aspect.FIRE, 1).add(Aspect.ENTROPY, 1));
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.orbExplosive), new AspectList().add(Aspect.CRYSTAL, 2).add(Aspect.FIRE, 3).add(Aspect.ENTROPY, 3).add(Aspect.MAGIC, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.crystalR), new AspectList().add(Aspect.CRYSTAL, 3).add(Aspect.FIRE, 2).add(Aspect.ENTROPY, 1));
-		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.swordFire), new AspectList().add(Aspect.CRYSTAL, 6).add(Aspect.FIRE, 3).add(Aspect.WEAPON, 2));
+		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.swordFire), new AspectList().add(Aspect.CRYSTAL, 6).add(Aspect.FIRE, 3).add(Aspect.WEAPON, 3));
 		
 		
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.totemY), new AspectList().add(Aspect.WEATHER, 4));
@@ -55,12 +55,14 @@ public class GoblinsThaumcraftAspects {
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.MobGRSpawner), new AspectList().add(Aspect.BEAST, 2).add(Aspect.MAN, 2).add(Aspect.TRAVEL, 4).add(Aspect.MAGIC, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.MobGMSpawner), new AspectList().add(Aspect.BEAST, 2).add(Aspect.MAN, 2).add(Aspect.TRAVEL, 4).add(Aspect.MAGIC, 4));
 		
+		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.gobDrum), new AspectList().add(Aspect.MECHANISM, 1).add(Aspect.BEAST, 2).add(Aspect.CLOTH, 4).add(Aspect.TREE, 5).add(Aspect.SENSES, 5));
+		
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.VillageSpawn), new AspectList().add(Aspect.BEAST, 4).add(Aspect.MAN, 4).add(Aspect.CRAFT, 6).add(Aspect.MAGIC, 8));
 		
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.ETNT), new AspectList().add(Aspect.FIRE, 18).add(Aspect.ENTROPY, 21).add(Aspect.EARTH, 3));
 		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.MTNT), new AspectList().add(Aspect.FIRE, 25).add(Aspect.ENTROPY, 31).add(Aspect.EARTH, 3));
 		
-				
+		ThaumcraftApi.registerObjectTag(new ItemStack(Goblins.goo), new AspectList().add(Aspect.SLIME, 1).add(Aspect.TRAP, 1));		
 		
 		// =====================================================================================
 				//MOBS
@@ -79,12 +81,12 @@ public class GoblinsThaumcraftAspects {
 		ThaumcraftApi.registerEntityTag("goblin.GoblinSoldier", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 1).add(Aspect.ARMOR, 1).add(Aspect.WEAPON, 2));	
 		ThaumcraftApi.registerEntityTag("goblin.GoblinLord", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 3).add(Aspect.ARMOR, 3).add(Aspect.WEAPON, 4));
 
-		ThaumcraftApi.registerEntityTag("goblin.GOBLINEntityGoblinRanger", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 1).add(Aspect.WEAPON, 2));
-		ThaumcraftApi.registerEntityTag("goblin.GOBLINEntityGoblinRangerGuard", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 1).add(Aspect.WEAPON, 2));
+		ThaumcraftApi.registerEntityTag("goblin.GoblinRanger", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 1).add(Aspect.WEAPON, 2));
+		ThaumcraftApi.registerEntityTag("goblin.GoblinRangerGuard", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 1).add(Aspect.WEAPON, 2));
 
 		ThaumcraftApi.registerEntityTag("goblin.GoblinNinja", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 1).add(Aspect.WEAPON, 3));	
 		
-		ThaumcraftApi.registerEntityTag("goblin.GoblinMage", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 4).add(Aspect.MAGIC, 3));
+		ThaumcraftApi.registerEntityTag("goblin.GoblinMage", new AspectList().add(Aspect.MAN, 2).add(Aspect.MIND, 4).add(Aspect.MAGIC, 5));
 		
 	}
 

@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,6 +30,7 @@ public class RenderGoblinBomber extends RenderLiving {
 		return RenderGoblinBomber.texture;
 	}
 
+	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return func_110832_a((EntityGoblinBomber) entity);
@@ -38,7 +38,7 @@ public class RenderGoblinBomber extends RenderLiving {
 
 	protected void renderEquippedItems(EntityLiving entityLiving, float f)
 	{
-		super.renderEquippedItems((EntityLivingBase) entityLiving, f);
+		super.renderEquippedItems(entityLiving, f);
 		ItemStack itemStack = entityLiving.getHeldItem();
 		if (itemStack != null)
 		{
@@ -80,10 +80,10 @@ public class RenderGoblinBomber extends RenderLiving {
 				GL11.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
 				GL11.glRotatef(20.0f, 0.0f, 0.0f, 1.0f);
 			}
-			renderManager.itemRenderer.renderItem((EntityLivingBase) entityLiving, itemStack, 0);
+			renderManager.itemRenderer.renderItem(entityLiving, itemStack, 0);
 			if (itemStack.getItem() == Items.potionitem)
 			{
-				renderManager.itemRenderer.renderItem((EntityLivingBase) entityLiving, itemStack, 1);
+				renderManager.itemRenderer.renderItem(entityLiving, itemStack, 1);
 			}
 			GL11.glPopMatrix();
 		}

@@ -15,9 +15,17 @@ public class GoblinsEntityTools
 	{
 		return
 			(
-					damageSource.getEntity() != null
-					&& damageSource.getEntity() instanceof EntityMob
-					&& EntityList.getEntityString(damageSource.getEntity()).contains("goblin.")
+					isEntityFromGoblinsMod(damageSource.getEntity())
+			);
+	}
+	
+	public static boolean isEntityFromGoblinsMod(Entity entity)
+	{
+		return
+			(
+					entity != null
+					&& entity instanceof EntityMob
+					&& EntityList.getEntityString(entity).contains("goblin.")
 			);
 	}
 	
@@ -40,7 +48,7 @@ public class GoblinsEntityTools
         	
             if (i > 0)
             {
-                entityToAttack.addVelocity((double)(-MathHelper.sin(attacker.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(attacker.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
+                entityToAttack.addVelocity(-MathHelper.sin(attacker.rotationYaw * (float)Math.PI / 180.0F) * i * 0.5F, 0.1D, MathHelper.cos(attacker.rotationYaw * (float)Math.PI / 180.0F) * i * 0.5F);
                 attacker.motionX *= 0.6D;
                 attacker.motionZ *= 0.6D;
             }

@@ -7,7 +7,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -26,12 +25,14 @@ public class ItemStaffTeleport extends GoblinsItem {
 		timer = 0;
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
     public boolean isFull3D()
     {
         return true;
     }
 
+	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
 	{
 		if (timer == 0)
@@ -82,9 +83,9 @@ public class ItemStaffTeleport extends GoblinsItem {
 				MovingObjectPosition movingObjectPosition = world.rayTraceBlocks(positionVec, finalVec);
 				if (movingObjectPosition != null && movingObjectPosition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
 				{	
-					int x = Math.round((float) movingObjectPosition.blockX);
-					int y = Math.round((float) movingObjectPosition.blockY);
-					int z = Math.round((float) movingObjectPosition.blockZ);
+					int x = Math.round(movingObjectPosition.blockX);
+					int y = Math.round(movingObjectPosition.blockY);
+					int z = Math.round(movingObjectPosition.blockZ);
 					
 					if (
 							world.getBlock(x, y, z) != Blocks.air
@@ -131,7 +132,7 @@ public class ItemStaffTeleport extends GoblinsItem {
 
 		if (!world.isRemote)
 		{
-			world.playSoundAtEntity((Entity) entityPlayer, "mob.endermen.portal", 1f, 1f);
+			world.playSoundAtEntity(entityPlayer, "mob.endermen.portal", 1f, 1f);
 			timer = 20;
 			
 			if (shouldBreakInstantly)
@@ -140,7 +141,7 @@ public class ItemStaffTeleport extends GoblinsItem {
 			}
 			else
 			{
-				itemStack.damageItem(1, (EntityLivingBase) entityPlayer);
+				itemStack.damageItem(1, entityPlayer);
 			}
 		}
 	}
@@ -169,6 +170,7 @@ public class ItemStaffTeleport extends GoblinsItem {
 		}
 	}
 
+	@Override
 	public void onUpdate(ItemStack itemStack, World world, Entity entity, int i, boolean flag)
 	{
 		if (timer > 0)

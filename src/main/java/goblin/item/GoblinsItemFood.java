@@ -30,6 +30,7 @@ public class GoblinsItemFood extends ItemFood {
 		setCreativeTab(Goblins.GOBLINS_CREATIVE_TAB);
 	}
 
+	@Override
 	public void registerIcons(IIconRegister iconRegister)
 	{
 		itemIcon = iconRegister.registerIcon("goblin" + getUnlocalizedName().replaceFirst("item.", ":"));

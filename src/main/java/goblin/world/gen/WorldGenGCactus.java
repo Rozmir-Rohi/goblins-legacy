@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenGCactus extends WorldGenerator {
+	@Override
 	public boolean generate(World world, Random random, int xCoord, int yCoord, int zCoord)
 	{
 		for (int l = 0; l < 1; ++l)

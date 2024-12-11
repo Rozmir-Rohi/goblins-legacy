@@ -4,12 +4,9 @@ package goblin.entity;
 import goblin.achievements.GoblinsAchievements;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
@@ -35,20 +32,21 @@ public class EntityDirewolf extends EntityMob {
 		setSize(0.8f, 0.8f);
 		float moveSpeed = 1.1f;
 		getNavigator().setBreakDoors(true);
-		tasks.addTask(0, (EntityAIBase) new EntityAISwimming((EntityLiving) this));
-		tasks.addTask(2, (EntityAIBase) new EntityAIAttackOnCollide((EntityCreature) this, (Class) EntityPlayer.class, (double) moveSpeed, false));
-		tasks.addTask(3, (EntityAIBase) new EntityAIAttackOnCollide((EntityCreature) this, (Class) EntityVillager.class, (double) moveSpeed, true));
-		tasks.addTask(3, (EntityAIBase) new EntityAIAttackOnCollide((EntityCreature) this, (Class) EntityLiving.class, (double) moveSpeed, true));
-		tasks.addTask(4, (EntityAIBase) new EntityAIMoveTowardsRestriction((EntityCreature) this, (double) moveSpeed));
-		tasks.addTask(6, (EntityAIBase) new EntityAIWander((EntityCreature) this, (double) moveSpeed));
-		tasks.addTask(7, (EntityAIBase) new EntityAIWatchClosest((EntityLiving) this, (Class) EntityPlayer.class, 8.0f));
-		tasks.addTask(7, (EntityAIBase) new EntityAILookIdle((EntityLiving) this));
-		targetTasks.addTask(1, (EntityAIBase) new EntityAIHurtByTarget((EntityCreature) this, false));
-		targetTasks.addTask(2, (EntityAIBase) new EntityAINearestAttackableTarget((EntityCreature) this, (Class) EntityPlayer.class, 0, true));
-		targetTasks.addTask(2, (EntityAIBase) new EntityAINearestAttackableTarget((EntityCreature) this, (Class) EntityVillager.class, 0, false));
-		targetTasks.addTask(4, (EntityAIBase) new EntityAINearestAttackableTarget((EntityCreature) this, (Class) EntityLiving.class, 0, false, false, EntityDirewolf.attackEntitySelector));
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, moveSpeed, false));
+		tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityVillager.class, moveSpeed, true));
+		tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityLiving.class, moveSpeed, true));
+		tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, moveSpeed));
+		tasks.addTask(6, new EntityAIWander(this, moveSpeed));
+		tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0f));
+		tasks.addTask(7, new EntityAILookIdle(this));
+		targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+		targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+		targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
+		targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntityLiving.class, 0, false, false, EntityDirewolf.attackEntitySelector));
 	}
 
+	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
@@ -64,11 +62,13 @@ public class EntityDirewolf extends EntityMob {
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0);
 	}
 
+	@Override
 	protected boolean canDespawn()
 	{
 		return false;
 	}
 
+	@Override
 	protected void attackEntity(Entity entityToAttack, float distanceToEntityToAttack)
 	{
 		if (!worldObj.isRemote && worldObj.difficultySetting != EnumDifficulty.PEACEFUL)
@@ -93,6 +93,7 @@ public class EntityDirewolf extends EntityMob {
 		}
 	}
 	
+	@Override
 	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
     {
 		if (
@@ -102,9 +103,29 @@ public class EntityDirewolf extends EntityMob {
 		{
 			return false; //prevents infighting among Goblins
 		}
-		return super.attackEntityFrom(damageSource, damageTaken);
+		
+		Entity entityThatAttackedThisEntity = damageSource.getEntity();
+		
+		if (!super.attackEntityFrom(damageSource, damageTaken))
+		{
+			return false;
+		}
+		
+		if (riddenByEntity == entityThatAttackedThisEntity || ridingEntity == entityThatAttackedThisEntity)
+		{
+			entityToAttack = null;
+			return false;
+		}
+		
+		if (entityThatAttackedThisEntity != this && worldObj.difficultySetting != EnumDifficulty.PEACEFUL)
+		{
+			entityToAttack = entityThatAttackedThisEntity;
+		}
+		
+		return true;
     }
 
+	@Override
 	public boolean getCanSpawnHere()
 	{
 		int xCoord = MathHelper.floor_double(posX);
@@ -118,40 +139,25 @@ public class EntityDirewolf extends EntityMob {
 		return 0.6283185f;
 	}
 
+	@Override
 	public boolean isEntityInsideOpaqueBlock()
 	{
 		return riddenByEntity == null && super.isEntityInsideOpaqueBlock();
 	}
-
-	public boolean attackEntityFrom(DamageSource damageSource, int i)
-	{
-		Entity entityThatAttackedThisEntity = damageSource.getEntity();
-		if (!super.attackEntityFrom(damageSource, (float) i))
-		{
-			return false;
-		}
-		if (riddenByEntity == entityThatAttackedThisEntity || ridingEntity == entityThatAttackedThisEntity)
-		{
-			entityToAttack = null;
-			return false;
-		}
-		if (entityThatAttackedThisEntity != this && worldObj.difficultySetting != EnumDifficulty.PEACEFUL)
-		{
-			entityToAttack = entityThatAttackedThisEntity;
-		}
-		return true;
-	}
-
+	
+	@Override
 	protected String getLivingSound()
 	{
 		return "mob.wolf.growl";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "mob.wolf.hurt";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "mob.wolf.death";
@@ -162,6 +168,7 @@ public class EntityDirewolf extends EntityMob {
 		return -1;
 	}
 	
+	@Override
 	public void onDeath(DamageSource damageSource)
     {
         if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
@@ -174,6 +181,6 @@ public class EntityDirewolf extends EntityMob {
 
 	static
 	{
-		attackEntitySelector = (IEntitySelector) new GoblinsLesserGoblinAttackFilter();
+		attackEntitySelector = new GoblinsLesserGoblinAttackFilter();
 	}
 }

@@ -1,7 +1,6 @@
 
 package goblin.entity.projectile;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +29,7 @@ public class EntityShuriken extends EntityArrow implements IProjectile {
 	{
 		super(world);
 		renderDistanceWeight = 10.0;
-		shootingEntity = (Entity) entityLivingBaseThrower;
+		shootingEntity = entityLivingBaseThrower;
 		if (entityLivingBaseThrower instanceof EntityPlayer)
 		{
 			canBePickedUp = 1;
@@ -57,7 +56,7 @@ public class EntityShuriken extends EntityArrow implements IProjectile {
 	{
 		super(world);
 		renderDistanceWeight = 10.0;
-		shootingEntity = (Entity) entityLivingBaseThrower;
+		shootingEntity = entityLivingBaseThrower;
 		if (entityLivingBaseThrower instanceof EntityPlayer)
 		{
 			canBePickedUp = 1;
@@ -75,6 +74,7 @@ public class EntityShuriken extends EntityArrow implements IProjectile {
 		setThrowableHeading(motionX, motionY, motionZ, par3 * 1.5f, 1.0f);
 	}
 
+	@Override
 	public void onCollideWithPlayer(EntityPlayer entityPlayer)
 	{
 	}

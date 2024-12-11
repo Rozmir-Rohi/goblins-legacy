@@ -37,6 +37,7 @@ public class GoblinsAchievementEvents {
 
 		if (event.crafting.getItem().equals(Goblins.powderG)) {event.player.addStat(GoblinsAchievements.nature_powder, 1);}
 		if (event.crafting.getItem().equals(Goblins.orbNature)) {event.player.addStat(GoblinsAchievements.nature_orb, 1);}
+		if (event.crafting.getItem().equals(Item.getItemFromBlock(Goblins.gobDrum))) {event.player.addStat(GoblinsAchievements.goblin_drum, 1);}
 		if (event.crafting.getItem().equals(Goblins.crystalG)) {event.player.addStat(GoblinsAchievements.nature_crystal, 1);}
 		if (event.crafting.getItem().equals(Goblins.staffNature)) {event.player.addStat(GoblinsAchievements.scepter_of_life, 1);}
 

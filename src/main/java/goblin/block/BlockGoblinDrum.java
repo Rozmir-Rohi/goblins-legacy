@@ -24,8 +24,10 @@ public class BlockGoblinDrum extends BlockContainer {
 	public BlockGoblinDrum()
 	{
 		super(Material.wood);
+		setStepSound(soundTypeWood);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iIconRegister)
 	{
@@ -34,6 +36,7 @@ public class BlockGoblinDrum extends BlockContainer {
 		bottom = iIconRegister.registerIcon("goblin:DrumBot");
 	}
 
+	@Override
 	public IIcon getIcon(int i, int j)
 	{
 		if (i == 1)
@@ -47,6 +50,7 @@ public class BlockGoblinDrum extends BlockContainer {
 		return side;
 	}
 
+	@Override
 	public void onNeighborBlockChange(World world, int xCoord, int yCoord, int zCoord, Block par5)
 	{
 		if (par5 != Blocks.air)
@@ -64,6 +68,7 @@ public class BlockGoblinDrum extends BlockContainer {
 		}
 	}
 
+	@Override
 	public boolean onBlockActivated(World world, int xCoord, int yCoord, int zCoord, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9)
 	{
 		if (world.isRemote)
@@ -73,12 +78,30 @@ public class BlockGoblinDrum extends BlockContainer {
 		TileEntityGoblinDrum tileEntityNote = (TileEntityGoblinDrum) world.getTileEntity(xCoord, yCoord, zCoord);
 		if (tileEntityNote != null)
 		{
-			tileEntityNote.changePitch();
-			tileEntityNote.triggerNote(world, xCoord, yCoord, zCoord);
+			if (
+					entityPlayer != null
+					&& entityPlayer.isSneaking()
+					&& entityPlayer.getHeldItem() == null	
+				)
+			{
+				tileEntityNote.changePitch();
+			}
+			
+			if (
+					entityPlayer == null
+					|| (
+							entityPlayer != null
+							&& entityPlayer.getHeldItem() == null
+						)
+				)
+			{
+				tileEntityNote.triggerNote(world, xCoord, yCoord, zCoord);
+			}
 		}
 		return true;
 	}
 
+	@Override
 	public void onBlockClicked(World world, int xCoord, int yCoord, int zCoord, EntityPlayer entityPlayer)
 	{
 		if (world.isRemote)
@@ -92,31 +115,17 @@ public class BlockGoblinDrum extends BlockContainer {
 		}
 	}
 
+	@Override
 	public boolean onBlockEventReceived(World world, int xCoord, int yCoord, int zCoord, int par5, int par6)
 	{
 		float f = (float) Math.pow(2.0, (par6 - 12) / 12.0);
-		String soundName = "harp";
-		if (par5 == 1)
-		{
-			soundName = "bd";
-		}
-		if (par5 == 2)
-		{
-			soundName = "snare";
-		}
-		if (par5 == 3)
-		{
-			soundName = "hat";
-		}
-		if (par5 == 4)
-		{
-			soundName = "bassattack";
-		}
-		world.playSoundEffect(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, "note." + soundName, 3.0f, f);
+
+		world.playSoundEffect(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, "goblin:goblindrum", 3.0f, f);
 		world.spawnParticle("note", xCoord + 0.5, yCoord + 1.2, zCoord + 0.5, par6 / 24.0, 0.0, 0.0);
 		return true;
 	}
 
+	@Override
 	public TileEntity createNewTileEntity(World world, int var2)
 	{
 		return new TileEntityGoblinDrum();

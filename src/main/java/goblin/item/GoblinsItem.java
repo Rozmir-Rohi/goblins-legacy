@@ -20,6 +20,7 @@ public class GoblinsItem extends Item {
 	{
 	}
 
+	@Override
 	public void registerIcons(IIconRegister iconRegister)
 	{
 		itemIcon = iconRegister.registerIcon("goblin" + getUnlocalizedName().replaceFirst("item.", ":"));

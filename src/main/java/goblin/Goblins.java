@@ -3,7 +3,6 @@ package goblin;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -86,69 +85,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 @Mod(modid = "goblin", name = "Goblins Legacy", version = "1.0")
 public class Goblins {
-	
-	static int startEntityId = 0;
-	static int MobGSpawnerBlockID;
-	static int MobGRSpawnerBlockID;
-	static int MobGMSpawnerBlockID;
-	static int VillageSpawnBlockID;
-	static int ETNTBlockID;
-	static int MTNTBlockID;
-	static int totemRBlockID;
-	static int totemBBlockID;
-	static int totemGBlockID;
-	static int totemYBlockID;
-	static int gobDrumBlockID;
-	static int gooID;
-	static int swordFireShiftedIndex;
-	static int GoblinFleshShiftedIndex;
-	static int bombShiftedIndex;
-	static int staffBlueShiftedIndex;
-	static int staffNatureShiftedIndex;
-	static int ShurikenShiftedIndex;
-	static int orbBShiftedIndex;
-	static int orbGShiftedIndex;
-	static int orbRShiftedIndex;
-	static int orbYShiftedIndex;
-	static int crystalBShiftedIndex;
-	static int crystalRShiftedIndex;
-	static int crystalGShiftedIndex;
-	static int crystalYShiftedIndex;
-	static int powderRShiftedIndex;
-	static int powderBShiftedIndex;
-	static int powderYShiftedIndex;
-	static int powderGShiftedIndex;
-	static int katanaSwordShiftedIndex;
-	static int staffTeleportShiftedIndex;
-	static int staffLightningShiftedIndex;
-	static int ectoplasmShiftedIndex;
-	static int GoblinBowShiftedIndex;
-	static int GoblinSpawnrate1;
-	static int GoblinSpawnrate2;
-	static int GoblinSpawnrate3;
-	static int spawnerDelay1;
-	static int spawnerDelay2;
-	static int spawnerDelay3;
-	
-	public static int structureSpawnrate;
-	public static int villageSpawnrate;
-	public static int hutsSpawnrate;
-	public static int fireplaceSpawnrate;
-	static boolean spawnerDeath;
-	
-	public static Block MobGSpawner;
-	public static Block MobGRSpawner;
-	public static Block MobGMSpawner;
-	public static Block VillageSpawn;
-	public static Block ETNT;
-	public static Block MTNT;
-	public static Block totemR;
-	public static Block totemB;
-	public static Block totemG;
-	public static Block totemY;
-	public static Block gobDrum;
-	public static Block goo;
-	
+	//item variables
 	public static Item swordFire;
 	public static Item goblinFlesh;
 	public static Item bomb;
@@ -172,8 +109,7 @@ public class Goblins {
 	public static Item staffLightning;
 	public static Item ectoplasm;
 	public static Item goblinBow;
-	
-	
+		
 	public static Item achievement_icon_kill_goblin;
 	public static Item achievement_icon_kill_dire_wolf;
 	public static Item achievement_icon_kill_goblin_ranger;
@@ -187,13 +123,39 @@ public class Goblins {
 	
 	public static Item spawnEgg;
 	
+	static int entitySpawnEggSubId = 0;
+	
 	public static HashMap entityEggs = new LinkedHashMap();
 	
+	
+	//block variables
+	public static Block MobGSpawner;
+	public static Block MobGRSpawner;
+	public static Block MobGMSpawner;
+	public static Block VillageSpawn;
+	public static Block ETNT;
+	public static Block MTNT;
+	public static Block totemR;
+	public static Block totemB;
+	public static Block totemG;
+	public static Block totemY;
+	public static Block gobDrum;
+	public static Block goo;
+	
+	
+	//config variables
+	static int spawnerDelay1;
+	static int spawnerDelay2;
+	static int spawnerDelay3;
+	public static int structureSpawnrate;
+	public static int villageSpawnrate;
+	public static int hutsSpawnrate;
+	public static int fireplaceSpawnrate;
+	public static boolean spawnerDeath;
+	
+	
+	//tool material variables
 	public static final ToolMaterial EXPLOSIVE_MATERIAL = EnumHelper.addToolMaterial("explosiveMaterial", 0, 250, 6.0F, 2.0F, 14).setRepairItem(new ItemStack(powderR));
-//	public static final ToolMaterial NATURE_MATERIAL = EnumHelper.addToolMaterial("natureMaterial", 0, 250, 6.0F, 2.0F, 14).setRepairItem(new ItemStack(powderG));
-//	public static final ToolMaterial ARCANE_MATERIAL = EnumHelper.addToolMaterial("arcaneMaterial", 0, 250, 6.0F, 2.0F, 14).setRepairItem(new ItemStack(powderB));
-//	public static final ToolMaterial LIGHTNING_MATERIAL = EnumHelper.addToolMaterial("lightningMaterial", 0, 250, 6.0F, 2.0F, 14).setRepairItem(new ItemStack(powderY));
-//	public static final ToolMaterial TELEPORTATION_STAFF_MATERIAL = EnumHelper.addToolMaterial("teleportationStaffMaterial", 0, 250, 6.0F, 2.0F, 14).setRepairItem(new ItemStack(powderB));
 	
 	
 	@SidedProxy(clientSide = "goblin.proxy.ClientProxy", serverSide = "goblin.proxy.CommonProxy")
@@ -297,7 +259,8 @@ public class Goblins {
             /**
              * Return the projectile entity spawned by this dispense behavior.
              */
-            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            @Override
+			protected IProjectile getProjectileEntity(World world, IPosition iPosition)
             {
                 return new EntityOrbExplosive(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
             }
@@ -308,7 +271,8 @@ public class Goblins {
             /**
              * Return the projectile entity spawned by this dispense behavior.
              */
-            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            @Override
+			protected IProjectile getProjectileEntity(World world, IPosition iPosition)
             {
                 return new EntityOrbNature(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
             }
@@ -319,7 +283,8 @@ public class Goblins {
             /**
              * Return the projectile entity spawned by this dispense behavior.
              */
-            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            @Override
+			protected IProjectile getProjectileEntity(World world, IPosition iPosition)
             {
                 return new EntityOrbForce(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
             }
@@ -330,7 +295,8 @@ public class Goblins {
             /**
              * Return the projectile entity spawned by this dispense behavior.
              */
-            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            @Override
+			protected IProjectile getProjectileEntity(World world, IPosition iPosition)
             {
                 return new EntityOrbLightning(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
             }
@@ -341,7 +307,8 @@ public class Goblins {
             /**
              * Return the projectile entity spawned by this dispense behavior.
              */
-            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            @Override
+			protected IProjectile getProjectileEntity(World world, IPosition iPosition)
             {
                 return new EntityBomb(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
             }
@@ -352,7 +319,8 @@ public class Goblins {
             /**
              * Return the projectile entity spawned by this dispense behavior.
              */
-            protected IProjectile getProjectileEntity(World world, IPosition iPosition)
+            @Override
+			protected IProjectile getProjectileEntity(World world, IPosition iPosition)
             {
                 return new EntityShuriken(world, iPosition.getX(), iPosition.getY(), iPosition.getZ());
             }
@@ -399,7 +367,7 @@ public class Goblins {
 		 * Register World Generators
 		 */
 		
-		GameRegistry.registerWorldGenerator((IWorldGenerator) new Generate(), 0);
+		GameRegistry.registerWorldGenerator(new Generate(), 0);
 
 		
 		
@@ -408,74 +376,74 @@ public class Goblins {
 		 */
 		
 		int modEntityID = EntityRegistry.findGlobalUniqueEntityId();
-		EntityRegistry.registerModEntity((Class) EntityOrbNature.class, "orbG", modEntityID++, (Object) this, 250, 1, true);
+		EntityRegistry.registerModEntity(EntityOrbNature.class, "orbG", modEntityID++, this, 250, 1, true);
 
-		EntityRegistry.registerModEntity((Class) EntityOrbLightning.class, "orbY", modEntityID++, (Object) this, 250, 1, true);
+		EntityRegistry.registerModEntity(EntityOrbLightning.class, "orbY", modEntityID++, this, 250, 1, true);
 
-		EntityRegistry.registerModEntity((Class) EntityOrbExplosive.class, "orbR", modEntityID++, (Object) this, 250, 1, true);
+		EntityRegistry.registerModEntity(EntityOrbExplosive.class, "orbR", modEntityID++, this, 250, 1, true);
 
-		EntityRegistry.registerModEntity((Class) EntityOrbForce.class, "orbB", modEntityID++, (Object) this, 250, 1, true);
+		EntityRegistry.registerModEntity(EntityOrbForce.class, "orbB", modEntityID++, this, 250, 1, true);
 
-		EntityRegistry.registerModEntity((Class) EntityArcaneball.class, "Arcaneball", modEntityID++, (Object) this, 250, 1, true);
+		EntityRegistry.registerModEntity(EntityArcaneball.class, "Arcaneball", modEntityID++, this, 250, 1, true);
 
-		EntityRegistry.registerModEntity((Class) EntityLightball.class, "Lightball", modEntityID++, (Object) this, 250, 1, true);
+		EntityRegistry.registerModEntity(EntityLightball.class, "Lightball", modEntityID++, this, 250, 1, true);
 
-		EntityRegistry.registerModEntity((Class) EntityShuriken.class, "Shuriken", modEntityID++, (Object) this, 250, 1, true);
+		EntityRegistry.registerModEntity(EntityShuriken.class, "Shuriken", modEntityID++, this, 250, 1, true);
 		
-		EntityRegistry.registerModEntity(EntityEnchantedTNTPrimed.class, "ETNTPrimed", modEntityID++, (Object) this, 250, 5, false);
+		EntityRegistry.registerModEntity(EntityEnchantedTNTPrimed.class, "ETNTPrimed", modEntityID++, this, 250, 5, false);
 		
-		EntityRegistry.registerModEntity((Class) EntityOverchargedTNTPrimed.class, "MTNTPrimed", modEntityID++, (Object) this, 250, 5, false);
+		EntityRegistry.registerModEntity(EntityOverchargedTNTPrimed.class, "MTNTPrimed", modEntityID++, this, 250, 5, false);
 
-		EntityRegistry.registerModEntity((Class) EntityBomb.class, "Bomb", modEntityID++, (Object) this, 250, 1, true);
+		EntityRegistry.registerModEntity(EntityBomb.class, "Bomb", modEntityID++, this, 250, 1, true);
 		
 		
 		
-		GameRegistry.registerTileEntity((Class) TileEntityMobGSpawner.class, "MobGSpawner");
+		GameRegistry.registerTileEntity(TileEntityMobGSpawner.class, "MobGSpawner");
 
-		GameRegistry.registerTileEntity((Class) TileEntityMobGRSpawner.class, "MobGRSpawner");
+		GameRegistry.registerTileEntity(TileEntityMobGRSpawner.class, "MobGRSpawner");
 
-		GameRegistry.registerTileEntity((Class) TileEntityMobGMSpawner.class, "MobGMSpawner");
+		GameRegistry.registerTileEntity(TileEntityMobGMSpawner.class, "MobGMSpawner");
 
-		GameRegistry.registerTileEntity((Class) TileEntityGoblinDrum.class, "TGobDrum");
+		GameRegistry.registerTileEntity(TileEntityGoblinDrum.class, "TGobDrum");
 		
 		
 	
 
-		EntityRegistry.registerModEntity((Class) EntityDirewolf.class, "Direwolf", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityDirewolf.class, 4801343, 1118481);
-		EntityRegistry.addSpawn((Class) EntityDirewolf.class, 4, 1, 5, EnumCreatureType.monster, new BiomeGenBase[] { BiomeGenBase.swampland });
+		EntityRegistry.registerModEntity(EntityDirewolf.class, "Direwolf", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityDirewolf.class, 4801343, 1118481);
+		EntityRegistry.addSpawn(EntityDirewolf.class, 4, 1, 5, EnumCreatureType.monster, new BiomeGenBase[] { BiomeGenBase.swampland });
 		
-		EntityRegistry.registerModEntity((Class) EntityGoblin.class, "Goblin", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblin.class, 3178279, 6044188);
+		EntityRegistry.registerModEntity(EntityGoblin.class, "Goblin", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblin.class, 3178279, 6044188);
 		
-		EntityRegistry.registerModEntity((Class) EntityGoblinBomber.class, "GoblinBomber", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinBomber.class, 5856839, 2631459);
+		EntityRegistry.registerModEntity(EntityGoblinBomber.class, "GoblinBomber", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinBomber.class, 5856839, 2631459);
 
-		EntityRegistry.registerModEntity((Class) EntityGoblinLord.class, "GoblinLord", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinLord.class, 4027205, 2175518);
+		EntityRegistry.registerModEntity(EntityGoblinLord.class, "GoblinLord", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinLord.class, 4027205, 2175518);
 
-		EntityRegistry.registerModEntity((Class) EntityGoblinMage.class, "GoblinMage", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinMage.class, 4027205, 10950147);
+		EntityRegistry.registerModEntity(EntityGoblinMage.class, "GoblinMage", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinMage.class, 4027205, 10950147);
 		
-		EntityRegistry.registerModEntity((Class) EntityGoblinMiner.class, "GoblinMiner", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinMiner.class, 7306346, 6710886);
+		EntityRegistry.registerModEntity(EntityGoblinMiner.class, "GoblinMiner", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinMiner.class, 7306346, 6710886);
 
 		EntityRegistry.addSpawn(EntityGoblinMiner.class, 5, 1, 1, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.swampland);
 		
-		EntityRegistry.registerModEntity((Class) EntityGoblinNinja.class, "GoblinNinja", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinNinja.class, 5856839, 6498581);
+		EntityRegistry.registerModEntity(EntityGoblinNinja.class, "GoblinNinja", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinNinja.class, 5856839, 6498581);
 		
-		EntityRegistry.registerModEntity((Class) EntityGoblinRanger.class, "GoblinRanger", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinRanger.class, 35926, 8083721);
+		EntityRegistry.registerModEntity(EntityGoblinRanger.class, "GoblinRanger", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinRanger.class, 35926, 8083721);
 
-		EntityRegistry.registerModEntity((Class) EntityGoblinRangerGuard.class, "GoblinRangerGuard", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinRangerGuard.class, 35926, 8083721);
+		EntityRegistry.registerModEntity(EntityGoblinRangerGuard.class, "GoblinRangerGuard", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinRangerGuard.class, 35926, 8083721);
 
-		EntityRegistry.registerModEntity((Class) EntityGoblinRider.class, "GoblinRider", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinRider.class, 4872741, 11168283);
+		EntityRegistry.registerModEntity(EntityGoblinRider.class, "GoblinRider", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinRider.class, 4872741, 11168283);
 		
-		EntityRegistry.registerModEntity((Class) EntityGoblinSoldier.class, "GoblinSoldier", modEntityID++, (Object) this, 250, 1, false);
-		registerEntitySpawnEgg((Class<? extends Entity>) EntityGoblinSoldier.class, 7761199, 6498581);
+		EntityRegistry.registerModEntity(EntityGoblinSoldier.class, "GoblinSoldier", modEntityID++, this, 250, 1, false);
+		registerEntitySpawnEgg(EntityGoblinSoldier.class, 7761199, 6498581);
 		
 		
 		
@@ -556,6 +524,9 @@ public class Goblins {
 		GameRegistry.addShapelessRecipe(new ItemStack(crystalY), new Object[]
 		{ powderY, powderY });
 		
+		GameRegistry.addRecipe(new ItemStack(Item.getItemFromBlock(gobDrum)), new Object[]
+		{ "YYY", "XZX", "XXX", 'X', new ItemStack(Blocks.log, 0), 'Y', Items.leather, 'Z', powderG});
+		
 		
 		/**
 		 *  Events
@@ -593,8 +564,8 @@ public class Goblins {
 
 	public static int getItemSubId()
 	{
-		++startEntityId;
-		return startEntityId;
+		++entitySpawnEggSubId;
+		return entitySpawnEggSubId;
 	}
 
 	public static void registerEntitySpawnEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor)

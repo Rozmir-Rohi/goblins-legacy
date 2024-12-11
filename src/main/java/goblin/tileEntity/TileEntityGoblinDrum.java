@@ -1,8 +1,8 @@
 
 package goblin.tileEntity;
 
+import goblin.Goblins;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -17,12 +17,14 @@ public class TileEntityGoblinDrum extends TileEntity {
 		previousRedstoneState = false;
 	}
 
+	@Override
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.writeToNBT(par1NBTTagCompound);
 		par1NBTTagCompound.setByte("note", note);
 	}
 
+	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readFromNBT(par1NBTTagCompound);
@@ -47,6 +49,6 @@ public class TileEntityGoblinDrum extends TileEntity {
 	{
 		Material material = world.getBlock(xCoord, yCoord - 1, zCoord).getMaterial();
 		byte byte0 = 1;
-		world.addBlockEvent(xCoord, yCoord, zCoord, Blocks.noteblock, (int) byte0, (int) note);
+		world.addBlockEvent(xCoord, yCoord, zCoord, Goblins.gobDrum, byte0, note);
 	}
 }

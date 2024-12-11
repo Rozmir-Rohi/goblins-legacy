@@ -5,7 +5,6 @@ import goblin.Goblins;
 import goblin.achievements.GoblinsAchievements;
 import goblin.entity.projectile.EntityShuriken;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -32,6 +31,7 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 		setSize(0.6f, 0.8f);
 	}
 
+	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
@@ -40,22 +40,34 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0);
 	}
 	
+	@Override
 	protected boolean isAIEnabled()
 	{
 		return false;
 	}
 
+	@Override
 	protected void attackEntity(Entity entityToAttack, float distanceToEntityToAttack)
 	{
 		if (
 				distanceToEntityToAttack < DISTANCE_THAT_IS_CONSIDERED_AS_CLOSE
 			)
 		{
-			if (onGround && distanceToEntityToAttack >= 2.0 && distanceToEntityToAttack < 3.0 && rand.nextInt(3) == 0)
+			if (
+					onGround
+					&& distanceToEntityToAttack >= 2.0
+					&& distanceToEntityToAttack < 3.0
+					&& rand.nextInt(3) == 0
+				)
 			{	//move toward entityToAttack
 				moveTowardEntity(entityToAttack, true);
 			}
-			else if ((attackTime <= 0 || attackTime > 20) && distanceToEntityToAttack < 2.0f && entityToAttack.boundingBox.maxY > boundingBox.minY && entityToAttack.boundingBox.minY < boundingBox.maxY)
+			else if (
+						(attackTime <= 0 || attackTime > 20)
+						&& distanceToEntityToAttack < 2.0f
+						&& entityToAttack.boundingBox.maxY > boundingBox.minY
+						&& entityToAttack.boundingBox.minY < boundingBox.maxY
+					)
 			{
 				attackTime = 20;
 				GoblinsEntityTools.goblinsCustomAttackEntityAsMob(this, entityToAttack);
@@ -76,11 +88,11 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 				
 				if (attackTime == 0)
 				{
-					EntityShuriken entityShuriken = new EntityShuriken(worldObj, (EntityLivingBase) this, 1.0f);
+					EntityShuriken entityShuriken = new EntityShuriken(worldObj, this, 1.0f);
 					double yDistance = entityToAttack.posY + entityToAttack.getEyeHeight() - 0.699999988079071 - entityShuriken.posY;
 					float xzSquareRootDistance = MathHelper.sqrt_double(xDistance * xDistance + zDistance * zDistance) * 0.2f;
-					worldObj.playSoundAtEntity((Entity) this, "random.bow", 1.0f, 1.0f / (rand.nextFloat() * 0.4f + 0.8f));
-					worldObj.spawnEntityInWorld((Entity) entityShuriken);
+					worldObj.playSoundAtEntity(this, "random.bow", 1.0f, 1.0f / (rand.nextFloat() * 0.4f + 0.8f));
+					worldObj.spawnEntityInWorld(entityShuriken);
 					entityShuriken.setThrowableHeading(xDistance, yDistance + xzSquareRootDistance, zDistance, 1.6f, 12.0f);
 					attackTime = 50;
 				}
@@ -90,9 +102,10 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 		}
 	}
 	
+	@Override
 	public void onUpdate()
 	{	
-		Entity entityTarget = worldObj.getClosestVulnerablePlayerToEntity((Entity)this, 16.0D);
+		Entity entityTarget = worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
 	    if (
 	    		entityTarget == null
 	    		&& rand.nextInt(25) == 0 //give a slight delay here because the findPlayerToAttack() function is exhaustive
@@ -104,7 +117,7 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 	    if (entityTarget != null)
 	    {
 	    
-		    float distanceToEntityTarget = getDistanceToEntity((Entity) entityTarget);
+		    float distanceToEntityTarget = getDistanceToEntity(entityTarget);
 		    
 		    if (distanceToEntityTarget < DISTANCE_THAT_IS_CONSIDERED_AS_CLOSE)
 			{
@@ -126,44 +139,52 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 		int k = MathHelper.floor_double(posX);
 		int l = MathHelper.floor_double(posZ);
 		int m = MathHelper.floor_double(boundingBox.minY);
-		setLocationAndAngles((double) (k + i1 + 0.5f), (double) m, (double) (l + j1 + 0.5f), rotationYaw, rotationPitch);
+		setLocationAndAngles(k + i1 + 0.5f, m, l + j1 + 0.5f, rotationYaw, rotationPitch);
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.writeEntityToNBT(nbtTagCompound);
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.readEntityFromNBT(nbtTagCompound);
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "goblin:goblin.idle";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "goblin:goblin.hurt";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "goblin:goblin.dead";
 	}
 
+	@Override
 	protected float getSoundVolume()
 	{
 		return 0.4f;
 	}
 
+	@Override
 	public int getMaxSpawnedInChunk()
 	{
 		return 1;
 	}
 
+	@Override
 	protected void dropFewItems(boolean flag, int i)
 	{
 		dropItem(Goblins.shuriken, rand.nextInt(5) + 4);
@@ -175,11 +196,13 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 		}
 	}
 
+	@Override
 	public boolean getCanSpawnHere()
 	{
 		return true;
 	}
 	
+	@Override
 	public ItemStack getHeldItem()
 	{
 		if (isCloseToEnemy)
@@ -193,6 +216,7 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 		}
 	}
 	
+	@Override
 	public void onDeath(DamageSource damageSource)
     {
         if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)

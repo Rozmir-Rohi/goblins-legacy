@@ -32,6 +32,7 @@ public class GoblinsAchievements {
 	public static Achievement green_totem;
 	public static Achievement nature_powder;
 	public static Achievement nature_orb;
+	public static Achievement goblin_drum;
 	public static Achievement nature_crystal;
 	public static Achievement scepter_of_life;
 	
@@ -93,7 +94,8 @@ public class GoblinsAchievements {
 		
 		green_totem = new Achievement("achievement.green_totem", "green_totem", TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * 1), Goblins.totemG, (Achievement)null).initIndependentStat().registerStat();
 		nature_powder = new Achievement("achievement.nature_powder", "nature_powder", TOTEM_ACHIEVEMENTS_X_BASE + 2, TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * 1), Goblins.powderG, green_totem).registerStat();
-		nature_orb = new Achievement("achievement.nature_orb", "nature_orb", TOTEM_ACHIEVEMENTS_X_BASE + 2, (TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * 1)) - 2, Goblins.orbNature, nature_powder).registerStat();
+		nature_orb = new Achievement("achievement.nature_orb", "nature_orb", TOTEM_ACHIEVEMENTS_X_BASE + 1, (TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * 1)) - 2, Goblins.orbNature, nature_powder).registerStat();
+		goblin_drum = new Achievement("achievement.goblin_drum", "goblin_drum", TOTEM_ACHIEVEMENTS_X_BASE + 3, (TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * 1)) - 2, Goblins.gobDrum, nature_powder).registerStat();
 		nature_crystal = new Achievement("achievement.nature_crystal", "nature_crystal", TOTEM_ACHIEVEMENTS_X_BASE + 4, TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * 1), Goblins.crystalG, nature_powder).registerStat();
 		scepter_of_life = new Achievement("achievement.scepter_of_life", "scepter_of_life", TOTEM_ACHIEVEMENTS_X_BASE + 6, TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * 1), Goblins.staffNature, nature_crystal).registerStat();
 		
@@ -119,7 +121,7 @@ public class GoblinsAchievements {
 		katana = new Achievement("achievement.katana", "katana", -TOTEM_ACHIEVEMENTS_X_BASE - 4,  TOTEM_ACHIEVEMENTS_Y_BASE - (TOTEM_ACHIEVEMENTS_Y_OVERALL_SPACING * -1), Goblins.swordKatana, kill_goblin_ninja).registerStat();
 		
 		
-		kill_goblin = new Achievement("achievement.kill_goblin", "kill_goblin", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin, (Achievement)null).initIndependentStat().registerStat();
+		kill_goblin = new Achievement("achievement.kill_goblin", "kill_goblin", -TOTEM_ACHIEVEMENTS_X_BASE, TOTEM_ACHIEVEMENTS_Y_BASE - 4, Goblins.achievement_icon_kill_goblin, (Achievement)null).initIndependentStat().registerStat();
 		
 		kill_dire_wolf = new Achievement("achievement.kill_dire_wolf", "kill_dire_wolf", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 1, Goblins.achievement_icon_kill_dire_wolf, (Achievement)null).initIndependentStat().registerStat();
 		kill_goblin_rider  = new Achievement("achievement.kill_goblin_rider", "kill_goblin_rider", -TOTEM_ACHIEVEMENTS_X_BASE - 4, TOTEM_ACHIEVEMENTS_Y_BASE - 1, Goblins.achievement_icon_kill_goblin_rider, (Achievement)null).initIndependentStat().registerStat();
@@ -132,8 +134,8 @@ public class GoblinsAchievements {
 		kill_goblin_miner = new Achievement("achievement.kill_goblin_miner", "kill_goblin_miner", -TOTEM_ACHIEVEMENTS_X_BASE - 2, TOTEM_ACHIEVEMENTS_Y_BASE - 3, Goblins.achievement_icon_kill_goblin_miner, (Achievement)null).initIndependentStat().registerStat();
 		kill_goblin_bomber = new Achievement("achievement.kill_goblin_bomber", "kill_goblin_bomber", -TOTEM_ACHIEVEMENTS_X_BASE - 4, TOTEM_ACHIEVEMENTS_Y_BASE - 3, Goblins.achievement_icon_kill_goblin_bomber, (Achievement)null).initIndependentStat().registerStat();
 		
-		kill_goblin_lord = new Achievement("achievement.kill_goblin_lord", "kill_goblin_lord", -TOTEM_ACHIEVEMENTS_X_BASE - 6, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin_lord, (Achievement)null).initIndependentStat().registerStat();
-		kill_goblin_shaman = new Achievement("achievement.kill_goblin_shaman", "kill_goblin_shaman", -TOTEM_ACHIEVEMENTS_X_BASE - 6, TOTEM_ACHIEVEMENTS_Y_BASE - 2, Goblins.achievement_icon_kill_goblin_shaman, (Achievement)null).initIndependentStat().registerStat();
+		kill_goblin_lord = new Achievement("achievement.kill_goblin_lord", "kill_goblin_lord", -TOTEM_ACHIEVEMENTS_X_BASE - 6, TOTEM_ACHIEVEMENTS_Y_BASE - 5, Goblins.achievement_icon_kill_goblin_lord, (Achievement)null).initIndependentStat().setSpecial().registerStat();
+		kill_goblin_shaman = new Achievement("achievement.kill_goblin_shaman", "kill_goblin_shaman", -TOTEM_ACHIEVEMENTS_X_BASE - 6, TOTEM_ACHIEVEMENTS_Y_BASE - 2, Goblins.achievement_icon_kill_goblin_shaman, (Achievement)null).initIndependentStat().setSpecial().registerStat();
 		
 		
 		
@@ -151,6 +153,7 @@ public class GoblinsAchievements {
 				green_totem,
 				nature_powder,
 				nature_orb,
+				goblin_drum,
 				nature_crystal,
 				scepter_of_life,
 				

@@ -8,9 +8,7 @@ import goblin.entity.EntityGoblinLord;
 import goblin.entity.EntityGoblinMage;
 import goblin.entity.EntityGoblinRangerGuard;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 
@@ -26,12 +24,12 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 			{
 				if (world.getBlock(xCoord + width, yCoord - 1, zCoord + length) == Blocks.grass)
 				{
-					world.setBlock(xCoord + width, yCoord, zCoord + length, (Block) Blocks.grass);
+					world.setBlock(xCoord + width, yCoord, zCoord + length, Blocks.grass);
 					world.setBlock(xCoord + width, yCoord - 1, zCoord + length, Blocks.dirt);
 				}
 				if (world.getBlock(xCoord + width, yCoord - 2, zCoord + length) == Blocks.grass)
 				{
-					world.setBlock(xCoord + width, yCoord - 1, zCoord + length, (Block) Blocks.grass);
+					world.setBlock(xCoord + width, yCoord - 1, zCoord + length, Blocks.grass);
 					world.setBlock(xCoord + width, yCoord - 2, zCoord + length, Blocks.dirt);
 				}
 			}
@@ -73,12 +71,12 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		world.setBlock(xCoord + 11, yCoord + 3, zCoord + 16, Goblins.totemB, 0, 2);
 		world.setBlock(xCoord + 11, yCoord + 4, zCoord + 16, Goblins.totemY, 0, 2);
 		world.setBlock(xCoord + 11, yCoord - 1, zCoord + 11, Blocks.netherrack, 0, 2);
-		world.setBlock(xCoord + 11, yCoord, zCoord + 11, (Block) Blocks.fire, 0, 2);
+		world.setBlock(xCoord + 11, yCoord, zCoord + 11, Blocks.fire, 0, 2);
 		world.setBlock(xCoord + 11, yCoord + 1, zCoord + 11, Blocks.iron_bars, 0, 2);
-		world.setBlock(xCoord + 11, yCoord + 1, zCoord + 12, (Block) Blocks.double_stone_slab, 0, 2);
-		world.setBlock(xCoord + 11, yCoord + 1, zCoord + 10, (Block) Blocks.double_stone_slab, 0, 2);
-		world.setBlock(xCoord + 10, yCoord + 1, zCoord + 11, (Block) Blocks.double_stone_slab, 0, 2);
-		world.setBlock(xCoord + 12, yCoord + 1, zCoord + 11, (Block) Blocks.double_stone_slab, 0, 2);
+		world.setBlock(xCoord + 11, yCoord + 1, zCoord + 12, Blocks.double_stone_slab, 0, 2);
+		world.setBlock(xCoord + 11, yCoord + 1, zCoord + 10, Blocks.double_stone_slab, 0, 2);
+		world.setBlock(xCoord + 10, yCoord + 1, zCoord + 11, Blocks.double_stone_slab, 0, 2);
+		world.setBlock(xCoord + 12, yCoord + 1, zCoord + 11, Blocks.double_stone_slab, 0, 2);
 		world.setBlock(xCoord + 12, yCoord + 1, zCoord + 17, Blocks.fence, 0, 2);
 		world.setBlock(xCoord + 10, yCoord + 1, zCoord + 17, Blocks.fence, 0, 2);
 		world.setBlock(xCoord + 12, yCoord + 1, zCoord + 15, Blocks.fence, 0, 2);
@@ -91,7 +89,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		{
 			for (int length2 = 0; length2 < 3; ++length2)
 			{
-				world.setBlock(xCoord + 10 + width2, yCoord, zCoord + 15 + length2, (Block) Blocks.grass, 0, 2);
+				world.setBlock(xCoord + 10 + width2, yCoord, zCoord + 15 + length2, Blocks.grass, 0, 2);
 			}
 		}
 		houseLoc1 = 3 - rand.nextInt(2);
@@ -210,7 +208,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				{
 					if (height2 == 0)
 					{
-						world.setBlock(xCoord + width3 + houseLoc1, yCoord - height2, zCoord + width4 + houseLoc2, (Block) Blocks.grass, 0, 2);
+						world.setBlock(xCoord + width3 + houseLoc1, yCoord - height2, zCoord + width4 + houseLoc2, Blocks.grass, 0, 2);
 					}
 					else if (height2 > 0 && height2 < 3)
 					{
@@ -331,23 +329,23 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 			world.setBlock(xCoord + houseLoc1 + 3, yCoord + height3, zCoord + houseLoc2 + 5, Blocks.stone_brick_stairs, 2, 2);
 			world.setBlock(xCoord + houseLoc1 + 4, yCoord + height3, zCoord + houseLoc2 + 5, Blocks.stonebrick, 3, 2);
 			world.setBlock(xCoord + houseLoc1 + 5, yCoord + height3, zCoord + houseLoc2 + 2, Blocks.stonebrick, 3, 2);
-			world.setBlock(xCoord + houseLoc1 + 5, yCoord + height3, zCoord + houseLoc2 + 3, (Block) Blocks.cauldron, 0, 2);
+			world.setBlock(xCoord + houseLoc1 + 5, yCoord + height3, zCoord + houseLoc2 + 3, Blocks.cauldron, 0, 2);
 			world.setBlock(xCoord + houseLoc1 + 5, yCoord + height3, zCoord + houseLoc2 + 4, Blocks.stonebrick, 3, 2);
 		}
 		int bossSelector = rand.nextInt(2);
 		if (bossSelector == 0)
 		{
 			EntityGoblinMage goblinMage = new EntityGoblinMage(world);
-			goblinMage.setLocationAndAngles((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1), world.rand.nextFloat() * 360.0f, 0.0f);
-			goblinMage.setPosition((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1));
-			world.spawnEntityInWorld((Entity) goblinMage);
+			goblinMage.setLocationAndAngles(xCoord + houseLoc1 + 3, yCoord + 1, zCoord + houseLoc2 - 1, world.rand.nextFloat() * 360.0f, 0.0f);
+			goblinMage.setPosition(xCoord + houseLoc1 + 3, yCoord + 1, zCoord + houseLoc2 - 1);
+			world.spawnEntityInWorld(goblinMage);
 		}
 		else
 		{
 			EntityGoblinLord goblinLord = new EntityGoblinLord(world);
-			goblinLord.setLocationAndAngles((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1), world.rand.nextFloat() * 360.0f, 0.0f);
-			goblinLord.setPosition((double) (xCoord + houseLoc1 + 3), (double) (yCoord + 1), (double) (zCoord + houseLoc2 - 1));
-			world.spawnEntityInWorld((Entity) goblinLord);
+			goblinLord.setLocationAndAngles(xCoord + houseLoc1 + 3, yCoord + 1, zCoord + houseLoc2 - 1, world.rand.nextFloat() * 360.0f, 0.0f);
+			goblinLord.setPosition(xCoord + houseLoc1 + 3, yCoord + 1, zCoord + houseLoc2 - 1);
+			world.spawnEntityInWorld(goblinLord);
 		}
 		generateTrees(world, rand, xCoord + 11, yCoord, zCoord + 16, 15 + rand.nextInt(15));
 		generatePoles(world, rand, xCoord + 11, yCoord, zCoord + 16, rand.nextInt(10));
@@ -358,6 +356,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		return true;
 	}
 
+	@Override
 	public boolean generate(World world, Random rand, int i, int j, int k)
 	{
 		if (world.getBlock(i, j, k) == Blocks.grass && world.getBlock(i + 21, j, k + 30) == Blocks.grass && canGenerate(world, rand, i, j, k) && world.getBlock(i + 21, j + 10, k + 30) == Blocks.air && world.getBlock(i, j + 10, k) == Blocks.air)
@@ -457,7 +456,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		for (int c = 0; c < limit / 2; ++c)
 		{
 			Block block = world.getBlock(i + c, j, k);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + c, j, k))
+			if (block != Blocks.air && !block.isReplaceable(world, i + c, j, k))
 			{
 				break;
 			}
@@ -466,7 +465,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				break;
 			}
 			block = world.getBlock(i + c, j, k - 1);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + c, j, k - 1))
+			if (block != Blocks.air && !block.isReplaceable(world, i + c, j, k - 1))
 			{
 				break;
 			}
@@ -479,7 +478,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		for (int c = 0; c > -limit / 2; --c)
 		{
 			Block block = world.getBlock(i + c, j, k);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + c, j, k))
+			if (block != Blocks.air && !block.isReplaceable(world, i + c, j, k))
 			{
 				break;
 			}
@@ -488,7 +487,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				break;
 			}
 			block = world.getBlock(i + c, j, k - 1);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + c, j, k - 1))
+			if (block != Blocks.air && !block.isReplaceable(world, i + c, j, k - 1))
 			{
 				break;
 			}
@@ -555,11 +554,11 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 					world.setBlock(i + x, j + 3, k, Blocks.air);
 					if (rand.nextInt(2) == 0 && world.getBlock(i + x + 1, j + 2, k - 1) != Blocks.wooden_slab && world.getBlock(i + x - 1, j + 2, k - 1) != Blocks.wooden_slab)
 					{
-						world.setBlock(i + x, j + 2, k - 1, (Block) Blocks.wooden_slab);
+						world.setBlock(i + x, j + 2, k - 1, Blocks.wooden_slab);
 						EntityGoblinRangerGuard guard = new EntityGoblinRangerGuard(world);
-						guard.setLocationAndAngles(i + x + 0.5, (double) (j + 3), k - 1 + 0.5, world.rand.nextFloat() * 360.0f, 0.0f);
-						guard.setPosition(i + x + 0.5, (double) (j + 3), k - 1 + 0.5);
-						world.spawnEntityInWorld((Entity) guard);
+						guard.setLocationAndAngles(i + x + 0.5, j + 3, k - 1 + 0.5, world.rand.nextFloat() * 360.0f, 0.0f);
+						guard.setPosition(i + x + 0.5, j + 3, k - 1 + 0.5);
+						world.spawnEntityInWorld(guard);
 					}
 				}
 			}
@@ -576,7 +575,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		for (int c = 0; c < limit / 2; ++c)
 		{
 			Block block = world.getBlock(i + c, j, k);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + c, j, k))
+			if (block != Blocks.air && !block.isReplaceable(world, i + c, j, k))
 			{
 				break;
 			}
@@ -585,7 +584,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				break;
 			}
 			block = world.getBlock(i + c, j, k + 1);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + c, j, k + 1))
+			if (block != Blocks.air && !block.isReplaceable(world, i + c, j, k + 1))
 			{
 				break;
 			}
@@ -598,7 +597,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		for (int c = 0; c > -limit / 2; --c)
 		{
 			Block block = world.getBlock(i + c, j, k);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + c, j, k))
+			if (block != Blocks.air && !block.isReplaceable(world, i + c, j, k))
 			{
 				break;
 			}
@@ -607,7 +606,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				break;
 			}
 			block = world.getBlock(i + c, j, k + 1);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + c, j, k + 1))
+			if (block != Blocks.air && !block.isReplaceable(world, i + c, j, k + 1))
 			{
 				break;
 			}
@@ -674,11 +673,11 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 					world.setBlock(i + x, j + 3, k, Blocks.air);
 					if (rand.nextInt(2) == 0 && world.getBlock(i + x + 1, j + 2, k + 1) != Blocks.wooden_slab && world.getBlock(i + x - 1, j + 2, k + 1) != Blocks.wooden_slab)
 					{
-						world.setBlock(i + x, j + 2, k + 1, (Block) Blocks.wooden_slab);
+						world.setBlock(i + x, j + 2, k + 1, Blocks.wooden_slab);
 						EntityGoblinRangerGuard guard = new EntityGoblinRangerGuard(world);
-						guard.setLocationAndAngles(i + x + 0.5, (double) (j + 3), k + 1 + 0.5, world.rand.nextFloat() * 360.0f, 0.0f);
-						guard.setPosition(i + x + 0.5, (double) (j + 3), k + 1 + 0.5);
-						world.spawnEntityInWorld((Entity) guard);
+						guard.setLocationAndAngles(i + x + 0.5, j + 3, k + 1 + 0.5, world.rand.nextFloat() * 360.0f, 0.0f);
+						guard.setPosition(i + x + 0.5, j + 3, k + 1 + 0.5);
+						world.spawnEntityInWorld(guard);
 					}
 				}
 			}
@@ -695,7 +694,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		for (int c = 0; c < limit / 2; ++c)
 		{
 			Block block = world.getBlock(i, j, k + c);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i, j, k + c))
+			if (block != Blocks.air && !block.isReplaceable(world, i, j, k + c))
 			{
 				break;
 			}
@@ -704,7 +703,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				break;
 			}
 			block = world.getBlock(i - 1, j, k + c);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i - 1, j, k + c))
+			if (block != Blocks.air && !block.isReplaceable(world, i - 1, j, k + c))
 			{
 				break;
 			}
@@ -717,7 +716,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		for (int c = 0; c > -limit / 2; --c)
 		{
 			Block block = world.getBlock(i, j, k + c);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i, j, k + c))
+			if (block != Blocks.air && !block.isReplaceable(world, i, j, k + c))
 			{
 				break;
 			}
@@ -726,7 +725,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				break;
 			}
 			block = world.getBlock(i - 1, j, k + c);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i - 1, j, k + c))
+			if (block != Blocks.air && !block.isReplaceable(world, i - 1, j, k + c))
 			{
 				break;
 			}
@@ -793,11 +792,11 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 					world.setBlock(i, j + 3, k + x, Blocks.air);
 					if (rand.nextInt(2) == 0 && world.getBlock(i - 1, j + 2, k + x + 1) != Blocks.wooden_slab && world.getBlock(i - 1, j + 2, k + x - 1) != Blocks.wooden_slab)
 					{
-						world.setBlock(i - 1, j + 2, k + x, (Block) Blocks.wooden_slab);
+						world.setBlock(i - 1, j + 2, k + x, Blocks.wooden_slab);
 						EntityGoblinRangerGuard guard = new EntityGoblinRangerGuard(world);
-						guard.setLocationAndAngles(i - 1 + 0.5, (double) (j + 3), k + x + 0.5, world.rand.nextFloat() * 360.0f, 0.0f);
-						guard.setPosition(i - 1 + 0.5, (double) (j + 3), k + x + 0.5);
-						world.spawnEntityInWorld((Entity) guard);
+						guard.setLocationAndAngles(i - 1 + 0.5, j + 3, k + x + 0.5, world.rand.nextFloat() * 360.0f, 0.0f);
+						guard.setPosition(i - 1 + 0.5, j + 3, k + x + 0.5);
+						world.spawnEntityInWorld(guard);
 					}
 				}
 			}
@@ -814,7 +813,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		for (int c = 0; c < limit / 2; ++c)
 		{
 			Block block = world.getBlock(i, j, k + c);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i, j, k + c))
+			if (block != Blocks.air && !block.isReplaceable(world, i, j, k + c))
 			{
 				break;
 			}
@@ -823,7 +822,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				break;
 			}
 			block = world.getBlock(i + 1, j, k + c);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + 1, j, k + c))
+			if (block != Blocks.air && !block.isReplaceable(world, i + 1, j, k + c))
 			{
 				break;
 			}
@@ -836,7 +835,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 		for (int c = 0; c > -limit / 2; --c)
 		{
 			Block block = world.getBlock(i, j, k + c);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i, j, k + c))
+			if (block != Blocks.air && !block.isReplaceable(world, i, j, k + c))
 			{
 				break;
 			}
@@ -845,7 +844,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				break;
 			}
 			block = world.getBlock(i + 1, j, k + c);
-			if (block != Blocks.air && !block.isReplaceable((IBlockAccess) world, i + 1, j, k + c))
+			if (block != Blocks.air && !block.isReplaceable(world, i + 1, j, k + c))
 			{
 				break;
 			}
@@ -912,11 +911,11 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 					world.setBlock(i, j + 3, k + x, Blocks.air);
 					if (rand.nextInt(2) == 0 && world.getBlock(i + 1, j + 2, k + x + 1) != Blocks.wooden_slab && world.getBlock(i + 1, j + 2, k + x - 1) != Blocks.wooden_slab)
 					{
-						world.setBlock(i + 1, j + 2, k + x, (Block) Blocks.wooden_slab);
+						world.setBlock(i + 1, j + 2, k + x, Blocks.wooden_slab);
 						EntityGoblinRangerGuard guard = new EntityGoblinRangerGuard(world);
-						guard.setLocationAndAngles(i + 1 + 0.5, (double) (j + 3), k + x + 0.5, world.rand.nextFloat() * 360.0f, 0.0f);
-						guard.setPosition(i + 1 + 0.5, (double) (j + 3), k + x + 0.5);
-						world.spawnEntityInWorld((Entity) guard);
+						guard.setLocationAndAngles(i + 1 + 0.5, j + 3, k + x + 0.5, world.rand.nextFloat() * 360.0f, 0.0f);
+						guard.setPosition(i + 1 + 0.5, j + 3, k + x + 0.5);
+						world.spawnEntityInWorld(guard);
 					}
 				}
 			}
@@ -1029,7 +1028,7 @@ public class WorldGenGoblinVillage1 extends GoblinsWorldGen {
 				for (int j2 = -10; j2 < 10; ++j2)
 				{
 					Block block = world.getBlock(i2 + i, j + j2 + 1, k2 + k);
-					if (block == Blocks.air || block.isReplaceable((IBlockAccess) world, i2 + i, j + j2 + 1, k2 + k))
+					if (block == Blocks.air || block.isReplaceable(world, i2 + i, j + j2 + 1, k2 + k))
 					{
 						if (world.getBlock(i2 + i, j + j2, k2 + k) == Blocks.grass)
 						{

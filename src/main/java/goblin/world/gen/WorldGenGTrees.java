@@ -28,6 +28,7 @@ public class WorldGenGTrees extends WorldGenerator {
 		field_48200_b = par5;
 	}
 
+	@Override
 	public boolean generate(World world, Random random, int xCoord, int yCoord, int zCoord)
 	{
 		int i = random.nextInt(3) + field_48202_a;
@@ -89,7 +90,7 @@ public class WorldGenGTrees extends WorldGenerator {
 					int i3 = l3 - zCoord;
 					if ((Math.abs(j5) != j4 || Math.abs(i3) != j4 || (random.nextInt(2) != 0 && k3 != 0)) && !world.getBlock(l2, k2, l3).isOpaqueCube())
 					{
-						world.setBlock(l2, k2, l3, (Block) Blocks.leaves);
+						world.setBlock(l2, k2, l3, Blocks.leaves);
 						world.setBlockMetadataWithNotify(l2, k2, l3, field_48199_d, 3);
 					}
 				}

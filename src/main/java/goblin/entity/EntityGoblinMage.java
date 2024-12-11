@@ -6,8 +6,6 @@ import goblin.achievements.GoblinsAchievements;
 import goblin.entity.projectile.EntityArcaneball;
 import goblin.world.gen.WorldGenSlimePool;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.boss.IBossDisplayData;
@@ -56,6 +54,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		spellChooser = false;
 	}
 
+	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
@@ -71,16 +70,19 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.0);
 	}
 
+	@Override
 	public boolean isEntityInsideOpaqueBlock()
 	{
 		return false;
 	}
 
+	@Override
 	protected boolean canDespawn()
 	{
 		return false;
 	}
 
+	@Override
 	protected void entityInit()
 	{
 		super.entityInit();
@@ -90,6 +92,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		spawnPosZ = posZ;
 	}
 
+	@Override
 	public void onUpdate()
 	{
 		super.onUpdate();
@@ -102,12 +105,12 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 			moveSpeed = 0.65;
 		}
 		
-		EntityLivingBase targetedEntityFake = (EntityLivingBase) worldObj.getClosestVulnerablePlayerToEntity((Entity) this, 100.0);
+		EntityLivingBase targetedEntityFake = worldObj.getClosestVulnerablePlayerToEntity(this, 100.0);
 		
 		if (
 				(
 						targetedEntityFake != null
-						&& getDistanceToEntity((Entity) targetedEntityFake) < 6.0f
+						&& getDistanceToEntity(targetedEntityFake) < 6.0f
 				)
 				|| teleportCounter >= 130
 			)
@@ -126,6 +129,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		
 	}
 
+	@Override
 	protected void attackEntity(Entity entityToAttack, float distanceToEntityToAttack)
 	{
 		if (distanceToEntityToAttack < 20.0f)
@@ -134,6 +138,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		}
 	}
 	
+	@Override
 	public boolean attackEntityFrom(DamageSource damageSource, float damageTaken)
     {
 		if (
@@ -151,6 +156,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
     }
 	
 
+	@Override
 	protected void updateEntityActionState()
 	{
 		if (worldObj.difficultySetting != EnumDifficulty.PEACEFUL)
@@ -166,15 +172,15 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 			}
 			if (targetedEntity == null || aggroCooldown-- <= 0)
 			{
-				targetedEntity = (EntityLivingBase) worldObj.getClosestVulnerablePlayerToEntity((Entity) this, 100.0);
+				targetedEntity = worldObj.getClosestVulnerablePlayerToEntity(this, 100.0);
 				if (targetedEntity != null)
 				{
 					aggroCooldown = 20;
 				}
 			}
 			double d4 = 16.0;
-			targetedEntity = (EntityLivingBase) worldObj.getClosestVulnerablePlayerToEntity((Entity) this, 100.0);
-			if (targetedEntity != null && targetedEntity.getDistanceSqToEntity((Entity) this) < d4 * d4)
+			targetedEntity = worldObj.getClosestVulnerablePlayerToEntity(this, 100.0);
+			if (targetedEntity != null && targetedEntity.getDistanceSqToEntity(this) < d4 * d4)
 			{
 				double xDistance = targetedEntity.posX - posX;
 				double yDistance = targetedEntity.boundingBox.minY + targetedEntity.height / 2.0f - (posY + height / 2.0f);
@@ -182,7 +188,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 				float n = -(float) Math.atan2(xDistance, zDistance) * 180.0f / 3.141593f;
 				rotationYaw = n;
 				renderYawOffset = n;
-				if (canEntityBeSeen((Entity) targetedEntity))
+				if (canEntityBeSeen(targetedEntity))
 				{
 					double d8 = 8.0;
 					if (teleportCounter == 140)
@@ -192,11 +198,11 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 					}
 					if (teleportCounter == 150)
 					{
-						teleportToRandomAreaNearby((Entity) targetedEntity);
+						teleportToRandomAreaNearby(targetedEntity);
 						teleportCounter = 0;
 					}
 					++teleportCounter;
-					if (getDistanceToEntity((Entity) targetedEntity) > 6.0f)
+					if (getDistanceToEntity(targetedEntity) > 6.0f)
 					{
 						if (attackCounter == 20)
 						{
@@ -206,14 +212,14 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 						if (attackCounter == 30)
 						{
 							swingItem(); //swing arm
-							worldObj.playSoundAtEntity((Entity) this, "mob.ghast.fireball", getSoundVolume(), (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
-							EntityArcaneball entityArcaneball = new EntityArcaneball(worldObj, (EntityLiving) this);
+							worldObj.playSoundAtEntity(this, "mob.ghast.fireball", getSoundVolume(), (rand.nextFloat() - rand.nextFloat()) * 0.2f + 1.0f);
+							EntityArcaneball entityArcaneball = new EntityArcaneball(worldObj, this);
 							double horizontalMultiplier = 1.0;
 							Vec3 vec3d = getLook(1.0f);
 							entityArcaneball.posX = posX + vec3d.xCoord * horizontalMultiplier;
 							entityArcaneball.posY = posY + height / 2.0f + 0.4;
 							entityArcaneball.posZ = posZ + vec3d.zCoord * horizontalMultiplier;
-							worldObj.spawnEntityInWorld((Entity) entityArcaneball);
+							worldObj.spawnEntityInWorld(entityArcaneball);
 							attackCounter = 0;
 							spellChooser = false;
 						}
@@ -238,7 +244,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 								WorldGenSlimePool worldGenSlimePool = new WorldGenSlimePool();
 								worldGenSlimePool.generate(worldObj, rand, (int) posX, (int) posY, (int) posZ);
 							}
-							teleportToRandomAreaNearby((Entity) targetedEntity);
+							teleportToRandomAreaNearby(targetedEntity);
 							spellChooser = false;
 							attackCounter = 0;
 						}
@@ -265,7 +271,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 				byte byte2 = (byte) ((attackCounter > 10) ? 1 : 0);
 				if (byte0 != byte2)
 				{
-					dataWatcher.updateObject(16, (Object) byte2);
+					dataWatcher.updateObject(16, byte2);
 				}
 			}
 		}
@@ -295,40 +301,47 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		{
 		}
 		swingItem(); //swing arm
-		worldObj.playSoundAtEntity((Entity) this, "mob.endermen.portal", 1.0f, 1.0f);
-		setLocationAndAngles((double) (x + xOffset), (double) y, (double) (z + zOffset), rotationYaw, rotationPitch);
+		worldObj.playSoundAtEntity(this, "mob.endermen.portal", 1.0f, 1.0f);
+		setLocationAndAngles(x + xOffset, y, z + zOffset, rotationYaw, rotationPitch);
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.writeEntityToNBT(nbtTagCompound);
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound nbtTagCompound)
 	{
 		super.readEntityFromNBT(nbtTagCompound);
 	}
 
+	@Override
 	protected String getLivingSound()
 	{
 		return "goblin:goblin.idle";
 	}
 
+	@Override
 	protected String getHurtSound()
 	{
 		return "goblin:goblin.hurt";
 	}
 
+	@Override
 	protected String getDeathSound()
 	{
 		return "goblin:goblin.dead";
 	}
 
+	@Override
 	protected float getSoundVolume()
 	{
 		return 0.4f;
 	}
 
+	@Override
 	protected void dropFewItems(boolean flag, int i)
 	{
 
@@ -362,6 +375,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		dropItem(Items.golden_apple, 1);
 	}
 	
+	@Override
 	public ItemStack getHeldItem()
 	{
 		if (isTeleporting)
@@ -374,6 +388,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
 		}
 	}
 	
+	@Override
 	public void onDeath(DamageSource damageSource)
     {
         if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
@@ -384,6 +399,7 @@ public class EntityGoblinMage extends EntityMob implements IMob, IBossDisplayDat
         super.onDeath(damageSource);
     }
 
+	@Override
 	public boolean getCanSpawnHere()
 	{
 		int xCoord = MathHelper.floor_double(posX);

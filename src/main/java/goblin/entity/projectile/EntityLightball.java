@@ -1,24 +1,15 @@
 
 package goblin.entity.projectile;
 
-import java.util.List;
-
 import goblin.entity.IGoblinEntityTextureBase;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class EntityLightball extends EntityThrowableOrb implements IGoblinEntityTextureBase {
@@ -80,13 +71,13 @@ public class EntityLightball extends EntityThrowableOrb implements IGoblinEntity
 				DamageSource damageSource = null;
 				if (getThrower() == null)
 				{
-					damageSource = DamageSource.causeThrownDamage((Entity) this, (Entity) this);
+					damageSource = DamageSource.causeThrownDamage(this, this);
 				}
 				else
 				{
-					damageSource = DamageSource.causeThrownDamage((Entity) this, getThrower());
+					damageSource = DamageSource.causeThrownDamage(this, getThrower());
 				}
-				if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, (float) j1))
+				if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, j1))
 				{
 					if (movingObjectPosition.entityHit instanceof EntityLiving && !worldObj.isRemote)
 					{
@@ -112,14 +103,15 @@ public class EntityLightball extends EntityThrowableOrb implements IGoblinEntity
 				motionY = (float) (movingObjectPosition.hitVec.yCoord - posY);
 				motionZ = (float) (movingObjectPosition.hitVec.zCoord - posZ);
 				float f4 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-				worldObj.playSoundAtEntity((Entity) this, "mob.ghast.fireball", 1.0f, 1.2f / (rand.nextFloat() * 0.2f + 0.9f));
-				worldObj.spawnEntityInWorld((Entity) new EntityLightningBolt(worldObj, xTile, yTile, zTile));
+				worldObj.playSoundAtEntity(this, "mob.ghast.fireball", 1.0f, 1.2f / (rand.nextFloat() * 0.2f + 0.9f));
+				worldObj.spawnEntityInWorld(new EntityLightningBolt(worldObj, xTile, yTile, zTile));
 				inGround = true;
 				setDead();
 			}
 		}
 	}
 	
+	@Override
 	public ResourceLocation getEntityTexture()
 	{
 		return new ResourceLocation("goblin:textures/entity/Lightball.png");

@@ -111,3 +111,28 @@ Teleportation Staff and Goblin Shaman now make particle when they teleport.
 
 All goblin types no longer fight each other.
 
+Reworded some achievements.
+
+Cleaned up code by adding missing @Override annotations and removing unnecessary casts.
+
+Readded Goblin Drum. Also added achievement and Thaumcraft aspects for the block.
+
+Added sound effect for Scepter of Life.
+
+Fixed Goblin Ranger not spawning from spawners.
+
+Fixed Goblin Spawner death config not working.
+
+Fixed Goblin Miners not spawning from Goblin Miner Spawners.
+
+Decreased the spawn rate of Goblin Bombers from Goblin Spawners because they are more likely to help the player by accidentally killing goblin groups.
+
+Fixed Goblin Rider head shaking when riding Direwolf.
+
+Fixed Goblin Solider moving very slow when the player is far away.
+
+Renamed Goblin Arsonist back to Goblin Bomber.
+
+Fixed Thaumcraft aspects for Goblin Ranger and Goblin Ranger Guard.
+
+Change mod page URL.

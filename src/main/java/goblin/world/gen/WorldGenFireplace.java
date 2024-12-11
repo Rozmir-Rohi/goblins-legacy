@@ -8,8 +8,6 @@ import goblin.entity.EntityGoblin;
 import goblin.entity.EntityGoblinBomber;
 import goblin.entity.EntityGoblinRanger;
 import goblin.entity.EntityGoblinSoldier;
-import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -22,6 +20,7 @@ public class WorldGenFireplace extends WorldGenerator {
 	int houseLoc1;
 	int houseLoc2;
 
+	@Override
 	public boolean generate(World world, Random rand, int xCoord, int yCoord, int zCoord)
 	{
 		if (world.getBlock(xCoord, yCoord, zCoord) == Blocks.grass && world.getBlock(xCoord + 6, yCoord, zCoord + 6) == Blocks.grass && world.getBlock(xCoord + 6, yCoord, zCoord) == Blocks.grass && world.getBlock(xCoord, yCoord, zCoord + 6) == Blocks.grass)
@@ -43,19 +42,19 @@ public class WorldGenFireplace extends WorldGenerator {
 					}
 				}
 			}
-			world.setBlock(xCoord + 3, yCoord + 1, zCoord + 2, (Block) Blocks.double_stone_slab, 0, 2);
-			world.setBlock(xCoord + 2, yCoord + 1, zCoord + 3, (Block) Blocks.double_stone_slab, 0, 2);
+			world.setBlock(xCoord + 3, yCoord + 1, zCoord + 2, Blocks.double_stone_slab, 0, 2);
+			world.setBlock(xCoord + 2, yCoord + 1, zCoord + 3, Blocks.double_stone_slab, 0, 2);
 			world.setBlock(xCoord + 3, yCoord + 1, zCoord + 3, Blocks.iron_bars, 0, 2);
-			world.setBlock(xCoord + 3, yCoord, zCoord + 3, (Block) Blocks.fire, 0, 2);
+			world.setBlock(xCoord + 3, yCoord, zCoord + 3, Blocks.fire, 0, 2);
 			world.setBlock(xCoord + 3, yCoord - 1, zCoord + 3, Blocks.netherrack, 0, 2);
-			world.setBlock(xCoord + 4, yCoord + 1, zCoord + 3, (Block) Blocks.double_stone_slab, 0, 2);
-			world.setBlock(xCoord + 3, yCoord + 1, zCoord + 4, (Block) Blocks.double_stone_slab, 0, 2);
+			world.setBlock(xCoord + 4, yCoord + 1, zCoord + 3, Blocks.double_stone_slab, 0, 2);
+			world.setBlock(xCoord + 3, yCoord + 1, zCoord + 4, Blocks.double_stone_slab, 0, 2);
 			int a = rand.nextInt(4);
 			switch (a)
 			{
 			case 0:
 			{
-				world.setBlock(xCoord + 3, yCoord + 1, zCoord + 0, (Block) Blocks.chest, 0, 2);
+				world.setBlock(xCoord + 3, yCoord + 1, zCoord + 0, Blocks.chest, 0, 2);
 				TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 3, yCoord + 1, zCoord + 0);
 				for (int r1 = 0; r1 <= 4; ++r1)
 				{
@@ -69,7 +68,7 @@ public class WorldGenFireplace extends WorldGenerator {
 			}
 			case 1:
 			{
-				world.setBlock(xCoord + 0, yCoord + 1, zCoord + 3, (Block) Blocks.chest, 0, 2);
+				world.setBlock(xCoord + 0, yCoord + 1, zCoord + 3, Blocks.chest, 0, 2);
 				TileEntityChest tileentitychest2 = (TileEntityChest) world.getTileEntity(xCoord + 0, yCoord + 1, zCoord + 3);
 				for (int r2 = 0; r2 <= 4; ++r2)
 				{
@@ -83,7 +82,7 @@ public class WorldGenFireplace extends WorldGenerator {
 			}
 			case 2:
 			{
-				world.setBlock(xCoord + 6, yCoord + 1, zCoord + 3, (Block) Blocks.chest, 0, 2);
+				world.setBlock(xCoord + 6, yCoord + 1, zCoord + 3, Blocks.chest, 0, 2);
 				TileEntityChest tileentitychest3 = (TileEntityChest) world.getTileEntity(xCoord + 6, yCoord + 1, zCoord + 3);
 				for (int r3 = 0; r3 <= 4; ++r3)
 				{
@@ -97,7 +96,7 @@ public class WorldGenFireplace extends WorldGenerator {
 			}
 			case 3:
 			{
-				world.setBlock(xCoord + 3, yCoord + 1, zCoord + 6, (Block) Blocks.chest, 0, 2);
+				world.setBlock(xCoord + 3, yCoord + 1, zCoord + 6, Blocks.chest, 0, 2);
 				TileEntityChest tileentitychest4 = (TileEntityChest) world.getTileEntity(xCoord + 3, yCoord + 1, zCoord + 6);
 				for (int r4 = 0; r4 <= 4; ++r4)
 				{
@@ -118,36 +117,36 @@ public class WorldGenFireplace extends WorldGenerator {
 					EntityGoblin goblin = new EntityGoblin(world);
 					int c = -1 + rand.nextInt(9);
 					int c2 = -1 + rand.nextInt(9);
-					goblin.setLocationAndAngles((double) (xCoord + c), (double) (yCoord + 1), (double) (zCoord + c2), world.rand.nextFloat() * 360.0f, 0.0f);
-					goblin.setPosition((double) (xCoord + c), (double) (yCoord + 1), (double) (zCoord + c2));
-					world.spawnEntityInWorld((Entity) goblin);
+					goblin.setLocationAndAngles(xCoord + c, yCoord + 1, zCoord + c2, world.rand.nextFloat() * 360.0f, 0.0f);
+					goblin.setPosition(xCoord + c, yCoord + 1, zCoord + c2);
+					world.spawnEntityInWorld(goblin);
 				}
 				if (goblinPick >= 7 && goblinPick <= 12)
 				{
 					EntityGoblinRanger goblin2 = new EntityGoblinRanger(world);
 					int c = -1 + rand.nextInt(9);
 					int c2 = -1 + rand.nextInt(9);
-					goblin2.setLocationAndAngles((double) (xCoord + c), (double) (yCoord + 1), (double) (zCoord + c2), world.rand.nextFloat() * 360.0f, 0.0f);
-					goblin2.setPosition((double) (xCoord + c), (double) (yCoord + 1), (double) (zCoord + c2));
-					world.spawnEntityInWorld((Entity) goblin2);
+					goblin2.setLocationAndAngles(xCoord + c, yCoord + 1, zCoord + c2, world.rand.nextFloat() * 360.0f, 0.0f);
+					goblin2.setPosition(xCoord + c, yCoord + 1, zCoord + c2);
+					world.spawnEntityInWorld(goblin2);
 				}
 				if (goblinPick >= 13 && goblinPick <= 18)
 				{
 					EntityGoblinSoldier goblin3 = new EntityGoblinSoldier(world);
 					int c = -1 + rand.nextInt(9);
 					int c2 = -1 + rand.nextInt(9);
-					goblin3.setLocationAndAngles((double) (xCoord + c), (double) (yCoord + 1), (double) (zCoord + c2), world.rand.nextFloat() * 360.0f, 0.0f);
-					goblin3.setPosition((double) (xCoord + c), (double) (yCoord + 1), (double) (zCoord + c2));
-					world.spawnEntityInWorld((Entity) goblin3);
+					goblin3.setLocationAndAngles(xCoord + c, yCoord + 1, zCoord + c2, world.rand.nextFloat() * 360.0f, 0.0f);
+					goblin3.setPosition(xCoord + c, yCoord + 1, zCoord + c2);
+					world.spawnEntityInWorld(goblin3);
 				}
 				if (goblinPick == 19)
 				{
 					EntityGoblinBomber goblin4 = new EntityGoblinBomber(world);
 					int c = -1 + rand.nextInt(9);
 					int c2 = -1 + rand.nextInt(9);
-					goblin4.setLocationAndAngles((double) (xCoord + c), (double) (yCoord + 1), (double) (zCoord + c2), world.rand.nextFloat() * 360.0f, 0.0f);
-					goblin4.setPosition((double) (xCoord + c), (double) (yCoord + 1), (double) (zCoord + c2));
-					world.spawnEntityInWorld((Entity) goblin4);
+					goblin4.setLocationAndAngles(xCoord + c, yCoord + 1, zCoord + c2, world.rand.nextFloat() * 360.0f, 0.0f);
+					goblin4.setPosition(xCoord + c, yCoord + 1, zCoord + c2);
+					world.spawnEntityInWorld(goblin4);
 				}
 			}
 			return true;

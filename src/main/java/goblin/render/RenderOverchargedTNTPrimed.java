@@ -29,9 +29,9 @@ public class RenderOverchargedTNTPrimed extends Render
         GL11.glTranslatef((float)x, (float)y, (float)z);
         float f2;
 
-        if ((float)entityOverchargedTNTPrimed.fuse - rotationPitch + 1.0F < 10.0F)
+        if (entityOverchargedTNTPrimed.fuse - rotationPitch + 1.0F < 10.0F)
         {
-            f2 = 1.0F - ((float)entityOverchargedTNTPrimed.fuse - rotationPitch + 1.0F) / 10.0F;
+            f2 = 1.0F - (entityOverchargedTNTPrimed.fuse - rotationPitch + 1.0F) / 10.0F;
 
             if (f2 < 0.0F)
             {
@@ -49,7 +49,7 @@ public class RenderOverchargedTNTPrimed extends Render
             GL11.glScalef(f3, f3, f3);
         }
 
-        f2 = (1.0F - ((float) entityOverchargedTNTPrimed.fuse - rotationPitch + 1.0F) / 100.0F) * 0.8F;
+        f2 = (1.0F - (entityOverchargedTNTPrimed.fuse - rotationPitch + 1.0F) / 100.0F) * 0.8F;
         bindEntityTexture(entityOverchargedTNTPrimed);
         blockRenderer.renderBlockAsItem(Goblins.MTNT, 0, entityOverchargedTNTPrimed.getBrightness(rotationPitch));
 
@@ -76,12 +76,14 @@ public class RenderOverchargedTNTPrimed extends Render
         return TextureMap.locationBlocksTexture;
     }
 
-    protected ResourceLocation getEntityTexture(Entity entity)
+    @Override
+	protected ResourceLocation getEntityTexture(Entity entity)
     {
         return getEntityTexture((EntityOverchargedTNTPrimed) entity);
     }
 
-    public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float rotationPitch)
+    @Override
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float rotationPitch)
     {
         doRender((EntityOverchargedTNTPrimed) entity, x, y, z, rotationYaw, rotationPitch);
     }

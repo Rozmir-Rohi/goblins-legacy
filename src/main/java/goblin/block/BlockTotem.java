@@ -25,6 +25,7 @@ public class BlockTotem extends Block {
 		this.setCreativeTab(Goblins.GOBLINS_CREATIVE_TAB);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iIconRegister)
 	{
@@ -50,6 +51,7 @@ public class BlockTotem extends Block {
 		}
 	}
 
+	@Override
 	public IIcon getIcon(int i, int j)
 	{
 		if (i == 1)

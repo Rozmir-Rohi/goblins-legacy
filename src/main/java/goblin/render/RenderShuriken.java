@@ -15,7 +15,7 @@ public class RenderShuriken extends Render {
 
 	public void render(EntityShuriken entityShuriken, double par2, double par4, double par6, float par8, float par9)
 	{
-		bindEntityTexture((Entity) entityShuriken);
+		bindEntityTexture(entityShuriken);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
 		GL11.glRotatef(entityShuriken.prevRotationYaw + (entityShuriken.rotationYaw - entityShuriken.prevRotationYaw) * par9 - 90.0f, 0.0f, 1.0f, 0.0f);
@@ -43,33 +43,34 @@ public class RenderShuriken extends Render {
 		GL11.glTranslatef(-4.0f, 0.0f, 0.0f);
 		GL11.glNormal3f(f10, 0.0f, 0.0f);
 		tessellator.startDrawingQuads();
-		tessellator.addVertexWithUV(-7.0, -2.0, -2.0, (double) f6, (double) f8);
-		tessellator.addVertexWithUV(-7.0, -2.0, 2.0, (double) f7, (double) f8);
-		tessellator.addVertexWithUV(-7.0, 2.0, 2.0, (double) f7, (double) f9);
-		tessellator.addVertexWithUV(-7.0, 2.0, -2.0, (double) f6, (double) f9);
+		tessellator.addVertexWithUV(-7.0, -2.0, -2.0, f6, f8);
+		tessellator.addVertexWithUV(-7.0, -2.0, 2.0, f7, f8);
+		tessellator.addVertexWithUV(-7.0, 2.0, 2.0, f7, f9);
+		tessellator.addVertexWithUV(-7.0, 2.0, -2.0, f6, f9);
 		tessellator.draw();
 		GL11.glNormal3f(-f10, 0.0f, 0.0f);
 		tessellator.startDrawingQuads();
-		tessellator.addVertexWithUV(-7.0, 2.0, -2.0, (double) f6, (double) f8);
-		tessellator.addVertexWithUV(-7.0, 2.0, 2.0, (double) f7, (double) f8);
-		tessellator.addVertexWithUV(-7.0, -2.0, 2.0, (double) f7, (double) f9);
-		tessellator.addVertexWithUV(-7.0, -2.0, -2.0, (double) f6, (double) f9);
+		tessellator.addVertexWithUV(-7.0, 2.0, -2.0, f6, f8);
+		tessellator.addVertexWithUV(-7.0, 2.0, 2.0, f7, f8);
+		tessellator.addVertexWithUV(-7.0, -2.0, 2.0, f7, f9);
+		tessellator.addVertexWithUV(-7.0, -2.0, -2.0, f6, f9);
 		tessellator.draw();
 		for (int i = 0; i < 4; ++i)
 		{
 			GL11.glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
 			GL11.glNormal3f(0.0f, 0.0f, f10);
 			tessellator.startDrawingQuads();
-			tessellator.addVertexWithUV(-8.0, -2.0, 0.0, (double) f2, (double) f4);
-			tessellator.addVertexWithUV(8.0, -2.0, 0.0, (double) f3, (double) f4);
-			tessellator.addVertexWithUV(8.0, 2.0, 0.0, (double) f3, (double) f5);
-			tessellator.addVertexWithUV(-8.0, 2.0, 0.0, (double) f2, (double) f5);
+			tessellator.addVertexWithUV(-8.0, -2.0, 0.0, f2, f4);
+			tessellator.addVertexWithUV(8.0, -2.0, 0.0, f3, f4);
+			tessellator.addVertexWithUV(8.0, 2.0, 0.0, f3, f5);
+			tessellator.addVertexWithUV(-8.0, 2.0, 0.0, f2, f5);
 			tessellator.draw();
 		}
 		GL11.glDisable(32826);
 		GL11.glPopMatrix();
 	}
 
+	@Override
 	public void doRender(Entity entity, double d, double d1, double d2, float f, float f1)
 	{
 		render((EntityShuriken) entity, d, d1, d2, f, f1);
@@ -80,6 +81,7 @@ public class RenderShuriken extends Render {
 		return RenderShuriken.texture;
 	}
 
+	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return getEntityTexture((EntityShuriken) entity);

@@ -23,27 +23,32 @@ public class BlockMobGMSpawner extends BlockContainer {
 		spawnrate = k;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iIconRegister)
 	{
 		blockIcon = iIconRegister.registerIcon("goblin:GoblSpawner");
 	}
 
+	@Override
 	public Item getItemDropped(int meta, Random random, int fortune)
 	{
 		return Item.getItemFromBlock(Blocks.cobblestone);
 	}
 
+	@Override
 	public int quantityDropped(Random random)
 	{
 		return 0;
 	}
 
+	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
+	@Override
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
 		return new TileEntityMobGMSpawner();

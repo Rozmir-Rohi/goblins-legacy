@@ -60,32 +60,37 @@ public class TileEntityMobGRSpawner extends TileEntity {
 		};
 	}
 
+	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
 		super.readFromNBT(compound);
 		field_145882_a.readFromNBT(compound);
 	}
 
+	@Override
 	public void writeToNBT(NBTTagCompound compound)
 	{
 		super.writeToNBT(compound);
 		field_145882_a.writeToNBT(compound);
 	}
 
+	@Override
 	public void updateEntity()
 	{
 		field_145882_a.updateSpawner();
 		super.updateEntity();
 	}
 
+	@Override
 	public Packet getDescriptionPacket()
 	{
 		NBTTagCompound nbtTagCompound = new NBTTagCompound();
 		writeToNBT(nbtTagCompound);
 		nbtTagCompound.removeTag("SpawnPotentials");
-		return (Packet) new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, nbtTagCompound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, nbtTagCompound);
 	}
 
+	@Override
 	public boolean receiveClientEvent(int id, int type)
 	{
 		return field_145882_a.setDelayToMin(id) || super.receiveClientEvent(id, type);

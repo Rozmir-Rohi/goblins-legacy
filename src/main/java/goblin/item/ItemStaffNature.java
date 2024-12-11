@@ -6,7 +6,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -25,29 +24,26 @@ public class ItemStaffNature extends GoblinsItem {
 		setMaxDamage(50);
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
     public boolean isFull3D()
     {
         return true;
     }
 
+	@Override
 	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int xCoord, int yCoord, int zCoord, int par7, float par8, float par9, float par10)
 	{
 		
 		Block block = world.getBlock(xCoord, yCoord, zCoord);
 		BonemealEvent event = new BonemealEvent(player, world, block, xCoord, yCoord, zCoord);
-		if (MinecraftForge.EVENT_BUS.post((Event) event))
+		if (MinecraftForge.EVENT_BUS.post(event))
 		{
 			return false;
 		}
 		if (event.getResult() == Event.Result.ALLOW)
 		{
-			if (!world.isRemote)
-			{
-				itemStack.damageItem(1, (EntityLivingBase) player);
-			}
-			player.swingItem();
-			((EntityPlayer) player).addPotionEffect(new PotionEffect(Potion.regeneration.id, 20 * SECONDS_FOR_POTION_EFFECT, 1));
+			damageItemAndPerformActionOnPlayer(itemStack, player, world);
 			return true;
 		}
 		if (block instanceof IGrowable)
@@ -61,13 +57,23 @@ public class ItemStaffNature extends GoblinsItem {
 					{
 						iGrowable.func_149853_b(world, world.rand, xCoord, yCoord, zCoord);
 					}
-					itemStack.damageItem(1, (EntityLivingBase) player);
 				}
-				player.swingItem();
-				((EntityPlayer) player).addPotionEffect(new PotionEffect(Potion.regeneration.id, 20 * SECONDS_FOR_POTION_EFFECT, 1));
+				damageItemAndPerformActionOnPlayer(itemStack, player, world);
 				return true;
 			}
 		}
 		return false;
+	}
+
+	private void damageItemAndPerformActionOnPlayer(ItemStack itemStack, EntityPlayer player, World world)
+	{
+		if (!world.isRemote)
+		{
+			itemStack.damageItem(1, player);
+		}
+		player.swingItem();
+		
+		world.playSoundAtEntity(player, "random.orb", 0.5f, 1.0f / (itemRand.nextFloat() * 0.4f + 0.8f));
+		player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 20 * SECONDS_FOR_POTION_EFFECT, 1));
 	}
 }

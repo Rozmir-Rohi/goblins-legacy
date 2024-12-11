@@ -23,79 +23,79 @@ public class ModelGoblinBomber extends ModelBase {
 
 	public ModelGoblinBomber()
 	{
-		(bipedHead = new ModelRenderer((ModelBase) this, 0, 0)).addBox(-2.0f, -5.0f, -2.0f, 5, 5, 4, 0.0f);
+		(bipedHead = new ModelRenderer(this, 0, 0)).addBox(-2.0f, -5.0f, -2.0f, 5, 5, 4, 0.0f);
 		bipedHead.setRotationPoint(0.0f, 9.0f, -1.0f);
 		bipedHead.rotateAngleX = 0.0f;
 		bipedHead.rotateAngleY = 0.0f;
 		bipedHead.rotateAngleZ = 0.0f;
 		bipedHead.mirror = false;
-		(bipedBody = new ModelRenderer((ModelBase) this, 0, 9)).addBox(-3.0f, 0.0f, -1.0f, 7, 9, 2, 0.0f);
+		(bipedBody = new ModelRenderer(this, 0, 9)).addBox(-3.0f, 0.0f, -1.0f, 7, 9, 2, 0.0f);
 		bipedBody.setRotationPoint(0.0f, 9.0f, -1.0f);
 		bipedBody.rotateAngleX = 0.0f;
 		bipedBody.rotateAngleY = 0.0f;
 		bipedBody.rotateAngleZ = 0.0f;
 		bipedBody.mirror = false;
-		(bipedRightArm = new ModelRenderer((ModelBase) this, 0, 20)).addBox(-2.0f, 0.0f, -1.0f, 2, 7, 2, 0.0f);
+		(bipedRightArm = new ModelRenderer(this, 0, 20)).addBox(-2.0f, 0.0f, -1.0f, 2, 7, 2, 0.0f);
 		bipedRightArm.setRotationPoint(-3.0f, 9.0f, -1.0f);
 		bipedRightArm.rotateAngleX = 0.0f;
 		bipedRightArm.rotateAngleY = 0.0f;
 		bipedRightArm.rotateAngleZ = 0.0f;
 		bipedRightArm.mirror = false;
-		(bipedLeftArm = new ModelRenderer((ModelBase) this, 0, 20)).addBox(0.0f, 0.0f, -1.0f, 2, 7, 2, 0.0f);
+		(bipedLeftArm = new ModelRenderer(this, 0, 20)).addBox(0.0f, 0.0f, -1.0f, 2, 7, 2, 0.0f);
 		bipedLeftArm.setRotationPoint(4.0f, 9.0f, -1.0f);
 		bipedLeftArm.rotateAngleX = 0.0f;
 		bipedLeftArm.rotateAngleY = 0.0f;
 		bipedLeftArm.rotateAngleZ = 0.0f;
 		bipedLeftArm.mirror = false;
-		(bipedRightLeg = new ModelRenderer((ModelBase) this, 16, 20)).addBox(-1.0f, 0.0f, -1.0f, 3, 6, 2, 0.0f);
+		(bipedRightLeg = new ModelRenderer(this, 16, 20)).addBox(-1.0f, 0.0f, -1.0f, 3, 6, 2, 0.0f);
 		bipedRightLeg.setRotationPoint(-2.0f, 18.0f, -1.0f);
 		bipedRightLeg.rotateAngleX = 0.0f;
 		bipedRightLeg.rotateAngleY = 0.0f;
 		bipedRightLeg.rotateAngleZ = 0.0f;
 		bipedRightLeg.mirror = false;
-		(bipedLeftLeg = new ModelRenderer((ModelBase) this, 16, 20)).addBox(-2.0f, 0.0f, -1.0f, 3, 6, 2, 0.0f);
+		(bipedLeftLeg = new ModelRenderer(this, 16, 20)).addBox(-2.0f, 0.0f, -1.0f, 3, 6, 2, 0.0f);
 		bipedLeftLeg.setRotationPoint(3.0f, 18.0f, -1.0f);
 		bipedLeftLeg.rotateAngleX = 0.0f;
 		bipedLeftLeg.rotateAngleY = 0.0f;
 		bipedLeftLeg.rotateAngleZ = 0.0f;
 		bipedLeftLeg.mirror = true;
-		(ear1 = new ModelRenderer((ModelBase) this, 18, 8)).addBox(3.0f, -7.0f, 0.0f, 1, 4, 1, 0.0f);
+		(ear1 = new ModelRenderer(this, 18, 8)).addBox(3.0f, -7.0f, 0.0f, 1, 4, 1, 0.0f);
 		ear1.setRotationPoint(0.0f, 9.0f, -1.0f);
 		ear1.rotateAngleX = 0.0f;
 		ear1.rotateAngleY = 0.0f;
 		ear1.rotateAngleZ = 0.0f;
 		ear1.mirror = false;
-		(ear2 = new ModelRenderer((ModelBase) this, 18, 8)).addBox(-3.0f, -7.0f, 0.0f, 1, 4, 1, 0.0f);
+		(ear2 = new ModelRenderer(this, 18, 8)).addBox(-3.0f, -7.0f, 0.0f, 1, 4, 1, 0.0f);
 		ear2.setRotationPoint(0.0f, 9.0f, -1.0f);
 		ear2.rotateAngleX = 0.0f;
 		ear2.rotateAngleY = 0.0f;
 		ear2.rotateAngleZ = 0.0f;
 		ear2.mirror = false;
-		(nose1 = new ModelRenderer((ModelBase) this, 8, 24)).addBox(0.0f, -3.0f, -3.0f, 1, 1, 1, 0.0f);
+		(nose1 = new ModelRenderer(this, 8, 24)).addBox(0.0f, -3.0f, -3.0f, 1, 1, 1, 0.0f);
 		nose1.setRotationPoint(0.0f, 9.0f, -1.0f);
 		nose1.rotateAngleX = 0.0f;
 		nose1.rotateAngleY = 0.0f;
 		nose1.rotateAngleZ = 0.0f;
 		nose1.mirror = false;
-		(nose2 = new ModelRenderer((ModelBase) this, 8, 20)).addBox(0.0f, -2.0f, -5.0f, 1, 1, 3, 0.0f);
+		(nose2 = new ModelRenderer(this, 8, 20)).addBox(0.0f, -2.0f, -5.0f, 1, 1, 3, 0.0f);
 		nose2.setRotationPoint(0.0f, 9.0f, -1.0f);
 		nose2.rotateAngleX = 0.0f;
 		nose2.rotateAngleY = 0.0f;
 		nose2.rotateAngleZ = 0.0f;
 		nose2.mirror = false;
-		(bag = new ModelRenderer((ModelBase) this, 23, 0)).addBox(-1.0f, 0.0f, 1.0f, 7, 8, 6);
+		(bag = new ModelRenderer(this, 23, 0)).addBox(-1.0f, 0.0f, 1.0f, 7, 8, 6);
 		bag.setRotationPoint(-2.0f, 9.0f, -2.0f);
 		bag.rotateAngleX = 0.10472f;
 		bag.rotateAngleY = 0.0f;
 		bag.rotateAngleZ = 0.0f;
 		bag.mirror = false;
-		(bomb2 = new ModelRenderer((ModelBase) this, 18, 17)).addBox(-2.0f, -1.0f, 4.0f, 2, 1, 2);
+		(bomb2 = new ModelRenderer(this, 18, 17)).addBox(-2.0f, -1.0f, 4.0f, 2, 1, 2);
 		bomb2.setRotationPoint(0.0f, 9.0f, -2.0f);
 		bomb2.rotateAngleX = 0.10472f;
 		bomb2.rotateAngleY = 0.0f;
 		bomb2.rotateAngleZ = 0.0f;
 		bomb2.mirror = false;
-		(bomb1 = new ModelRenderer((ModelBase) this, 18, 17)).addBox(1.0f, -1.0f, 3.0f, 2, 1, 2);
+		(bomb1 = new ModelRenderer(this, 18, 17)).addBox(1.0f, -1.0f, 3.0f, 2, 1, 2);
 		bomb1.setRotationPoint(0.0f, 9.0f, -2.0f);
 		bomb1.rotateAngleX = 0.10472f;
 		bomb1.rotateAngleY = 0.0f;
@@ -103,6 +103,7 @@ public class ModelGoblinBomber extends ModelBase {
 		bomb1.mirror = false;
 	}
 
+	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		setRotationAngles(f, f1, f2, f3, f4, f5);

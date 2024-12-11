@@ -20,6 +20,7 @@ public class RenderDirewolf extends RenderLiving {
 		return RenderDirewolf.texture;
 	}
 
+	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return func_110832_a((EntityDirewolf) entity);

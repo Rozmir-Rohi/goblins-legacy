@@ -17,12 +17,14 @@ public class BlockVillageSpawner extends Block {
 		super(Material.ground);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iIconRegister)
 	{
 		blockIcon = iIconRegister.registerIcon("goblin:VillageSpawn");
 	}
 
+	@Override
 	public boolean onBlockActivated(World world, int xCoord, int yCoord, int zCoord, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9)
 	{
 		world.setBlock(xCoord, yCoord, zCoord, Blocks.air, 0, 3);

@@ -63,6 +63,7 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
     }
 	
 
+	@Override
 	protected void entityInit()
 	{
 		dataWatcher.addObject(16, Byte.valueOf((byte) 0));
@@ -125,14 +126,16 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
 		richocettCount++;
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound nbtTagCompound)
 	{
 
 		nbtTagCompound.setByte("richocettCount", (byte) richocettCount);
 
-		nbtTagCompound.setByte("inGround", (byte) (byte) (inGround ? 1 : 0));
+		nbtTagCompound.setByte("inGround", (byte) (inGround ? 1 : 0));
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound nbtTagCompound)
 	{
 		richocettCount = (nbtTagCompound.getByte("richocettCount") & 0xFF);
@@ -140,17 +143,20 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
 		inGround = (nbtTagCompound.getByte("inGround") == 1);
 	}
 
+	@Override
 	protected boolean canTriggerWalking()
 	{
 		return false;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public float getShadowSize()
 	{
 		return 0.0f;
 	}
 
+	@Override
 	public boolean canAttackWithItem()
 	{
 		return false;

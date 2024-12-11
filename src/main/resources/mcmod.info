@@ -5,7 +5,7 @@
 	"description": "Port of the Goblins! mod for 1.7.10 with a few improvements.",
 	"version": "1.0",
 	"mcversion": "1.7.10",
-	"url": "https://www.curseforge.com/minecraft/mc-mods/goblins-legacy",
+	"url": "https://modrinth.com/project/goblins-legacy",
 	"authorList": ["Sartharis"],
 	"credits": "Rozmir_Rohi for the port + see credits file inside.",
 	"screenshots": [],

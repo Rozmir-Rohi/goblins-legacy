@@ -2,12 +2,12 @@
 package goblin.block;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import goblin.Goblins;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 public abstract class MobSpawnerGoblinLogic {
 	public int spawnDelay;
 	private String entityTypeName;
-	private char goblinType;
+	private char goblinTypeCharacterOfThisSpawner;
 	private int goblinsLeft;
 	private List potentialEntitySpawns;
 	private WeightedRandomMinecart randomEntity;
@@ -40,11 +40,10 @@ public abstract class MobSpawnerGoblinLogic {
 	private int spawnRange;
 	final private static String __OBFID = "CL_00000129";
 
-	public MobSpawnerGoblinLogic(char goblinType)
+	public MobSpawnerGoblinLogic(char goblinTypeCharacterOfThisSpawner)
 	{
 		spawnDelay = 20;
 		entityTypeName = "Pig";
-		goblinType = 'g';
 		goblinsLeft = 10;
 		minSpawnDelay = 400;
 		maxSpawnDelay = 800;
@@ -52,50 +51,53 @@ public abstract class MobSpawnerGoblinLogic {
 		maxNearbyEntities = 6;
 		activatingRangeFromPlayer = 16;
 		spawnRange = 1;
-		this.goblinType = goblinType;
+		this.goblinTypeCharacterOfThisSpawner = goblinTypeCharacterOfThisSpawner;
 	}
 
 	public String getEntityNameToSpawn()
 	{
-		if (goblinType == 'g')
+		if (goblinTypeCharacterOfThisSpawner == 'g')
 		{
 			int goblinPickerNumber = getSpawnerWorld().rand.nextInt(20);
-			if (goblinPickerNumber <= 8)
+			if (goblinPickerNumber == 0)
 			{
-				return "goblin.Goblin";
+				return "goblin.GoblinBomber";
 			}
 			if (goblinPickerNumber <= 13)
 			{
-				return "goblin.GOBLINEntityGoblinRanger";
+				return "goblin.GoblinRanger";
 			}
 			if (goblinPickerNumber <= 18)
 			{
 				return "goblin.GoblinSoldier";
 			}
-			return "goblin.GoblinBomber";
+			else
+			{
+				return "goblin.Goblin";
+			}
+		}
+		else if (goblinTypeCharacterOfThisSpawner == 'm')
+		{
+				return "goblin.GoblinMiner";
+		}
+		else if (goblinTypeCharacterOfThisSpawner == 'r')
+		{
+				return "goblin.GoblinRider";
 		}
 		else
 		{
-			if (goblinType == 'm')
-			{
-				return "goblin.GoblinMiner";
-			}
-			if (goblinType == 'r')
-			{
-				return "goblin.GoblinRider";
-			}
 			return "goblin.Goblin";
 		}
 	}
 
 	public void setGoblinSign(char charGob)
 	{
-		goblinType = charGob;
+		goblinTypeCharacterOfThisSpawner = charGob;
 	}
 
 	public boolean isActivated()
 	{
-		return getSpawnerWorld().getClosestPlayer(getSpawnerX() + 0.5, getSpawnerY() + 0.5, getSpawnerZ() + 0.5, (double) activatingRangeFromPlayer) != null;
+		return getSpawnerWorld().getClosestPlayer(getSpawnerX() + 0.5, getSpawnerY() + 0.5, getSpawnerZ() + 0.5, activatingRangeFromPlayer) != null;
 	}
 
 	public void updateSpawner()
@@ -104,7 +106,14 @@ public abstract class MobSpawnerGoblinLogic {
 		{
 			if (goblinsLeft <= 0)
 			{
-				getSpawnerWorld().setBlock(getSpawnerX(), getSpawnerY(), getSpawnerZ(), Blocks.cobblestone, 0, 2);
+				if (Goblins.spawnerDeath)
+				{
+					getSpawnerWorld().setBlock(getSpawnerX(), getSpawnerY(), getSpawnerZ(), Blocks.cobblestone, 0, 2);
+				}
+				else
+				{
+					goblinsLeft = 10; //restart the cycle
+				}
 			}
 			if (getSpawnerWorld().isRemote)
 			{
@@ -142,7 +151,7 @@ public abstract class MobSpawnerGoblinLogic {
 							// System.out.println("YA");
 							return;
 						}
-						int j = getSpawnerWorld().getEntitiesWithinAABB((Class) entity.getClass(), AxisAlignedBB.getBoundingBox((double) getSpawnerX(), (double) getSpawnerY(), (double) getSpawnerZ(), (double) (getSpawnerX() + 1), (double) (getSpawnerY() + 1), (double) (getSpawnerZ() + 1)).expand((double) (spawnRange * 2), 4.0, (double) (spawnRange * 2))).size();
+						int j = getSpawnerWorld().getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.getBoundingBox(getSpawnerX(), getSpawnerY(), getSpawnerZ(), getSpawnerX() + 1, getSpawnerY() + 1, getSpawnerZ() + 1).expand(spawnRange * 2, 4.0, spawnRange * 2)).size();
 						if (j >= maxNearbyEntities)
 						{
 							resetTimer();
@@ -153,7 +162,7 @@ public abstract class MobSpawnerGoblinLogic {
 						double d5 = getSpawnerZ() + (getSpawnerWorld().rand.nextDouble() - getSpawnerWorld().rand.nextDouble()) * spawnRange;
 						EntityLiving entityLiving = (entity instanceof EntityLiving) ? (EntityLiving) entity : null;
 						entity.setLocationAndAngles(d3, d4, d5, getSpawnerWorld().rand.nextFloat() * 360.0f, 0.0f);
-						if (goblinType == 'r')
+						if (goblinTypeCharacterOfThisSpawner == 'r')
 						{
 							Entity entity2 = EntityList.createEntityByName("goblin.Direwolf", getSpawnerWorld());
 							entity2.setLocationAndAngles(d3, d4, d5, getSpawnerWorld().rand.nextFloat() * 360.0f, 0.0f);
@@ -259,19 +268,19 @@ public abstract class MobSpawnerGoblinLogic {
 		}
 		if (potentialEntitySpawns != null && potentialEntitySpawns.size() > 0)
 		{
-			setRandomEntity((WeightedRandomMinecart) WeightedRandom.getRandomItem(getSpawnerWorld().rand, (Collection) potentialEntitySpawns));
+			setRandomEntity((WeightedRandomMinecart) WeightedRandom.getRandomItem(getSpawnerWorld().rand, potentialEntitySpawns));
 		}
 		func_98267_a(1);
 	}
 
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+	public void readFromNBT(NBTTagCompound nbtTagCompound)
 	{
-		entityTypeName = par1NBTTagCompound.getString("EntityId");
-		spawnDelay = par1NBTTagCompound.getShort("Delay");
-		if (par1NBTTagCompound.hasKey("SpawnPotentials", 9))
+		entityTypeName = nbtTagCompound.getString("EntityId");
+		spawnDelay = nbtTagCompound.getShort("Delay");
+		if (nbtTagCompound.hasKey("SpawnPotentials", 9))
 		{
 			potentialEntitySpawns = new ArrayList();
-			NBTTagList nbttaglist = par1NBTTagCompound.getTagList("SpawnPotentials", 10);
+			NBTTagList nbttaglist = nbtTagCompound.getTagList("SpawnPotentials", 10);
 			for (int i = 0; i < nbttaglist.tagCount(); ++i)
 			{
 				potentialEntitySpawns.add(new WeightedRandomMinecart(nbttaglist.getCompoundTagAt(i)));
@@ -281,28 +290,28 @@ public abstract class MobSpawnerGoblinLogic {
 		{
 			potentialEntitySpawns = null;
 		}
-		if (par1NBTTagCompound.hasKey("SpawnData", 10))
+		if (nbtTagCompound.hasKey("SpawnData", 10))
 		{
-			setRandomEntity(new WeightedRandomMinecart(par1NBTTagCompound.getCompoundTag("SpawnData"), entityTypeName));
+			setRandomEntity(new WeightedRandomMinecart(nbtTagCompound.getCompoundTag("SpawnData"), entityTypeName));
 		}
 		else
 		{
 			setRandomEntity(null);
 		}
-		if (par1NBTTagCompound.hasKey("MinSpawnDelay", 99))
+		if (nbtTagCompound.hasKey("MinSpawnDelay", 99))
 		{
-			minSpawnDelay = par1NBTTagCompound.getShort("MinSpawnDelay");
-			maxSpawnDelay = par1NBTTagCompound.getShort("MaxSpawnDelay");
-			spawnCount = par1NBTTagCompound.getShort("SpawnCount");
+			minSpawnDelay = nbtTagCompound.getShort("MinSpawnDelay");
+			maxSpawnDelay = nbtTagCompound.getShort("MaxSpawnDelay");
+			spawnCount = nbtTagCompound.getShort("SpawnCount");
 		}
-		if (par1NBTTagCompound.hasKey("MaxNearbyEntities", 99))
+		if (nbtTagCompound.hasKey("MaxNearbyEntities", 99))
 		{
-			maxNearbyEntities = par1NBTTagCompound.getShort("MaxNearbyEntities");
-			activatingRangeFromPlayer = par1NBTTagCompound.getShort("RequiredPlayerRange");
+			maxNearbyEntities = nbtTagCompound.getShort("MaxNearbyEntities");
+			activatingRangeFromPlayer = nbtTagCompound.getShort("RequiredPlayerRange");
 		}
-		if (par1NBTTagCompound.hasKey("SpawnRange", 99))
+		if (nbtTagCompound.hasKey("SpawnRange", 99))
 		{
-			spawnRange = par1NBTTagCompound.getShort("SpawnRange");
+			spawnRange = nbtTagCompound.getShort("SpawnRange");
 		}
 		if (getSpawnerWorld() != null && getSpawnerWorld().isRemote)
 		{
@@ -396,11 +405,11 @@ public abstract class MobSpawnerGoblinLogic {
 		public String entityTypeName;
 		final private static String __OBFID = "CL_00000130";
 
-		public WeightedRandomMinecart(NBTTagCompound par2NBTTagCompound)
+		public WeightedRandomMinecart(NBTTagCompound nbtTagCompound)
 		{
-			super(par2NBTTagCompound.getInteger("Weight"));
-			NBTTagCompound nbtTagCompound1 = par2NBTTagCompound.getCompoundTag("Properties");
-			String s = par2NBTTagCompound.getString("Type");
+			super(nbtTagCompound.getInteger("Weight"));
+			NBTTagCompound nbtTagCompound1 = nbtTagCompound.getCompoundTag("Properties");
+			String s = nbtTagCompound.getString("Type");
 			if (s.equals("Minecart"))
 			{
 				if (nbtTagCompound1 != null)
@@ -471,7 +480,7 @@ public abstract class MobSpawnerGoblinLogic {
 		public NBTTagCompound func_98220_a()
 		{
 			NBTTagCompound nbtTagCompound = new NBTTagCompound();
-			nbtTagCompound.setTag("Properties", (NBTBase) field_98222_b);
+			nbtTagCompound.setTag("Properties", field_98222_b);
 			nbtTagCompound.setString("Type", entityTypeName);
 			nbtTagCompound.setInteger("Weight", itemWeight);
 			return nbtTagCompound;

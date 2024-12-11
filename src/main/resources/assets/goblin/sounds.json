@@ -54,5 +54,11 @@
      	"goblinlordhurt1",
        	"goblinlordhurt2"
     ]
+  },
+  "goblindrum": {
+    "category": "record",
+    "sounds": [
+     	"goblindrum"
+    ]
   }
 }

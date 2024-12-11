@@ -11,6 +11,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 
 public class GoblinsLesserGoblinAttackFilter implements IEntitySelector {
+	@Override
 	public boolean isEntityApplicable(Entity entity)
 	{
 		return

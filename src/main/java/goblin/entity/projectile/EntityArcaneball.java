@@ -1,11 +1,8 @@
 
 package goblin.entity.projectile;
 
-import goblin.entity.EntityGoblinMage;
 import goblin.entity.IGoblinEntityTextureBase;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -78,13 +75,13 @@ public class EntityArcaneball extends EntityThrowableOrb implements IGoblinEntit
 				DamageSource damageSource = null;
 				if (getThrower() == null)
 				{
-					damageSource = DamageSource.causeThrownDamage((Entity) this, (Entity) this);
+					damageSource = DamageSource.causeThrownDamage(this, this);
 				}
 				else
 				{
-					damageSource = DamageSource.causeThrownDamage((Entity) this, getThrower());
+					damageSource = DamageSource.causeThrownDamage(this, getThrower());
 				}
-				if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, (float) damageToDeal))
+				if (movingObjectPosition.entityHit.attackEntityFrom(damageSource, damageToDeal))
 				{
 					setDead();
 				}
@@ -105,7 +102,7 @@ public class EntityArcaneball extends EntityThrowableOrb implements IGoblinEntit
 				motionY = (float) (movingObjectPosition.hitVec.yCoord - posY);
 				motionZ = (float) (movingObjectPosition.hitVec.zCoord - posZ);
 				float f4 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-				worldObj.playSoundAtEntity((Entity) this, "mob.ghast.fireball", 1.0f, 1.2f / (rand.nextFloat() * 0.2f + 0.9f));
+				worldObj.playSoundAtEntity(this, "mob.ghast.fireball", 1.0f, 1.2f / (rand.nextFloat() * 0.2f + 0.9f));
 				inGround = true;
 				setDead();
 			}

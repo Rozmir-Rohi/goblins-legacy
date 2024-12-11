@@ -5,7 +5,6 @@ import org.lwjgl.opengl.GL11;
 
 import goblin.entity.IGoblinEntityTextureBase;
 import goblin.model.ModelGoblin;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -21,7 +20,7 @@ public class RenderGoblinBiped extends RendererLivingEntity {
 
 	public RenderGoblinBiped(ModelGoblin modelGoblin, float size)
 	{
-		super((ModelBase) modelGoblin, size);
+		super(modelGoblin, size);
 		modelBipedMain = modelGoblin;
 		RenderGoblinBiped.NAME_TAG_RANGE = 0.0f;
 		RenderGoblinBiped.NAME_TAG_RANGE_SNEAK = 0.0f;
@@ -37,7 +36,7 @@ public class RenderGoblinBiped extends RendererLivingEntity {
 	{
 		float f1 = 1.0f;
 		GL11.glColor3f(f1, f1, f1);
-		super.renderEquippedItems((EntityLivingBase) entityLiving, par2);
+		super.renderEquippedItems(entityLiving, par2);
 		ItemStack itemStack = entityLiving.getHeldItem();
 		ItemStack itemStack2 = entityLiving.func_130225_q(3);
 		if (itemStack != null)
@@ -78,12 +77,12 @@ public class RenderGoblinBiped extends RendererLivingEntity {
 				GL11.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
 				GL11.glRotatef(20.0f, 0.0f, 0.0f, 1.0f);
 			}
-			renderManager.itemRenderer.renderItem((EntityLivingBase) entityLiving, itemStack, 0);
+			renderManager.itemRenderer.renderItem(entityLiving, itemStack, 0);
 			if (itemStack.getItem().requiresMultipleRenderPasses())
 			{
 				for (int x = 1; x < itemStack.getItem().getRenderPasses(itemStack.getItemDamage()); ++x)
 				{
-					renderManager.itemRenderer.renderItem((EntityLivingBase) entityLiving, itemStack, x);
+					renderManager.itemRenderer.renderItem(entityLiving, itemStack, x);
 				}
 			}
 			GL11.glPopMatrix();
@@ -95,6 +94,7 @@ public class RenderGoblinBiped extends RendererLivingEntity {
 		GL11.glTranslatef(0.0f, 0.1875f, 0.0f);
 	}
 
+	@Override
 	protected void renderEquippedItems(EntityLivingBase entityLiving, float f)
 	{
 		renderCarrying((EntityLiving) entityLiving, f);

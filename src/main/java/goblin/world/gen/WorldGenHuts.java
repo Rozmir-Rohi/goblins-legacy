@@ -14,6 +14,7 @@ public class WorldGenHuts extends GoblinsWorldGen {
 	int houseLoc1;
 	int houseLoc2;
 
+	@Override
 	public boolean generate(World world, Random rand, int xCoord, int yCoord, int zCoord)
 	{
 		if (world.getBlock(xCoord, yCoord, zCoord) == Blocks.grass && world.getBlock(xCoord + 12, yCoord, zCoord + 12) == Blocks.grass && world.getBlock(xCoord + 12, yCoord, zCoord) == Blocks.grass && world.getBlock(xCoord, yCoord, zCoord + 12) == Blocks.grass)
@@ -139,11 +140,11 @@ public class WorldGenHuts extends GoblinsWorldGen {
 			}
 		}
 		world.setBlock(xCoord + 2, yCoord, zCoord + 2, Blocks.netherrack, 0, 2);
-		world.setBlock(xCoord + 2, yCoord + 1, zCoord + 2, (Block) Blocks.fire, 0, 2);
-		world.setBlock(xCoord + 2, yCoord + 1, zCoord + 1, (Block) Blocks.double_stone_slab, 0, 2);
-		world.setBlock(xCoord + 1, yCoord + 1, zCoord + 2, (Block) Blocks.double_stone_slab, 0, 2);
-		world.setBlock(xCoord + 2, yCoord + 1, zCoord + 3, (Block) Blocks.double_stone_slab, 0, 2);
-		world.setBlock(xCoord + 3, yCoord + 1, zCoord + 2, (Block) Blocks.double_stone_slab, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 1, zCoord + 2, Blocks.fire, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 1, zCoord + 1, Blocks.double_stone_slab, 0, 2);
+		world.setBlock(xCoord + 1, yCoord + 1, zCoord + 2, Blocks.double_stone_slab, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 1, zCoord + 3, Blocks.double_stone_slab, 0, 2);
+		world.setBlock(xCoord + 3, yCoord + 1, zCoord + 2, Blocks.double_stone_slab, 0, 2);
 	}
 
 	public Block chooseTotem(Random rand)

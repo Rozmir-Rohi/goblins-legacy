@@ -5,11 +5,8 @@ import java.util.Random;
 
 import goblin.Goblins;
 import goblin.entity.EntityDirewolf;
-import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.WeightedRandomChestContent;
@@ -22,6 +19,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 	public static WeightedRandomChestContent[] goblinRiderChest;
 	public static WeightedRandomChestContent[] goblinMinerChest;
 
+	@Override
 	public boolean generate(World world, Random rand, int xCoord, int yCoord, int zCoord)
 	{
 		return false;
@@ -52,7 +50,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 				{
 					if (height == 0)
 					{
-						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, (Block) Blocks.grass, 0, 2);
+						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, Blocks.grass, 0, 2);
 					}
 					else if (height > 0 && height < 3)
 					{
@@ -114,10 +112,10 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 3, yCoord + 1, zCoord + 4, Blocks.air, 0, 2);
 		world.setBlock(xCoord + 4, yCoord + 1, zCoord + 3, Blocks.air, 0, 2);
 		world.setBlock(xCoord + 4, yCoord + 1, zCoord + 2, Blocks.air, 0, 2);
-		world.setBlock(xCoord + 3, yCoord + 4, zCoord + 3, (Block) Blocks.wooden_slab, 0, 2);
-		world.setBlock(xCoord + 3, yCoord + 4, zCoord + 2, (Block) Blocks.wooden_slab, 0, 2);
-		world.setBlock(xCoord + 2, yCoord + 4, zCoord + 3, (Block) Blocks.wooden_slab, 0, 2);
-		world.setBlock(xCoord + 2, yCoord + 4, zCoord + 2, (Block) Blocks.wooden_slab, 0, 2);
+		world.setBlock(xCoord + 3, yCoord + 4, zCoord + 3, Blocks.wooden_slab, 0, 2);
+		world.setBlock(xCoord + 3, yCoord + 4, zCoord + 2, Blocks.wooden_slab, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 4, zCoord + 3, Blocks.wooden_slab, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 4, zCoord + 2, Blocks.wooden_slab, 0, 2);
 		world.setBlock(xCoord + 3, yCoord, zCoord + 3, Blocks.cobblestone, 0, 2);
 		world.setBlock(xCoord + 3, yCoord, zCoord + 2, Blocks.cobblestone, 0, 2);
 		world.setBlock(xCoord + 2, yCoord, zCoord + 3, Blocks.cobblestone, 0, 2);
@@ -159,12 +157,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 3, yCoord + 3, zCoord + 3, Blocks.fence, 0, 2);
 		if (rand.nextInt(3) == 0)
 		{
-			world.setBlock(xCoord + 4, yCoord + 1, zCoord + 2, (Block) Blocks.chest, 0, 2);
+			world.setBlock(xCoord + 4, yCoord + 1, zCoord + 2, Blocks.chest, 0, 2);
 			TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 4, yCoord + 1, zCoord + 2);
 			if (tileentitychest != null)
 			{
 				ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, tileentitychest, rand.nextInt(3) + 7);
 			}
 		}
 		world.setBlock(xCoord + 2, yCoord, zCoord + 2, Goblins.MobGSpawner, 0, 2);
@@ -201,12 +199,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 3, yCoord + 3, zCoord + 2, Blocks.fence, 0, 2);
 		if (rand.nextInt(2) == 0)
 		{
-			world.setBlock(xCoord + 4, yCoord + 1, zCoord + 2, (Block) Blocks.chest, 0, 2);
+			world.setBlock(xCoord + 4, yCoord + 1, zCoord + 2, Blocks.chest, 0, 2);
 			TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 4, yCoord + 1, zCoord + 2);
 			if (tileentitychest != null)
 			{
 				ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, tileentitychest, rand.nextInt(3) + 7);
 			}
 		}
 		world.setBlock(xCoord + 2, yCoord, zCoord + 3, Goblins.MobGSpawner, 0, 2);
@@ -243,12 +241,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 2, yCoord + 3, zCoord + 3, Blocks.fence, 0, 2);
 		if (rand.nextInt(1) == 0)
 		{
-			world.setBlock(xCoord + 1, yCoord + 1, zCoord + 2, (Block) Blocks.chest, 0, 2);
+			world.setBlock(xCoord + 1, yCoord + 1, zCoord + 2, Blocks.chest, 0, 2);
 			TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 1, yCoord + 1, zCoord + 2);
 			if (tileentitychest != null)
 			{
 				ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, tileentitychest, rand.nextInt(3) + 7);
 			}
 		}
 		world.setBlock(xCoord + 3, yCoord, zCoord + 2, Goblins.MobGSpawner, 0, 2);
@@ -285,12 +283,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 2, yCoord + 3, zCoord + 2, Blocks.fence, 0, 2);
 		if (rand.nextInt(1) == 0)
 		{
-			world.setBlock(xCoord + 1, yCoord + 1, zCoord + 3, (Block) Blocks.chest, 0, 2);
+			world.setBlock(xCoord + 1, yCoord + 1, zCoord + 3, Blocks.chest, 0, 2);
 			TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 1, yCoord + 1, zCoord + 3);
 			if (tileentitychest != null)
 			{
 				ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, tileentitychest, rand.nextInt(3) + 7);
 			}
 		}
 		world.setBlock(xCoord + 3, yCoord, zCoord + 3, Goblins.MobGSpawner, 0, 2);
@@ -306,7 +304,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 				{
 					if (height == 0)
 					{
-						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, (Block) Blocks.grass, 0, 2);
+						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, Blocks.grass, 0, 2);
 					}
 					else if (height > 0 && height < 3)
 					{
@@ -369,7 +367,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 		}
 		for (int height2 = 5; height2 <= 5; ++height2)
 		{
-			world.setBlock(xCoord + 3, yCoord + height2, zCoord + 2, (Block) Blocks.wooden_slab, 0, 2);
+			world.setBlock(xCoord + 3, yCoord + height2, zCoord + 2, Blocks.wooden_slab, 0, 2);
 		}
 		for (int height2 = 0; height2 <= 0; ++height2)
 		{
@@ -407,12 +405,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 			world.setBlock(xCoord + 3, yCoord + height2, zCoord + 4, Blocks.torch, 0, 2);
 		}
 		world.setBlock(xCoord + 3, yCoord, zCoord + 1, Goblins.MobGSpawner, 0, 2);
-		world.setBlock(xCoord + 3, yCoord + 1, zCoord + 4, (Block) Blocks.chest, 0, 2);
+		world.setBlock(xCoord + 3, yCoord + 1, zCoord + 4, Blocks.chest, 0, 2);
 		TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 3, yCoord + 1, zCoord + 4);
 		if (tileentitychest != null)
 		{
 			ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-			WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+			WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, tileentitychest, rand.nextInt(3) + 7);
 		}
 	}
 
@@ -426,7 +424,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 				{
 					if (height == 0)
 					{
-						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, (Block) Blocks.grass, 0, 2);
+						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, Blocks.grass, 0, 2);
 					}
 					else if (height > 0 && height < 3)
 					{
@@ -495,7 +493,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 		for (int height2 = 4; height2 <= 4; ++height2)
 		{
 			world.setBlock(xCoord + 3, yCoord + height2, zCoord + 4, Blocks.planks, 0, 2);
-			world.setBlock(xCoord + 3, yCoord + height2 + 1, zCoord + 3, (Block) Blocks.wooden_slab, 0, 2);
+			world.setBlock(xCoord + 3, yCoord + height2 + 1, zCoord + 3, Blocks.wooden_slab, 0, 2);
 			world.setBlock(xCoord + 3, yCoord + height2, zCoord + 2, Blocks.planks, 0, 2);
 			world.setBlock(xCoord + 2, yCoord + height2, zCoord + 4, Blocks.planks, 0, 2);
 			world.setBlock(xCoord + 2, yCoord + height2, zCoord + 2, Blocks.planks, 0, 2);
@@ -510,7 +508,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 			world.setBlock(xCoord + 2, yCoord + height2, zCoord + 2, Blocks.cobblestone, 0, 2);
 			world.setBlock(xCoord + 1, yCoord + height2, zCoord + 3, Blocks.cobblestone, 0, 2);
 		}
-		world.setBlock(xCoord + 2, yCoord + 5, zCoord + 3, (Block) Blocks.wooden_slab, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 5, zCoord + 3, Blocks.wooden_slab, 0, 2);
 		world.setBlock(xCoord + 2, yCoord, zCoord + 3, Blocks.cobblestone, 0, 2);
 		for (int height2 = 1; height2 <= 4; ++height2)
 		{
@@ -520,12 +518,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 6, yCoord + 2, zCoord + 2, Blocks.torch, 0, 2);
 		world.setBlock(xCoord + 4, yCoord + 2, zCoord + 3, Blocks.torch, 0, 2);
 		world.setBlock(xCoord + 4, yCoord, zCoord + 3, Goblins.MobGMSpawner, 0, 2);
-		world.setBlock(xCoord + 2, yCoord + 1, zCoord + 5, (Block) Blocks.chest, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 1, zCoord + 5, Blocks.chest, 0, 2);
 		TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 2, yCoord + 1, zCoord + 5);
 		if (tileentitychest != null)
 		{
 			ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-			WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinMinerChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+			WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinMinerChest, tileentitychest, rand.nextInt(3) + 7);
 		}
 		for (int i2 = -6; i2 <= -4; ++i2)
 		{
@@ -565,8 +563,8 @@ public class GoblinsWorldGen extends WorldGenerator {
 			world.setBlock(xCoord + i2, yCoord + 2, zCoord + 5, Blocks.air, 0, 2);
 			world.setBlock(xCoord + i2, yCoord + 1, zCoord + 1, Blocks.fence, 0, 2);
 			world.setBlock(xCoord + i2, yCoord + 1, zCoord + 5, Blocks.fence, 0, 2);
-			world.setBlock(xCoord + i2, yCoord, zCoord + 1, (Block) Blocks.grass, 0, 2);
-			world.setBlock(xCoord + i2, yCoord, zCoord + 5, (Block) Blocks.grass, 0, 2);
+			world.setBlock(xCoord + i2, yCoord, zCoord + 1, Blocks.grass, 0, 2);
+			world.setBlock(xCoord + i2, yCoord, zCoord + 5, Blocks.grass, 0, 2);
 			for (int j2 = -3; j2 <= -1; ++j2)
 			{
 				world.setBlock(xCoord + i2, yCoord + j2, zCoord + 1, Blocks.dirt, 0, 2);
@@ -581,8 +579,8 @@ public class GoblinsWorldGen extends WorldGenerator {
 			world.setBlock(xCoord + i2, yCoord + 2, zCoord + 6, Blocks.air, 0, 2);
 			world.setBlock(xCoord + i2, yCoord + 1, zCoord + 0, Blocks.fence, 0, 2);
 			world.setBlock(xCoord + i2, yCoord + 1, zCoord + 6, Blocks.fence, 0, 2);
-			world.setBlock(xCoord + i2, yCoord, zCoord + 0, (Block) Blocks.grass, 0, 2);
-			world.setBlock(xCoord + i2, yCoord, zCoord + 6, (Block) Blocks.grass, 0, 2);
+			world.setBlock(xCoord + i2, yCoord, zCoord + 0, Blocks.grass, 0, 2);
+			world.setBlock(xCoord + i2, yCoord, zCoord + 6, Blocks.grass, 0, 2);
 			for (int j2 = -3; j2 <= -1; ++j2)
 			{
 				world.setBlock(xCoord + i2, yCoord + j2, zCoord + 0, Blocks.dirt, 0, 2);
@@ -594,7 +592,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 			world.setBlock(xCoord - 7, yCoord + 2, zCoord + k3, Blocks.air, 0, 2);
 			world.setBlock(xCoord - 7, yCoord + 3, zCoord + k3, Blocks.air, 0, 2);
 			world.setBlock(xCoord - 7, yCoord + 1, zCoord + k3, Blocks.fence, 0, 2);
-			world.setBlock(xCoord - 7, yCoord, zCoord + k3, (Block) Blocks.grass, 0, 2);
+			world.setBlock(xCoord - 7, yCoord, zCoord + k3, Blocks.grass, 0, 2);
 		}
 		startNewMineBranch(world, rand, xCoord - 7, yCoord, zCoord + 3);
 	}
@@ -695,7 +693,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 				{
 					if (height == 0)
 					{
-						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, (Block) Blocks.grass, 0, 2);
+						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, Blocks.grass, 0, 2);
 					}
 					else if (height > 0 && height < 3)
 					{
@@ -779,7 +777,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 			world.setBlock(xCoord + 2, yCoord + height2, zCoord + 2, Blocks.cobblestone, 0, 2);
 			world.setBlock(xCoord + 4, yCoord + height2, zCoord + 3, Blocks.cobblestone, 0, 2);
 		}
-		world.setBlock(xCoord + 3, yCoord + 5, zCoord + 3, (Block) Blocks.wooden_slab, 0, 2);
+		world.setBlock(xCoord + 3, yCoord + 5, zCoord + 3, Blocks.wooden_slab, 0, 2);
 		world.setBlock(xCoord + 2, yCoord, zCoord + 3, Blocks.cobblestone, 0, 2);
 		for (int height2 = 1; height2 <= 4; ++height2)
 		{
@@ -790,12 +788,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 1, yCoord + 2, zCoord + 3, Blocks.torch, 0, 2);
 		world.setBlock(xCoord + 4, yCoord, zCoord + 3, Goblins.MobGSpawner, 0, 2);
 		world.setBlock(xCoord + 5, yCoord + 1, zCoord + 3, Blocks.air, 0, 2);
-		world.setBlock(xCoord + 1, yCoord + 1, zCoord + 3, (Block) Blocks.chest, 0, 2);
+		world.setBlock(xCoord + 1, yCoord + 1, zCoord + 3, Blocks.chest, 0, 2);
 		TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 1, yCoord + 1, zCoord + 3);
 		if (tileentitychest != null)
 		{
 			ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-			WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+			WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, tileentitychest, rand.nextInt(3) + 7);
 		}
 	}
 
@@ -809,7 +807,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 				{
 					if (height == 0)
 					{
-						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, (Block) Blocks.grass, 0, 2);
+						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, Blocks.grass, 0, 2);
 					}
 					else if (height > 0 && height < 3)
 					{
@@ -879,7 +877,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 		for (int height2 = 4; height2 <= 4; ++height2)
 		{
 			world.setBlock(xCoord + 3, yCoord + height2, zCoord + 4, Blocks.planks, 0, 2);
-			world.setBlock(xCoord + 3, yCoord + height2 + 1, zCoord + 3, (Block) Blocks.wooden_slab, 0, 2);
+			world.setBlock(xCoord + 3, yCoord + height2 + 1, zCoord + 3, Blocks.wooden_slab, 0, 2);
 			world.setBlock(xCoord + 3, yCoord + height2, zCoord + 2, Blocks.planks, 0, 2);
 			world.setBlock(xCoord + 2, yCoord + height2, zCoord + 4, Blocks.planks, 0, 2);
 			world.setBlock(xCoord + 2, yCoord + height2, zCoord + 2, Blocks.planks, 0, 2);
@@ -894,7 +892,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 			world.setBlock(xCoord + 2, yCoord + height2, zCoord + 2, Blocks.cobblestone, 0, 2);
 			world.setBlock(xCoord + 1, yCoord + height2, zCoord + 3, Blocks.cobblestone, 0, 2);
 		}
-		world.setBlock(xCoord + 2, yCoord + 5, zCoord + 3, (Block) Blocks.wooden_slab, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 5, zCoord + 3, Blocks.wooden_slab, 0, 2);
 		world.setBlock(xCoord + 2, yCoord, zCoord + 3, Blocks.cobblestone, 0, 2);
 		for (int height2 = 1; height2 <= 4; ++height2)
 		{
@@ -906,12 +904,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 1, yCoord, zCoord + 3, Goblins.MobGRSpawner, 0, 2);
 		if (rand.nextInt(2) == 0)
 		{
-			world.setBlock(xCoord + 3, yCoord + 1, zCoord + 5, (Block) Blocks.chest, 0, 2);
+			world.setBlock(xCoord + 3, yCoord + 1, zCoord + 5, Blocks.chest, 0, 2);
 			TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 3, yCoord + 1, zCoord + 5);
 			if (tileentitychest != null)
 			{
 				ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinRiderChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinRiderChest, tileentitychest, rand.nextInt(3) + 7);
 			}
 		}
 		for (int k2 = 0; k2 <= 2; ++k2)
@@ -964,9 +962,9 @@ public class GoblinsWorldGen extends WorldGenerator {
 			int a2 = rand.nextInt(3);
 			int a3 = rand.nextInt(2);
 			EntityDirewolf direwolf = new EntityDirewolf(world);
-			direwolf.setLocationAndAngles((double) (xCoord + 7 + a2), (double) (yCoord + 1), (double) (zCoord + 2 + a3), world.rand.nextFloat() * 360.0f, 0.0f);
-			direwolf.setPosition((double) (xCoord + 7 + a2), (double) (yCoord + 1), (double) (zCoord + 2 + a3));
-			world.spawnEntityInWorld((Entity) direwolf);
+			direwolf.setLocationAndAngles(xCoord + 7 + a2, yCoord + 1, zCoord + 2 + a3, world.rand.nextFloat() * 360.0f, 0.0f);
+			direwolf.setPosition(xCoord + 7 + a2, yCoord + 1, zCoord + 2 + a3);
+			world.spawnEntityInWorld(direwolf);
 		}
 	}
 
@@ -980,7 +978,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 				{
 					if (height == 0)
 					{
-						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, (Block) Blocks.grass, 0, 2);
+						world.setBlock(xCoord + width1, yCoord - height, zCoord + width2, Blocks.grass, 0, 2);
 					}
 					else if (height > 0 && height < 3)
 					{
@@ -1063,7 +1061,7 @@ public class GoblinsWorldGen extends WorldGenerator {
 			world.setBlock(xCoord + 2, yCoord + height2, zCoord + 2, Blocks.cobblestone, 0, 2);
 			world.setBlock(xCoord + 1, yCoord + height2, zCoord + 3, Blocks.cobblestone, 0, 2);
 		}
-		world.setBlock(xCoord + 2, yCoord + 5, zCoord + 3, (Block) Blocks.wooden_slab, 0, 2);
+		world.setBlock(xCoord + 2, yCoord + 5, zCoord + 3, Blocks.wooden_slab, 0, 2);
 		world.setBlock(xCoord + 2, yCoord, zCoord + 3, Blocks.cobblestone, 0, 2);
 		for (int height2 = 1; height2 <= 4; ++height2)
 		{
@@ -1076,12 +1074,12 @@ public class GoblinsWorldGen extends WorldGenerator {
 		world.setBlock(xCoord + 0, yCoord + 1, zCoord + 3, Blocks.air, 0, 2);
 		if (rand.nextInt(2) == 0)
 		{
-			world.setBlock(xCoord + 4, yCoord + 1, zCoord + 3, (Block) Blocks.chest, 0, 2);
+			world.setBlock(xCoord + 4, yCoord + 1, zCoord + 3, Blocks.chest, 0, 2);
 			TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(xCoord + 4, yCoord + 1, zCoord + 3);
 			if (tileentitychest != null)
 			{
 				ChestGenHooks info = ChestGenHooks.getInfo("dungeonChest");
-				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, (IInventory) tileentitychest, rand.nextInt(3) + 7);
+				WeightedRandomChestContent.generateChestContents(rand, GoblinsWorldGen.goblinStandardChest, tileentitychest, rand.nextInt(3) + 7);
 			}
 		}
 	}
