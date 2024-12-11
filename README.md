@@ -2,7 +2,7 @@
 Port of the Goblins! mod for 1.7.10 with a few improvements.
 
 <details>
-<summary><h2>Credits:</h2></summary>
+<summary><h2>Credits & Assets Used:</h2></summary>
 <strong>Jan Orlowski (Sartharis)</strong> - Creator of the Goblins! mod. This project is a modified version of the Goblins! mod and is licensed under the "MIT" license as instructed from the written permission from the original creator. Proof of permission can be found inside the assets folder of the mod jar archive as an image file.
 <br><br>
 <strong>Azanor</strong> - Thaumcraft 4.2.2 API was used as a library under the MIT License to add Thaumcraft aspects to the mod content.
