@@ -36,7 +36,7 @@ Teleportation Staff now makes the normal teleportation sound.
 
 Teleportation staff now teleports the player to the block they look at in a small range. If used while the player is inside a block, this staff can now also has a chance of teleporting the player to a safe location nearby.
 
-Teleportation Staff and Goblin Shaman now make particle when they teleport.
+Teleportation Staff and Goblin Shaman now make particles when they teleport.
 
 Goblins no longer try to fight each other.
 
@@ -62,7 +62,7 @@ Fixed staves being stackable.
 
 Scepter of Life now heals users when used to grow flora. Also added sound effect for this action.
 
-Fixed Goblin Rangers and Goblin Miners not spawnin from their spawners.
+Fixed Goblin Rangers and Goblin Miners not spawning from their spawners.
 
 Fixed Goblin Spawner death config not working.
 
