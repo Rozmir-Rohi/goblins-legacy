@@ -19,7 +19,7 @@ public class ItemShuriken extends GoblinsItem {
 	@Override
 	public void registerIcons(IIconRegister iconRegister)
 	{
-		itemIcon = iconRegister.registerIcon("goblin:shuriken2");
+		itemIcon = iconRegister.registerIcon("goblin:shuriken");
 	}
 
 	@Override

@@ -136,3 +136,5 @@ Renamed Goblin Arsonist back to Goblin Bomber.
 Fixed Thaumcraft aspects for Goblin Ranger and Goblin Ranger Guard.
 
 Change mod page URL.
+
+Fixed incorrect texture file names.
