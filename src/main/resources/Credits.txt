@@ -1,10 +1,14 @@
 Jan Orlowski (Sartharis) - Creator of the Goblins! mod. This project is a modified version of the Goblins! mod and is licensed under the "MIT" license as instructed from the written permission from the original creator. Proof of permission can be found inside the assets folder of the mod jar archive as an image file.
 
+
 Azanor - Thaumcraft 4.2.2 API was used as a library under the MIT License to add Thaumcraft aspects to the mod content.
+
 
 user17512883 - Their forum post helped me fix the primed TNT render bug (https://stackoverflow.com/questions/70119718/minecraft-forge-1-7-10-custom-entity-not-spawning-on-the-client).
 
+
 Kara (Freesound) - The sound effect for the Goblin Drum was sourced from https://pixabay.com/sound-effects/bongo3-107664/ . This was used under the Pixabay License (see "Negligable Licenses" folder inside the assets folder of the mod jar archive).
+
 
 New Teleportation Staff Mechanism:
 	coolAlias - Their answer in Minecraft Forums helped me to work out the base code for the new mechanism
@@ -12,6 +16,11 @@ New Teleportation Staff Mechanism:
 
 	AlchemyMouse - Their answer in StackOverflow me helped resolve vectors needed for the new mechanism
 	(https://gamedev.stackexchange.com/questions/59858/how-to-find-the-entity-im-looking-at).
+
+
+
+Language File Translations:
+	Omgise - for the Chinese (Simplified) (zh_CN.lang) language file.
 
 
 

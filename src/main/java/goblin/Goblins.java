@@ -143,6 +143,7 @@ public class Goblins {
 	public static Block goo;
 	
 	
+	public static Configuration configFile;
 	//config variables
 	static int spawnerDelay1;
 	static int spawnerDelay2;
@@ -152,6 +153,7 @@ public class Goblins {
 	public static int hutsSpawnrate;
 	public static int fireplaceSpawnrate;
 	public static boolean spawnerDeath;
+	static int modEntityStartingID = 0;
 	
 	
 	//tool material variables
@@ -161,8 +163,6 @@ public class Goblins {
 	@SidedProxy(clientSide = "goblin.proxy.ClientProxy", serverSide = "goblin.proxy.CommonProxy")
 	
 	public static CommonProxy proxy;
-	
-	public static Configuration configFile;
 	
 	private static boolean isThaumcraftLoaded;
 	public static boolean isWitcheryLoaded;
@@ -374,8 +374,11 @@ public class Goblins {
 		/**
 		 * Register Entities and Spawn Eggs
 		 */
+		if (modEntityStartingID == 0) {modEntityStartingID = EntityRegistry.findGlobalUniqueEntityId();}
 		
-		int modEntityID = EntityRegistry.findGlobalUniqueEntityId();
+		int modEntityID = modEntityStartingID;
+		entitySpawnEggSubId = modEntityStartingID;
+		
 		EntityRegistry.registerModEntity(EntityOrbNature.class, "orbG", modEntityID++, this, 250, 1, true);
 
 		EntityRegistry.registerModEntity(EntityOrbLightning.class, "orbY", modEntityID++, this, 250, 1, true);
@@ -592,6 +595,10 @@ public class Goblins {
 		fireplaceSpawnrate = configFile.getInt("Fireplace Spawnrate", "general", 5, 0, Integer.MAX_VALUE, "(Larger number means less often)");
 		
 		spawnerDeath = configFile.getBoolean("Should Goblin spawners run out of Goblins after a certain amount of goblins?", "general", true, "(If you are building a map, set this to false, or else all your spawners will die)");
+		
+		int customModEntityStartingID = configFile.getInt("Custom Mod Entity Starting ID", "general", -1, 0, Integer.MAX_VALUE, "This setting is only enabled if it's value is set higher than 0, otherwise Goblins Legacy will try to find a unique starting mod entity ID by default. This setting sets the ID of the first Goblins Legacy entity. In total, there are 21 entities that need to be registered, so for example, if this setting is set to 10, Goblins Legacy entities will be registered for IDs 11 to 31)");
+		
+		if(customModEntityStartingID > 0) {modEntityStartingID = customModEntityStartingID;}
 		
 		if (configFile.hasChanged()) {configFile.save();}
 	}
