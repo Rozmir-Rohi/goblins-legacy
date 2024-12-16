@@ -1,7 +1,7 @@
 # Goblins Legacy
 Port of the [Goblins!](https://www.curseforge.com/minecraft/mc-mods/goblins-mod) mod for 1.7.10 with a few improvements.
 
-<strong>Project Status: </strong> Final stages, accepting minor feature suggestions until February 2025 
+**Project Status:** Final stages, accepting minor feature suggestions until February 2025 
 
 <details>
 <summary><h2>Changes to Original Mod:</h2></summary>
@@ -73,42 +73,65 @@ Readded Goblin Drum
 <details>
 <summary><h2>Credits & Assets Used:</h2></summary>
  
-<strong>Jan Orlowski (Sartharis)</strong> - Creator of the Goblins! mod. This project is a modified version of the Goblins! mod and is licensed under the "MIT" license as instructed from the written permission from the original creator. Proof of permission can be found inside the assets folder of the mod jar archive as an image file.
+**Jan Orlowski (Sartharis)** - Creator of the Goblins! mod. This project is a modified version of the Goblins! mod and is licensed under the "MIT" license as instructed from the written permission from the original creator. Proof of permission can be found inside the assets folder of the mod jar archive as an image file.
 
-<strong>Azanor</strong> - Thaumcraft 4.2.2 API was used as a library under the MIT License to add Thaumcraft aspects to the mod content.
+<br>
 
-<strong>user17512883</strong> - Their forum post helped me fix the primed TNT render bug (https://stackoverflow.com/questions/70119718/minecraft-forge-1-7-10-custom-entity-not-spawning-on-the-client).
+**Azanor** - Thaumcraft 4.2.2 API was used as a library under the MIT License to add Thaumcraft aspects to the mod content.
 
-<strong>Kara (Freesound)</strong> - The sound effect for the Goblin Drum was sourced from https://pixabay.com/sound-effects/bongo3-107664/ . This was used under the Pixabay License (see "Negligable Licenses" folder inside the assets folder of the mod jar archive).
+<br>
 
-<strong>New Teleportation Staff Mechanism:</strong>
+**user17512883** - Their forum post helped me fix the primed TNT render bug (https://stackoverflow.com/questions/70119718/minecraft-forge-1-7-10-custom-entity-not-spawning-on-the-client).
+
+<br>
+
+**Kara (Freesound)** - The sound effect for the Goblin Drum was sourced from https://pixabay.com/sound-effects/bongo3-107664/ . This was used under the Pixabay License (see "Negligable Licenses" folder inside the assets folder of the mod jar archive).
+
+<br>
+
+**New Teleportation Staff Mechanism:**
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **coolAlias** - Their answer in Minecraft Forums helped me to work out the base code for the new mechanism <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/modification-development/2132650-solved-1-7-2-forge-block-player-is-looking-at).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **AlchemyMouse** - Their answer in StackOverflow me helped resolve vectors needed for the new mechanism <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (https://gamedev.stackexchange.com/questions/59858/how-to-find-the-entity-im-looking-at).
+
 <br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>coolAlias</strong> - Their answer in Minecraft Forums helped me to work out the base code for the new mechanism (https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/modification-development/2132650-solved-1-7-2-forge-block-player-is-looking-at).
+<h3> Language File Translations: </h3>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>AlchemyMouse</strong> - Their answer in StackOverflow me helped resolve vectors needed for the new mechanism (https://gamedev.stackexchange.com/questions/59858/how-to-find-the-entity-im-looking-at).
+**Omgise** - Chinese (Simplified) (zh_CN.lang)
+
+
 
 <br><br>
 ---
-<h3> Original Goblins! Contributer Credits </h3>
+<h3> Original Goblins! Contributer Credits: </h3>
 <br>
-<strong>Hengabone</strong> - Made the goblin village templates and awesome Beta-Tester Posted Image.
-<br><br>
-<strong>Garrura and Srymon</strong> - For being great friends of Sartharis and giving ideas!
-<br><br>
-<strong>mister_person</strong> - For giving Sartharis the materials to craft the nature arrow!
-<br><br>
-<strong>cowmonkey (AKA Madgoblin)</strong> - For showing Sartharis the bomb blueprints.
-<br><br>
-<strong>Geethebluesky</strong> - For solving the configuration file mystery.
-<br><br>
-<strong>Cowguy666</strong> - For making the drum texture.
+
+**Hengabone** - Made the goblin village templates and awesome Beta-Tester Posted Image.
+<br>
+
+**Garrura and Srymon** - For being great friends of Sartharis and giving ideas!
+<br>
+
+**mister_person** - For giving Sartharis the materials to craft the nature arrow!
+<br>
+
+**cowmonkey (AKA Madgoblin)** - For showing Sartharis the bomb blueprints.
+<br>
+
+**Geethebluesky** - For solving the configuration file mystery.
+<br>
+
+**Cowguy666** - For making the drum texture.
 <br>
 <hr>
 <br><br><br>
 
-<strong>Special Thanks:</strong>
+**Special Thanks:**
 <br>
-<strong>nanaqui </strong>and <strong>sunconure11</strong> - For suggesting me to take on this project. This project wouldn't have existed if it wasn't for their request.
+**nanaqui** and **sunconure11** - For suggesting me to take on this project. This project wouldn't have existed if it wasn't for their request.
 <br><br><br><br><br><br><br><br>
 
 ## Use of anatawa12's Fork of ForgeGradle 1.2 within Project:
