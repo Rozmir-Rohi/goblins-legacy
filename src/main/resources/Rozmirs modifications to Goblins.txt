@@ -142,3 +142,5 @@ Fixed incorrect texture file names.
 Added Chinese (Simplified) language file  - thanks to Omgise for the translation.
 
 Fixed entity ID conflict crash. Goblins Legacy will now try to find a unique starting mod entity ID by default. Also added config option to set custom starting mod entity ID.
+
+Fixed custom entity id config syntax.

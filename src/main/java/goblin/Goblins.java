@@ -83,7 +83,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 
-@Mod(modid = "goblin", name = "Goblins Legacy", version = "1.0")
+@Mod(modid = "goblin", name = "Goblins Legacy", version = "1.01")
 public class Goblins {
 	//item variables
 	public static Item swordFire;
@@ -596,7 +596,7 @@ public class Goblins {
 		
 		spawnerDeath = configFile.getBoolean("Should Goblin spawners run out of Goblins after a certain amount of goblins?", "general", true, "(If you are building a map, set this to false, or else all your spawners will die)");
 		
-		int customModEntityStartingID = configFile.getInt("Custom Mod Entity Starting ID", "general", -1, 0, Integer.MAX_VALUE, "This setting is only enabled if it's value is set higher than 0, otherwise Goblins Legacy will try to find a unique starting mod entity ID by default. This setting sets the ID of the first Goblins Legacy entity. In total, there are 21 entities that need to be registered, so for example, if this setting is set to 10, Goblins Legacy entities will be registered for IDs 11 to 31)");
+		int customModEntityStartingID = configFile.getInt("Custom Mod Entity Starting ID", "general", 0, 0, Integer.MAX_VALUE, "This setting is only enabled if it's value is set higher than 0, otherwise Goblins Legacy will try to find a unique starting mod entity ID by default. This setting sets the ID of the first Goblins Legacy entity. In total, there are 21 entities that need to be registered, so for example, if this setting is set to 10, Goblins Legacy entities will be registered for IDs 11 to 31)");
 		
 		if(customModEntityStartingID > 0) {modEntityStartingID = customModEntityStartingID;}
 		
