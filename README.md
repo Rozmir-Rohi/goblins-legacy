@@ -1,7 +1,7 @@
 # Goblins Legacy
 Port of the [Goblins!](https://www.curseforge.com/minecraft/mc-mods/goblins-mod) mod for 1.7.10 with a few improvements.
 
-**Project Status:** Final stages, accepting minor feature suggestions until February 2025 
+**Project Status:** Finished (no future updates planned) 
 
 <details>
 <summary><h2>Changes to Original Mod:</h2></summary>
