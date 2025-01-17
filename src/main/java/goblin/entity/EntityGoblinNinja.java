@@ -88,7 +88,7 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
 				
 				if (attackTime == 0)
 				{
-					EntityShuriken entityShuriken = new EntityShuriken(worldObj, this, 1.0f);
+					EntityShuriken entityShuriken = new EntityShuriken(worldObj, this, 1);
 					double yDistance = entityToAttack.posY + entityToAttack.getEyeHeight() - 0.699999988079071 - entityShuriken.posY;
 					float xzSquareRootDistance = MathHelper.sqrt_double(xDistance * xDistance + zDistance * zDistance) * 0.2f;
 					worldObj.playSoundAtEntity(this, "random.bow", 1.0f, 1.0f / (rand.nextFloat() * 0.4f + 0.8f));
@@ -222,7 +222,7 @@ public class EntityGoblinNinja extends GoblinsOldAIBase implements IGoblinEntity
         if (damageSource.getEntity() != null && damageSource.getEntity() instanceof EntityPlayer)
         {
           EntityPlayer player = (EntityPlayer)damageSource.getEntity();
-          if (player != null) {player.addStat(GoblinsAchievements.kill_goblin_rider, 1);} 
+          if (player != null) {player.addStat(GoblinsAchievements.kill_goblin_ninja, 1);} 
         } 
         super.onDeath(damageSource);
     }

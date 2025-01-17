@@ -34,7 +34,7 @@ public class ItemShuriken extends GoblinsItem {
 			world.playSoundAtEntity(entityPlayer, "random.bow", 0.5f, 0.4f / (ItemShuriken.itemRand.nextFloat() * 0.4f + 0.8f));
 			if (!world.isRemote)
 			{
-				world.spawnEntityInWorld(new EntityShuriken(world, entityPlayer, 2.0f));
+				world.spawnEntityInWorld(new EntityShuriken(world, entityPlayer, 2));
 				timer = 10;
 			}
 		}
