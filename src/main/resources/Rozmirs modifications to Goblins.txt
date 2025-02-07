@@ -148,3 +148,5 @@ Fixed custom entity id config syntax.
 Fixed Goblin Ninja ambush crash on server.
 
 Fixed Goblin Ninja achievement.
+
+Fixed missing textures.

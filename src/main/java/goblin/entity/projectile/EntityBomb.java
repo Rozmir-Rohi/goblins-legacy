@@ -179,6 +179,6 @@ public class EntityBomb extends EntityThrowable implements IGoblinEntityTextureB
 	@Override
 	public ResourceLocation getEntityTexture()
 	{
-		return new ResourceLocation("goblin:textures/items/Bomb.png");
+		return new ResourceLocation("goblin:textures/items/bomb.png");
 	}
 }
