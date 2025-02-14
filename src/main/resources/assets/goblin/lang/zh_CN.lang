@@ -73,22 +73,22 @@ achievement.red_totem=愤怒图腾
 achievement.red_totem.desc=获得一个愤怒图腾。图腾可以在通常位于沼泽和平原的哥布林村庄中找到。
 
 achievement.explosive_powder=爆炸粉末
-achievement.explosive_powder.desc=使用愤怒图腾在工作台中合成爆炸粉末。
+achievement.explosive_powder.desc=使用愤怒图腾在工作台中制作爆炸粉末。
 
 achievement.explosive_orb=愤怒宝珠
-achievement.explosive_orb.desc=使用爆炸粉末在工作台中合成爆炸宝珠。当投掷时，这个宝珠会在接触地面或敌人时爆炸。这也可以通过发射器使用。
+achievement.explosive_orb.desc=使用爆炸粉末在工作台中制作爆炸宝珠。当投掷时，这个宝珠会在接触地面或敌人时爆炸。这也可以通过发射器使用。
 
 achievement.enchanted_tnt=爆炸增强器
-achievement.enchanted_tnt.desc=使用爆炸粉末和TNT合成附魔TNT。这是一种更强大的TNT版本。
+achievement.enchanted_tnt.desc=使用爆炸粉末和TNT制作附魔TNT。这是一种更强大的TNT版本。
 
 achievement.overcharged_tnt=爆破专家
-achievement.overcharged_tnt.desc=使用奥术粉末和附魔TNT在工作台中合成过载TNT。这是一种更强大的TNT版本。
+achievement.overcharged_tnt.desc=使用奥术粉末和附魔TNT在工作台中制作过载TNT。这是一种更强大的TNT版本。
 
 achievement.fiery_crystal=火焰水晶
-achievement.fiery_crystal.desc=使用爆炸粉末在工作台中合成火焰水晶。
+achievement.fiery_crystal.desc=使用爆炸粉末在工作台中制作火焰水晶。
 
 achievement.flame_blade=火焰刀匠
-achievement.flame_blade.desc=使用火焰水晶在工作台中合成火焰刀。这把剑可以让敌人着火，并且可以使用爆炸粉末在铁砧上修复。
+achievement.flame_blade.desc=使用火焰水晶在工作台中制作火焰刀。这把剑可以让敌人着火，并且可以使用爆炸粉末在铁砧上修复。
 
 
 
@@ -96,20 +96,20 @@ achievement.green_totem=大地图腾
 achievement.green_totem.desc=获得一个大地图腾。图腾可以在通常位于沼泽和平原的哥布林村庄中找到。
 
 achievement.nature_powder=自然粉末
-achievement.nature_powder.desc=使用大地图腾在工作台中合成自然粉末。
+achievement.nature_powder.desc=使用大地图腾在工作台中制作自然粉末。
 
 achievement.nature_orb=生长宝珠
-achievement.nature_orb.desc=使用自然粉末在工作台中合成自然宝珠。当投掷时，这个宝珠会在草方块上生长树木，在沙子上生长仙人掌。这也可以通过发射器使用。
+achievement.nature_orb.desc=使用自然粉末在工作台中制作自然宝珠。当投掷时，这个宝珠会在草方块上生长树木，在沙子上生长仙人掌。这也可以通过发射器使用。
 
 achievement.goblin_drum=哥布林的节拍
-achievement.goblin_drum.desc=使用橡木原木、皮革和自然粉末在工作台中合成哥布林鼓。用空手击打或右击鼓来演奏。右击鼓时潜行可以改变音调。这个鼓也可以通过红石信号演奏。
+achievement.goblin_drum.desc=使用橡木原木、皮革和自然粉末在工作台中制作哥布林鼓。用空手击打或右击鼓来演奏。右击鼓时潜行可以改变音调。这个鼓也可以通过红石信号演奏。
 
 
 achievement.nature_crystal=自然水晶
-achievement.nature_crystal.desc=使用自然粉末在工作台中合成自然水晶。
+achievement.nature_crystal.desc=使用自然粉末在工作台中制作自然水晶。
 
 achievement.scepter_of_life=大地信徒
-achievement.scepter_of_life.desc=使用自然水晶在工作台中合成生命权杖。当使用这个权杖来生长植物时，它可以治疗使用者。它有50次使用次数。
+achievement.scepter_of_life.desc=使用自然水晶在工作台中制作生命权杖。当使用这个权杖来生长植物时，它可以治疗使用者。它有50次使用次数。
 
 
 
@@ -117,21 +117,21 @@ achievement.blue_totem=魔法图腾
 achievement.blue_totem.desc=获得一个魔法图腾。图腾可以在通常位于沼泽和平原的哥布林村庄中找到。
 
 achievement.arcane_powder=奥术粉末
-achievement.arcane_powder.desc=使用魔法图腾在工作台中合成奥术粉末。
+achievement.arcane_powder.desc=使用魔法图腾在工作台中制作奥术粉末。
 
 achievement.force_orb=神秘球
-achievement.force_orb.desc=使用奥术粉末在工作台中合成力量宝珠。当投掷时，这个宝珠可以将敌人击飞很远的距离。这也可以通过发射器使用。
+achievement.force_orb.desc=使用奥术粉末在工作台中制作力量宝珠。当投掷时，这个宝珠可以将敌人击飞很远的距离。这也可以通过发射器使用。
 
 achievement.arcane_crystal=奥术水晶
-achievement.arcane_crystal.desc=使用奥术粉末在工作台中合成奥术水晶。
+achievement.arcane_crystal.desc=使用奥术粉末在工作台中制作奥术水晶。
 
 achievement.arcane_staff=光辉法杖匠
-achievement.arcane_staff.desc=使用奥术水晶在工作台中合成奥术法杖。这个法杖允许你发射奥术球。它有短暂的冷却时间，并且有30次使用次数。
+achievement.arcane_staff.desc=使用奥术水晶在工作台中制作奥术法杖。这个法杖允许你发射奥术球。它有短暂的冷却时间，并且有30次使用次数。
 
 
 
 achievement.teleportation_staff=传送行者
-achievement.teleportation_staff.desc=通过在工作台中结合奥术法杖和自然法杖来合成传送法杖。这个法杖允许你传送到你面向的短距离区域。如果使用者被困在方块中使用这个法杖，它有机会将他们传送到一个安全的地方，代价是消耗所有的耐久度。它有极短的冷却时间，并且有40次使用次数。
+achievement.teleportation_staff.desc=通过在工作台中结合奥术法杖和自然法杖来制作传送法杖。这个法杖允许你传送到你面向的短距离区域。如果使用者被困在方块中使用这个法杖，它有机会将他们传送到一个安全的地方，代价是消耗所有的耐久度。它有极短的冷却时间，并且有40次使用次数。
 
 
 
@@ -139,16 +139,16 @@ achievement.lightning_totem=天空图腾
 achievement.lightning_totem.desc=获得一个天空图腾。图腾可以在通常位于沼泽和平原的哥布林村庄中找到。
 
 achievement.lightning_powder=闪电粉末
-achievement.lightning_powder.desc=使用天空图腾在工作台中合成闪电粉末。
+achievement.lightning_powder.desc=使用天空图腾在工作台中制作闪电粉末。
 
 achievement.lightning_orb=风暴球
-achievement.lightning_orb.desc=使用闪电粉末在工作台中合成闪电宝珠。当投掷时，这个宝珠会用闪电攻击敌人。然而，如果它击中一个方块则不会发生任何事情。这也可以通过发射器使用。
+achievement.lightning_orb.desc=使用闪电粉末在工作台中制作闪电宝珠。当投掷时，这个宝珠会用闪电攻击敌人。然而，如果它击中一个方块则不会发生任何事情。这也可以通过发射器使用。
 
 achievement.lightning_crystal=闪电水晶
-achievement.lightning_crystal.desc=使用闪电粉末在工作台中合成闪电水晶。
+achievement.lightning_crystal.desc=使用闪电粉末在工作台中制作闪电水晶。
 
 achievement.lightning_staff=雷霆贤者
-achievement.lightning_staff.desc=使用闪电水晶在工作台中合成闪电法杖。这个法杖允许你发射宝珠，如果它们击中一个方块则会产生闪电。然而，如果它们击中一个敌人则不会发生任何事情。它有中等的冷却时间，并且有15次使用次数。
+achievement.lightning_staff.desc=使用闪电水晶在工作台中制作闪电法杖。这个法杖允许你发射宝珠，如果它们击中一个方块则会产生闪电。然而，如果它们击中一个敌人则不会发生任何事情。它有中等的冷却时间，并且有15次使用次数。
 
 
 
@@ -156,10 +156,10 @@ achievement.goblin_flesh=哥布林肉
 achievement.goblin_flesh.desc=从哥布林身上获得哥布林肉。这是一种气味难闻的肉，大多数吃它的人会变瞎。令人惊讶的是，狗似乎不受此影响。
 
 achievement.bomb=炸弹制造者
-achievement.bomb.desc=使用火药和石头在工作台中合成炸弹。这些是可投掷的爆炸物，不会破坏方块。小心，它们在被投掷后几秒钟就会爆炸。这也可以通过发射器使用。
+achievement.bomb.desc=使用火药和石头在工作台中制作炸弹。这些是可投掷的爆炸物，不会破坏方块。小心，它们在被投掷后几秒钟就会爆炸。这也可以通过发射器使用。
 
 achievement.shuriken=手里剑匠
-achievement.shuriken.desc=使用圆石在工作台中合成手里剑。这些像可投掷的箭一样工作。这也可以通过发射器使用。
+achievement.shuriken.desc=使用圆石在工作台中制作手里剑。这些像可投掷的箭一样工作。这也可以通过发射器使用。
 
 achievement.katana=武士刀收藏家
 achievement.katana.desc=从哥布林忍者那里获得武士刀。这把剑可以使用铁锭在铁砧上修复。
