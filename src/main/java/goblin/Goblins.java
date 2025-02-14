@@ -83,7 +83,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 
-@Mod(modid = "goblin", name = "Goblins Legacy", version = "1.03")
+@Mod(modid = "goblin", name = "Goblins Legacy", version = "1.04")
 public class Goblins {
 	//item variables
 	public static Item swordFire;
