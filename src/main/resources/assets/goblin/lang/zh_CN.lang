@@ -55,6 +55,7 @@ entity.goblin.orbR.name=爆炸宝珠
 entity.goblin.orbY.name=闪电宝珠
 entity.goblin.Arcaneball.name=奥术球
 entity.goblin.Lightningball.name=闪电球
+entity.goblin.Bomb.name=炸弹
 entity.goblin.Shuriken.name=手里剑
 entity.goblin.ETNTPrimed.name=附魔TNT
 entity.goblin.MTNTPrimed.name=过载TNT

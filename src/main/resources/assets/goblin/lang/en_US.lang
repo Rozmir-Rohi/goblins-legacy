@@ -55,6 +55,7 @@ entity.goblin.orbR.name=Explosive Orb
 entity.goblin.orbY.name=Lightning Orb
 entity.goblin.Arcaneball.name=Arcane Bolt
 entity.goblin.Lightningball.name=Lightning Bolt
+entity.goblin.Bomb.name=Bomb
 entity.goblin.Shuriken.name=Shuriken
 entity.goblin.ETNTPrimed.name=Enchanted TNT
 entity.goblin.MTNTPrimed.name=Overcharged TNT
