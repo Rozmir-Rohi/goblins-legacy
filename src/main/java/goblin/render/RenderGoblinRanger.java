@@ -23,8 +23,6 @@ public class RenderGoblinRanger extends RenderLiving {
 	{
 		super(modelGoblinRanger, size);
 		modelBipedMain = modelGoblinRanger;
-		RenderGoblinRanger.NAME_TAG_RANGE = 0.0f;
-		RenderGoblinRanger.NAME_TAG_RANGE_SNEAK = 0.0f;
 	}
 
 	@Override

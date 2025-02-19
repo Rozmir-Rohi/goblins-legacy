@@ -44,7 +44,6 @@ public class ClientProxy extends CommonProxy {
 	/**
 	 * Register Renderers
 	 */
-	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerEntityRenderers()
 	{

@@ -150,3 +150,5 @@ Fixed Goblin Ninja ambush crash on server.
 Fixed Goblin Ninja achievement.
 
 Fixed missing textures.
+
+Fixed hidden name tag bug.

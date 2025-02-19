@@ -23,8 +23,6 @@ public class RenderGoblinMage extends RenderLiving {
 	{
 		super(modelBase, par2);
 		modelBipedMain = modelBase;
-		RenderGoblinMage.NAME_TAG_RANGE = 0.0f;
-		RenderGoblinMage.NAME_TAG_RANGE_SNEAK = 0.0f;
 	}
 
 	protected ResourceLocation getEntityTexture(EntityGoblinMage entityGoblinMage)
