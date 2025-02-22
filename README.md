@@ -1,4 +1,9 @@
 # Goblins Legacy
+**Project Status:** Finished & Finalized
+
+*The developer of this project is retired and does not respond to private messages or GitHub issues.*
+<br><br>
+
 Port of the [Goblins!](https://www.curseforge.com/minecraft/mc-mods/goblins-mod) mod for 1.7.10 with a few improvements.
 
 **Project Status:** Finished (no future updates planned) 
